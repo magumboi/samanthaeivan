@@ -56,7 +56,7 @@
             const nombre = prompt("Ingresa tu nombre para confirmar asistencia:");
             const telefono = prompt("Ingresa tu número de teléfono (preferiblemente con WhatsApp):");
             if (nombre && telefono) {
-                fetch("https://script.google.com/macros/s/AKfycbyvO1c36LL3j9_1a4Haw8b3ogINgH40khdeQmi8PV_n0fIRbF8v4fMVvmxYPYo5tJfRGQ/exec", {
+                fetch("https://mi-app.onrender.com/registrar", {
                     method: "POST",
                     headers: { "Content-Type": "application/json" },
                     body: JSON.stringify({ nombre: nombre, telefono: telefono })
