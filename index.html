@@ -41,7 +41,7 @@
 <body>
     <div class="container">
         <h1>¡Nos Casamos!</h1>
-        <p>Guarda la fecha: <strong>12 de Octubre de 2025</strong></p>
+        <p>Guarda la fecha: <strong>11 de Octubre de 2025</strong></p>
         <button onclick="agregarAlCalendario()">Agregar al Calendario</button>
         <button onclick="registrarAsistencia()">Confirmar Asistencia</button>
     </div>
@@ -56,7 +56,7 @@
             const nombre = prompt("Ingresa tu nombre para confirmar asistencia:");
             const telefono = prompt("Ingresa tu número de teléfono (preferiblemente con WhatsApp):");
             if (nombre && telefono) {
-                fetch("https://asistencia-boda.onrender.com/registrar", {
+                fetch("https://raspberrypi.tailb1f31.ts.net/registrar", {
                     method: "POST",
                     headers: { "Content-Type": "application/json" },
                     body: JSON.stringify({ nombre: nombre, telefono: telefono })
