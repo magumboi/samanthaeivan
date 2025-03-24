@@ -36,6 +36,22 @@
         button:hover {
             background: #6d2e22;
         }
+        #formularioAsistencia {
+            display: none;
+            margin-top: 10px;
+        }
+        .input-field {
+            width: 100%;
+            padding: 8px;
+            margin: 5px 0;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+        #gifCarga {
+            display: none;
+            width: 50px;
+            margin-top: 10px;
+        }
     </style>
 </head>
 <body>
@@ -43,7 +59,15 @@
         <h1>¡Nos Casamos!</h1>
         <p>Guarda la fecha: <strong>11 de Octubre de 2025</strong></p>
         <button onclick="agregarAlCalendario()">Agregar al Calendario</button>
-        <button onclick="registrarAsistencia()">Confirmar Asistencia</button>
+        <button onclick="mostrarFormulario()">Confirmar Asistencia</button>
+        
+        <div id="formularioAsistencia">
+            <input type="text" id="nombre" class="input-field" placeholder="Tu nombre">
+            <input type="text" id="telefono" class="input-field" placeholder="Tu teléfono (preferiblemente con WhatsApp)">
+            <button onclick="enviarAsistencia()">Enviar</button>
+        </div>
+        
+        <img id="gifCarga" src="https://i.gifer.com/ZZ5H.gif" alt="Cargando...">
     </div>
     
     <script>
@@ -52,18 +76,33 @@
             window.open(url, "_blank");
         }
         
-        function registrarAsistencia() {
-            const nombre = prompt("Ingresa tu nombre para confirmar asistencia:");
-            const telefono = prompt("Ingresa tu número de teléfono (preferiblemente con WhatsApp):");
+        function mostrarFormulario() {
+            document.getElementById("formularioAsistencia").style.display = "block";
+        }
+        
+        function enviarAsistencia() {
+            const nombre = document.getElementById("nombre").value;
+            const telefono = document.getElementById("telefono").value;
+            const gifCarga = document.getElementById("gifCarga");
+
             if (nombre && telefono) {
+                gifCarga.style.display = "block";
                 fetch("https://raspberrypi.tailb1f31.ts.net/registrar", {
                     method: "POST",
                     headers: { "Content-Type": "application/json" },
                     body: JSON.stringify({ nombre: nombre, telefono: telefono })
                 })
                 .then(response => response.json())
-                .then(data => alert(`¡Gracias, ${nombre}! Has sido agregado a la lista de invitados.`))
-                .catch(error => alert("Hubo un error al registrar tu asistencia."));
+                .then(data => {
+                    alert(`¡Gracias, ${nombre}! Has sido agregado a la lista de invitados.`);
+                    document.getElementById("formularioAsistencia").style.display = "none";
+                })
+                .catch(error => alert("Hubo un error al registrar tu asistencia."))
+                .finally(() => {
+                    gifCarga.style.display = "none";
+                });
+            } else {
+                alert("Por favor, completa todos los campos.");
             }
         }
     </script>
