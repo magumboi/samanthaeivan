@@ -67,7 +67,6 @@
         <img src="img/logo-lg.png" alt="Logo" class="logo">
         <h1>¡Nos Casamos!</h1>
         <p>Guarda la fecha: <strong>11 de Octubre de 2025</strong></p>
-        <button onclick="agregarAlCalendario()">Agregar al Calendario</button>
         <button onclick="mostrarFormulario()">Confirmar Asistencia</button>
         
         <div id="formularioAsistencia">
@@ -105,6 +104,7 @@
                 .then(data => {
                     alert(`¡Gracias, ${nombre}! Has sido agregado a la lista de invitados.`);
                     document.getElementById("formularioAsistencia").style.display = "none";
+                    agregarAlCalendario();
                 })
                 .catch(error => alert("Hubo un error al registrar tu asistencia."))
                 .finally(() => {
