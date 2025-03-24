@@ -8,7 +8,7 @@
         body {
             font-family: Arial, sans-serif;
             text-align: center;
-            background: url('img/hero.jpg') no-repeat center center/cover;
+            background: url('img/logo-alt.jpeg') no-repeat center center/cover;
             padding: 20px;
             color: white;
             display: flex;
@@ -105,7 +105,7 @@
                 })
                 .then(response => response.json())
                 .then(data => {
-                    alert(`¡Gracias, ${nombre}! Has sido agregado a la lista de invitados.`);
+                    alert(`¡Gracias, ${nombre}! Has sido agregado a la lista de confirmados.`);
                     document.getElementById("formularioAsistencia").style.display = "none";
                     agregarAlCalendario();
                 })
