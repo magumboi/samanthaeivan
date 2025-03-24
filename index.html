@@ -19,10 +19,6 @@
             margin: 0;
             padding-top: 30px;
         }
-        .logo {
-            width: 150px;
-            margin-bottom: 20px;
-        }
         .container {
             width: 90%;
             max-width: 400px;
@@ -31,6 +27,12 @@
             border-radius: 10px;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
             color: #2a2a2a;
+            position: relative;
+            top: -20px;
+        }
+        .logo {
+            width: 150px;
+            margin-bottom: 10px;
         }
         button, .input-field {
             display: block;
@@ -65,8 +67,8 @@
     </style>
 </head>
 <body>
-    <img src="img/logo-lg.png" alt="Logo" class="logo">
     <div class="container">
+        <img src="img/logo-lg.png" alt="Logo" class="logo">
         <h1>¡Nos Casamos!</h1>
         <p>Guarda la fecha: <strong>11 de Octubre de 2025</strong></p>
         <button onclick="mostrarFormulario()">Confirmar Asistencia</button>
