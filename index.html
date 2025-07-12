@@ -467,13 +467,13 @@
                                 <div class="form-group col-sm-6">
                                     <input type="text" id="numberOfGuestsDisplay" class="form-control bg-light border-0 py-4 px-3" 
                                            value="Requiere código de confirmación" readonly disabled/>
-                                    <small class="text-muted">Número de invitados confirmados</small>
+                                    <small class="text-muted">Número de invitados asignados (no editable)</small>
                                 </div>
                                 <div class="form-group col-sm-6">
                                     <input type="text" id="confirmationCodeDisplay" 
                                            class="form-control bg-light border-0 py-4 px-3" 
-                                           placeholder="Introduce tu código en la URL" readonly/>
-                                    <small class="text-muted">Tu código único de confirmación</small>
+                                           placeholder="Código automático" readonly/>
+                                    <small class="text-muted">Tu código único de confirmación (automático)</small>
                                 </div>
                             </div>
                             <div class="form-group">
@@ -587,9 +587,9 @@
             document.getElementById('message').value = rsvp.message || '';
             document.getElementById('confirmationCodeDisplay').value = rsvp.confirmationCode || '';
             
-            // Update number of guests display
+            // Display number of guests (read-only)
             const numberOfGuests = rsvp.numberOfGuests || 2;
-            document.getElementById('numberOfGuestsDisplay').value = `${numberOfGuests} Invitado${numberOfGuests !== 1 ? 's' : ''}`;
+            document.getElementById('numberOfGuestsDisplay').value = `${numberOfGuests} Invitado${numberOfGuests !== 1 ? 's' : ''} Asignado${numberOfGuests !== 1 ? 's' : ''}`;
             
             currentRSVP = rsvp;
             
@@ -664,9 +664,8 @@
                     // Update current RSVP data
                     currentRSVP = result;
                     
-                    // Update the number of guests display in case it changed
-                    const numberOfGuests = result.numberOfGuests || 2;
-                    document.getElementById('numberOfGuestsDisplay').value = `${numberOfGuests} Invitado${numberOfGuests !== 1 ? 's' : ''}`;
+                    // Update the confirmation code display in case it changed
+                    document.getElementById('confirmationCodeDisplay').value = result.confirmationCode || '';
                     
                 } else if (response.status === 400) {
                     const error = await response.json();
