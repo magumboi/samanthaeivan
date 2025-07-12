@@ -466,13 +466,13 @@
                             <div class="form-row">
                                 <div class="form-group col-sm-6">
                                     <input type="text" id="numberOfGuestsDisplay" class="form-control bg-light border-0 py-4 px-3" 
-                                           value="2 Invitados (Por defecto)" readonly disabled/>
+                                           value="Requiere código de confirmación" readonly disabled/>
                                     <small class="text-muted">Número de invitados confirmados</small>
                                 </div>
                                 <div class="form-group col-sm-6">
                                     <input type="text" id="confirmationCodeDisplay" 
                                            class="form-control bg-light border-0 py-4 px-3" 
-                                           placeholder="Se generará el código de confirmación" readonly/>
+                                           placeholder="Introduce tu código en la URL" readonly/>
                                     <small class="text-muted">Tu código único de confirmación</small>
                                 </div>
                             </div>
@@ -482,10 +482,11 @@
                                           rows="5" placeholder="Mensaje (Opcional)"></textarea>
                             </div>
                             <div>
-                                <button id="submitBtn" class="btn btn-primary font-weight-bold py-3 px-5" type="submit">
-                                    <span id="submitBtnText">Confirmar Asistencia</span>
+                                <button id="submitBtn" class="btn btn-primary font-weight-bold py-3 px-5" type="submit" disabled>
+                                    <span id="submitBtnText">Requiere Código de Confirmación</span>
                                     <span id="submitBtnSpinner" class="spinner-border spinner-border-sm ml-2" style="display: none;"></span>
                                 </button>
+                                <small class="d-block mt-2 text-muted">Necesitas un código de confirmación válido para actualizar tu RSVP</small>
                             </div>
                         </form>
                     </div>
@@ -569,9 +570,14 @@
         function clearForm() {
             document.getElementById('rsvpForm').reset();
             document.getElementById('confirmationCodeDisplay').value = '';
-            document.getElementById('numberOfGuestsDisplay').value = '2 Invitados (Por defecto)';
+            document.getElementById('numberOfGuestsDisplay').value = 'Requiere código de confirmación';
             currentRSVP = null;
-            document.getElementById('submitBtnText').textContent = 'Confirmar Asistencia';
+            
+            // Disable submit button when no RSVP is loaded
+            const submitBtn = document.getElementById('submitBtn');
+            const submitBtnText = document.getElementById('submitBtnText');
+            submitBtn.disabled = true;
+            submitBtnText.textContent = 'Requiere Código de Confirmación';
         }
         
         // Function to populate form with RSVP data
@@ -586,7 +592,12 @@
             document.getElementById('numberOfGuestsDisplay').value = `${numberOfGuests} Invitado${numberOfGuests !== 1 ? 's' : ''}`;
             
             currentRSVP = rsvp;
-            document.getElementById('submitBtnText').textContent = 'Actualizar RSVP';
+            
+            // Enable submit button and update text
+            const submitBtn = document.getElementById('submitBtn');
+            const submitBtnText = document.getElementById('submitBtnText');
+            submitBtn.disabled = false;
+            submitBtnText.textContent = 'Actualizar RSVP';
         }
         
         // Function to lookup RSVP by confirmation code (for URL-based lookup only)
@@ -614,6 +625,12 @@
         async function submitRSVP(event) {
             event.preventDefault();
             
+            // Only allow updates if there's an existing RSVP loaded
+            if (!currentRSVP || !currentRSVP.id) {
+                showAlert('Debes tener un código de confirmación válido para actualizar tu RSVP.', 'warning');
+                return;
+            }
+            
             const submitBtn = document.getElementById('submitBtn');
             const submitBtnText = document.getElementById('submitBtnText');
             const submitBtnSpinner = document.getElementById('submitBtnSpinner');
@@ -631,18 +648,9 @@
                     message: formData.get('message') || ''
                 };
                 
-                let response;
-                let method = 'POST';
-                let url = API_BASE_URL;
-                
-                // If updating existing RSVP
-                if (currentRSVP && currentRSVP.id) {
-                    method = 'PUT';
-                    url = `${API_BASE_URL}/${currentRSVP.id}`;
-                }
-                
-                response = await fetch(url, {
-                    method: method,
+                // Always use PUT method for updates only
+                const response = await fetch(`${API_BASE_URL}/${currentRSVP.id}`, {
+                    method: 'PUT',
                     headers: {
                         'Content-Type': 'application/json',
                     },
@@ -651,38 +659,14 @@
                 
                 if (response.ok) {
                     const result = await response.json();
+                    showAlert('¡RSVP actualizado exitosamente!', 'success');
                     
-                    if (currentRSVP) {
-                        showAlert('¡RSVP actualizado exitosamente!', 'success');
-                    } else {
-                        const shareableUrl = generateShareableURL(result.confirmationCode);
-                        const successMessage = `
-                            <div>
-                                <strong>¡RSVP enviado exitosamente!</strong><br>
-                                Tu código de confirmación es: <strong>${result.confirmationCode}</strong><br>
-                                <div class="mt-2">
-                                    <button class="btn btn-sm btn-outline-light mr-2" onclick="copyToClipboard('${result.confirmationCode}', '¡Código de confirmación copiado!')">>
-                                        <i class="fas fa-copy"></i> Copiar Código
-                                    </button>
-                                    <button class="btn btn-sm btn-outline-light" onclick="copyToClipboard('${shareableUrl}', '¡Enlace compartible copiado!')">>
-                                        <i class="fas fa-share"></i> Copiar Enlace
-                                    </button>
-                                </div>
-                                <small class="d-block mt-2">¡Guarda tu código de confirmación o comparte el enlace para regresar más tarde!</small>
-                            </div>
-                        `;
-                        showAlert(successMessage, 'success');
-                        document.getElementById('confirmationCodeDisplay').value = result.confirmationCode;
-                        document.getElementById('confirmationCodeInput').value = result.confirmationCode;
-                        
-                        // Update URL with confirmation code
-                        if (window.history.replaceState) {
-                            window.history.replaceState({}, document.title, shareableUrl);
-                        }
-                    }
-                    
+                    // Update current RSVP data
                     currentRSVP = result;
-                    document.getElementById('submitBtnText').textContent = 'Update RSVP';
+                    
+                    // Update the number of guests display in case it changed
+                    const numberOfGuests = result.numberOfGuests || 2;
+                    document.getElementById('numberOfGuestsDisplay').value = `${numberOfGuests} Invitado${numberOfGuests !== 1 ? 's' : ''}`;
                     
                 } else if (response.status === 400) {
                     const error = await response.json();
@@ -693,32 +677,17 @@
                 
             } catch (error) {
                 console.error('Error submitting RSVP:', error);
-                showAlert('Error al enviar RSVP. Por favor, inténtalo de nuevo.', 'danger');
+                showAlert('Error al actualizar RSVP. Por favor, inténtalo de nuevo.', 'danger');
             } finally {
                 // Reset loading state
                 submitBtn.disabled = false;
                 submitBtnSpinner.style.display = 'none';
-                if (currentRSVP) {
-                    submitBtnText.textContent = 'Update RSVP';
-                } else {
-                    submitBtnText.textContent = 'Submit RSVP';
-                }
+                submitBtnText.textContent = 'Actualizar RSVP';
             }
         }
         
         // Convert confirmation code input to uppercase - not needed anymore
         // Allow Enter key to trigger lookup - not needed anymore
-        
-        // Clear form and start new RSVP
-        function startNewRSVP() {
-            clearForm();
-            showAlert('¡Listo para un nuevo RSVP!', 'info');
-            
-            // Clear URL parameters
-            if (window.history.replaceState) {
-                window.history.replaceState({}, document.title, window.location.pathname);
-            }
-        }
         
         // Generate shareable URL with confirmation code
         function generateShareableURL(confirmationCode) {
