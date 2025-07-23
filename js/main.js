@@ -1,16 +1,37 @@
 (function ($) {
     "use strict";
-
+    
     // Navbar on scrolling
+    var lastScrollTop = 0;
+    var navbar = $('.navbar');
+    var isMobile = window.innerWidth <= 991;
+
+    // Initial state - hide navbar on mobile
+    if (isMobile) {
+        navbar.css('transform', 'translateY(-100%)');
+    }
+
     $(window).scroll(function () {
-        if ($(this).scrollTop() > 200) {
-            $('.navbar').fadeIn('slow').css('display', 'flex');
+        var st = $(this).scrollTop();
+        
+        if (isMobile) {
+            if (st > lastScrollTop && st > 200) {
+                // Scrolling down & past threshold - hide navbar
+                navbar.css('transform', 'translateY(-100%)');
+            } else if (st < lastScrollTop || st <= 200) {
+                // Scrolling up or at top - show navbar
+                navbar.css('transform', 'translateY(0)');
+            }
+            lastScrollTop = st;
         } else {
-            $('.navbar').fadeOut('slow').css('display', 'none');
+            // Desktop behavior
+            if (st > 200) {
+                navbar.fadeIn('slow').css('display', 'flex');
+            } else {
+                navbar.fadeOut('slow').css('display', 'none');
+            }
         }
     });
-
-
     // Smooth scrolling on the navbar links
     $(".navbar-nav a").on('click', function (event) {
         if (this.hash !== "") {
