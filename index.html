@@ -653,6 +653,42 @@
     </div>
     <!-- Friends & Family End -->
 
+    <!-- Mesa de Regalos Start -->
+    <div class="container-fluid py-5" id="event">
+        <div class="container py-0">
+            <div class="section-title position-relative text-center">
+                <h1 class="font-secondary display-4">Mesa de Regalos</h1>
+                <i class="far fa-heart text-dark"></i>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-md-6 text-center">
+                    <h5 class="font-weight-normal text-muted mb-3 pb-3">
+                        Tu presencia es el mejor regalo que podemos recibir. <br>Sin embargo, si deseas contribuir a nuestra nueva vida juntos, hemos creado una lista de regalos que nos ayudarán a comenzar este hermoso viaje.</h5>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6 border-right border-primary">
+                    <div class="text-center text-md-right mr-md-3 mb-4 mb-md-0">
+                        <img class="img-fluid mb-1 " src="img/liver.png" style="object-fit: cover; width: 500px; height: 100px;">
+                        <p class="mb-3">Numero de Evento:</p>
+                        <p class="mb-2" style="font-weight: bold;">51705927</p>
+                        <p class="mb-0">(Mencionar este codigo al cajero si se realiza la compra de un regalo en la tienda)</p>
+                        <a class="btn btn-primary mt-3" href="https://mesaderegalos.liverpool.com.mx/milistaderegalos/51705927">Ver Regalos</a>
+                    </div>
+                </div>
+                <br><br>
+                <div class="col-md-6">
+                    <div class="text-center text-md-left ml-md-3">
+                        <img class="img-fluid mb-4 w-90 h-100" src="img/amaz.png" style="object-fit: cover; width: 300px; height: 100px;">
+                        <br>
+                        <a class="btn btn-primary mt-3" href="https://www.amazon.com.mx/wedding/share/boda-ivan-y-samantha">Ver Regalos</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--Mesa de Regalos  End -->
+
 
     <!-- RSVP Start -->
     <div class="container-fluid py-5" id="rsvp">
@@ -667,7 +703,8 @@
             <div class="row justify-content-center">
                 <div class="col-lg-8">
                     <div class="text-center">
-                        <p class="text-muted mb-5">Por favor, confírmanos tu asistencia para hacer de este día algo aún más especial.</p>
+                        <p class="text-muted mb-5">Por favor, confírmanos tu asistencia para hacer de este día algo aún
+                            más especial.</p>
 
                         <form id="rsvpForm" onsubmit="handleWhatsAppSubmit(event)">
                             <div class="form-row">
@@ -679,7 +716,8 @@
                                 <div class="form-group col-sm-6">
                                     <input type="tel" id="phone" name="phone"
                                         class="form-control bg-secondary border-0 py-4 px-3" placeholder="Tu Teléfono"
-                                        required pattern="[0-9]{10}" title="Por favor ingresa un número de teléfono válido de 10 dígitos" />
+                                        required pattern="[0-9]{10}"
+                                        title="Por favor ingresa un número de teléfono válido de 10 dígitos" />
                                 </div>
                             </div>
                             <div class="form-group">
@@ -691,7 +729,8 @@
                                 <button type="submit" class="btn btn-primary font-weight-bold py-3 px-5">
                                     <i class="fab fa-whatsapp mr-2"></i>Confirmar por WhatsApp
                                 </button>
-                                <small class="d-block mt-3 text-muted">Al enviar el formulario, serás redirigido a WhatsApp para confirmar tu asistencia</small>
+                                <small class="d-block mt-3 text-muted">Al enviar el formulario, serás redirigido a
+                                    WhatsApp para confirmar tu asistencia</small>
                             </div>
                         </form>
                     </div>
@@ -700,24 +739,24 @@
         </div>
     </div>
     <!-- RSVP End -->
-    
+
     <script>
         function handleWhatsAppSubmit(event) {
             event.preventDefault();
-            
+
             const name = document.getElementById('guestName').value;
             const phone = document.getElementById('phone').value;
             const message = document.getElementById('message').value;
-            
+
             // Crear el mensaje para WhatsApp
             let whatsappMessage = `¡Hola! Soy ${name}, confirmo mi asistencia a su boda.`;
             if (message) {
                 whatsappMessage += `\n\nComentarios adicionales: ${message}`;
             }
-            
+
             // Codificar el mensaje para la URL
             const encodedMessage = encodeURIComponent(whatsappMessage);
-            
+
             // Abrir WhatsApp con el mensaje
             window.open(`https://wa.me/5214494989845?text=${encodedMessage}`, '_blank');
         }
