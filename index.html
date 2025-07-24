@@ -50,7 +50,7 @@
         </div>
     </div-->
 
-    <!-- Navbar Start -->
+    <!-- Navbar Start >
     <nav class="navbar fixed-top shadow-sm navbar-expand-lg bg-dark navbar-dark py-3 py-lg-0 px-lg-5"
         style="transition: transform 0.3s ease-in-out;">
         <a href="index.html" class="navbar-brand d-block d-lg-none">
@@ -655,11 +655,11 @@
 
 
     <!-- RSVP Start -->
-    <div class="container-fluid py-5" id="rsvp" style="display: none;">
+    <div class="container-fluid py-5" id="rsvp">
         <div class="container py-5">
             <div class="section-title position-relative text-center">
                 <h6 class="text-uppercase text-primary mb-3" style="letter-spacing: 3px;">RSVP</h6>
-                <h1 class="font-secondary display-4">Únete a Nuestra Celebración</h1>
+                <h1 class="font-secondary display-4">Confirma tu Asistencia</h1>
                 <i class="far fa-heart text-dark"></i>
             </div>
 
@@ -667,10 +667,9 @@
             <div class="row justify-content-center">
                 <div class="col-lg-8">
                     <div class="text-center">
-                        <!-- Success/Error Messages -->
-                        <div id="alertContainer"></div>
+                        <p class="text-muted mb-5">Por favor, confírmanos tu asistencia para hacer de este día algo aún más especial.</p>
 
-                        <form id="rsvpForm" onsubmit="submitRSVP(event)">
+                        <form id="rsvpForm" onsubmit="handleWhatsAppSubmit(event)">
                             <div class="form-row">
                                 <div class="form-group col-sm-6">
                                     <input type="text" id="guestName" name="guestName"
@@ -678,39 +677,21 @@
                                         required />
                                 </div>
                                 <div class="form-group col-sm-6">
-                                    <input type="email" id="email" name="email"
-                                        class="form-control bg-secondary border-0 py-4 px-3" placeholder="Tu Email"
-                                        required />
-                                </div>
-                            </div>
-                            <div class="form-row">
-                                <div class="form-group col-sm-6">
-                                    <input type="text" id="numberOfGuestsDisplay"
-                                        class="form-control bg-light border-0 py-4 px-3"
-                                        value="Requiere código de confirmación" readonly disabled />
-                                    <small class="text-muted">Número de invitados asignados (no editable)</small>
-                                </div>
-                                <div class="form-group col-sm-6">
-                                    <input type="text" id="confirmationCodeDisplay"
-                                        class="form-control bg-light border-0 py-4 px-3" placeholder="Código automático"
-                                        readonly />
-                                    <small class="text-muted">Tu código único de confirmación (automático)</small>
+                                    <input type="tel" id="phone" name="phone"
+                                        class="form-control bg-secondary border-0 py-4 px-3" placeholder="Tu Teléfono"
+                                        required pattern="[0-9]{10}" title="Por favor ingresa un número de teléfono válido de 10 dígitos" />
                                 </div>
                             </div>
                             <div class="form-group">
                                 <textarea id="message" name="message"
-                                    class="form-control bg-secondary border-0 py-2 px-3" rows="5"
-                                    placeholder="Mensaje (Opcional)"></textarea>
+                                    class="form-control bg-secondary border-0 py-2 px-3" rows="3"
+                                    placeholder="Mensaje o comentarios adicionales (Opcional)"></textarea>
                             </div>
                             <div>
-                                <button id="submitBtn" class="btn btn-primary font-weight-bold py-3 px-5" type="submit"
-                                    disabled>
-                                    <span id="submitBtnText">Requiere Código de Confirmación</span>
-                                    <span id="submitBtnSpinner" class="spinner-border spinner-border-sm ml-2"
-                                        style="display: none;"></span>
+                                <button type="submit" class="btn btn-primary font-weight-bold py-3 px-5">
+                                    <i class="fab fa-whatsapp mr-2"></i>Confirmar por WhatsApp
                                 </button>
-                                <small class="d-block mt-2 text-muted">Necesitas un código de confirmación válido para
-                                    actualizar tu RSVP</small>
+                                <small class="d-block mt-3 text-muted">Al enviar el formulario, serás redirigido a WhatsApp para confirmar tu asistencia</small>
                             </div>
                         </form>
                     </div>
@@ -719,6 +700,28 @@
         </div>
     </div>
     <!-- RSVP End -->
+    
+    <script>
+        function handleWhatsAppSubmit(event) {
+            event.preventDefault();
+            
+            const name = document.getElementById('guestName').value;
+            const phone = document.getElementById('phone').value;
+            const message = document.getElementById('message').value;
+            
+            // Crear el mensaje para WhatsApp
+            let whatsappMessage = `¡Hola! Soy ${name}, confirmo mi asistencia a su boda.`;
+            if (message) {
+                whatsappMessage += `\n\nComentarios adicionales: ${message}`;
+            }
+            
+            // Codificar el mensaje para la URL
+            const encodedMessage = encodeURIComponent(whatsappMessage);
+            
+            // Abrir WhatsApp con el mensaje
+            window.open(`https://wa.me/5214494989845?text=${encodedMessage}`, '_blank');
+        }
+    </script>
 
 
     <!-- Footer Start -->
