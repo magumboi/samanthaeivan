@@ -625,7 +625,7 @@
                 </div>
                 <div class="col-md-6">
                     <div class="text-center text-md-left ml-md-3">
-                        <img class="img-fluid mb-4 w-100 h-100 event-image" src="img/terralia.png">>
+                        <img class="img-fluid mb-4 w-100 h-100 event-image" src="img/terralia.png">
                         <h4 class="mb-3">Recepción</h4>
                         <p class="mb-2">Salon Terralia</p>
                         <p class="mb-0">9:00 PM</p>
@@ -954,12 +954,52 @@
     <!-- RSVP End -->
 
     <script>
+        // Cookie utility functions
+        function setCookie(name, value, days) {
+            const expires = new Date();
+            expires.setTime(expires.getTime() + (days * 24 * 60 * 60 * 1000));
+            document.cookie = `${name}=${value};expires=${expires.toUTCString()};path=/`;
+        }
+
+        function getCookie(name) {
+            const nameEQ = name + "=";
+            const ca = document.cookie.split(';');
+            for (let i = 0; i < ca.length; i++) {
+                let c = ca[i];
+                while (c.charAt(0) === ' ') c = c.substring(1, c.length);
+                if (c.indexOf(nameEQ) === 0) return c.substring(nameEQ.length, c.length);
+            }
+            return null;
+        }
+
+        // Pre-fill form with saved data when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            const savedName = getCookie('rsvp_name');
+            const savedPhone = getCookie('rsvp_phone');
+            const savedMessage = getCookie('rsvp_message');
+
+            if (savedName) {
+                document.getElementById('guestName').value = savedName;
+            }
+            if (savedPhone) {
+                document.getElementById('phone').value = savedPhone;
+            }
+            if (savedMessage) {
+                document.getElementById('message').value = savedMessage;
+            }
+        });
+
         function handleWhatsAppSubmit(event) {
             event.preventDefault();
 
             const name = document.getElementById('guestName').value;
             const phone = document.getElementById('phone').value;
             const message = document.getElementById('message').value;
+
+            // Save form data to cookies (expires in 30 days)
+            setCookie('rsvp_name', name, 30);
+            setCookie('rsvp_phone', phone, 30);
+            setCookie('rsvp_message', message, 30);
 
             // Crear el mensaje para WhatsApp
             let whatsappMessage = `¡Hola! Soy ${name} (Tel: ${phone}), confirmo mi asistencia a su boda.`;
@@ -980,7 +1020,8 @@
     <div class="container-fluid bg-dark text-white py-5 contact-section" id="contact">
         <div class="container text-center py-5">
             <div class="section-title position-relative text-center">
-                <h1 class="font-secondary display-3 text-white">Gracias</h1>
+                <h1 class="font-secondary display-3 text-white">Gracias!</h1>
+                <h1 class="font-secondary display-3 text-white">Los esperamos!</h1>
                 <i class="far fa-heart text-white"></i>
             </div>
 
