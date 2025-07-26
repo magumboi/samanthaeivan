@@ -10078,7 +10078,7 @@ a.text-dark:hover, a.text-dark:focus {
 
 /* Parents Section */
 .parent-image-container {
-  min-height: 400px;
+  min-height: 250px;
   position: relative;
   overflow: hidden;
 }
@@ -10100,6 +10100,21 @@ a.text-dark:hover, a.text-dark:focus {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+}
+
+/* Reduce parents section padding */
+#about .container {
+  padding-top: 2rem !important;
+  padding-bottom: 2rem !important;
+}
+
+#about .bg-secondary {
+  padding: 1.5rem !important;
+}
+
+/* Reduce margins between rows */
+#about .row {
+  margin-bottom: 1rem !important;
 }
 
 /* Padrinos Section */
