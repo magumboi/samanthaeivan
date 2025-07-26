@@ -10106,6 +10106,7 @@ a.text-dark:hover, a.text-dark:focus {
 .padrinos-container {
   height: 300px;
   overflow: hidden;
+  border-radius: 15px;
 }
 
 .padrino-blur-background {
