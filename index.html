@@ -46,7 +46,7 @@
 </head>
 
 <body data-spy="scroll" data-target=".navbar" data-offset="51">
-    <!-- Splash Screen -->
+    <!-- Splash Screen >
     <div class="splash-screen">
         <div class="envelope">
             <div class="card" style="text-align: center; padding: 20px;">
@@ -658,6 +658,8 @@
                         <ul>
                             <li>
                                 <div class="content">
+                                    <img src="img/timeline/guests.png" alt="Llegada de los Invitados"
+                                        style="width: 50px; height: 50px; margin-right: 10px; vertical-align: middle; margin-bottom: 10px;">
                                     <h3>Llegada de los Invitados</h3>
                                     <p>Te esperamos en el Templo del Señor del Encino para dar inicio a nuestra
                                         ceremonia religiosa.</p>
@@ -669,6 +671,8 @@
 
                             <li>
                                 <div class="content">
+                                    <img src="img/timeline/church.png" alt="Ceremonia Religiosa"
+                                        style="width: 50px; height: 50px; margin-right: 10px; vertical-align: middle; margin-bottom: 10px;">
                                     <h3>Ceremonia Religiosa</h3>
                                     <p>Celebración de nuestro matrimonio en una ceremonia llena de amor y bendiciones.
                                     </p>
@@ -680,6 +684,8 @@
 
                             <li>
                                 <div class="content">
+                                    <img src="img/timeline/photo-camera.png" alt="Salida de la Iglesia"
+                                        style="width: 50px; height: 50px; margin-right: 10px; vertical-align: middle; margin-bottom: 10px;">
                                     <h3>Sesión de Fotos</h3>
                                     <p>Momento para capturar los primeros recuerdos como esposos junto a nuestros seres
                                         queridos.</p>
@@ -691,6 +697,8 @@
 
                             <li>
                                 <div class="content">
+                                    <img src="img/timeline/reception.png" alt="Recepción"
+                                        style="width: 50px; height: 50px; margin-right: 10px; vertical-align: middle; margin-bottom: 10px;">
                                     <h3>Recepción</h3>
                                     <p>Bienvenida en Salón Terralia para comenzar la celebración.</p>
                                 </div>
@@ -701,9 +709,10 @@
 
                             <li>
                                 <div class="content">
-                                    <h3>Primer Baile</h3>
-                                    <p>Nuestro primer baile como esposos, un momento mágico para compartir con todos
-                                        ustedes.</p>
+                                    <img src="img/timeline/romantic-dinner.png" alt="Cena"
+                                        style="width: 50px; height: 50px; margin-right: 10px; vertical-align: middle; margin-bottom: 10px;">
+                                    <h3>Cena</h3>
+                                    <p>Disfrutaremos de una deliciosa cena en compañía de nuestros invitados.</p>
                                 </div>
                                 <div class="time">
                                     <h4>9:30 PM</h4>
@@ -712,9 +721,13 @@
 
                             <li>
                                 <div class="content">
-                                    <h3>Cena</h3>
-                                    <p>Disfrutaremos de una deliciosa cena en compañía de nuestros invitados.</p>
+                                    <img src="img/timeline/dance.png" alt="Primer Baile"
+                                        style="width: 50px; height: 50px; margin-right: 10px; vertical-align: middle; margin-bottom: 10px;">
+                                    <h3>Primer Baile</h3>
+                                    <p>Nuestro primer baile como esposos, un momento mágico para compartir con todos
+                                        ustedes.</p>
                                 </div>
+
                                 <div class="time">
                                     <h4>10:00 PM</h4>
                                 </div>
@@ -722,6 +735,8 @@
 
                             <li>
                                 <div class="content">
+                                    <img src="img/timeline/disco-ball.png" alt="Baile y Celebración"
+                                        style="width: 50px; height: 50px; margin-right: 10px; vertical-align: middle; margin-bottom: 10px;">
                                     <h3>Baile y Celebración</h3>
                                     <p>¡Que comience la fiesta! Música y baile para celebrar nuestro amor.</p>
                                 </div>
@@ -737,43 +752,6 @@
         </div>
     </div>
     <!-- Event End -->
-
-
-    <!-- lightGallery JS -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/lightgallery/2.7.2/lightgallery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/lightgallery/2.7.2/plugins/zoom/lg-zoom.min.js"></script>
-    <script
-        src="https://cdnjs.cloudflare.com/ajax/libs/lightgallery/2.7.2/plugins/thumbnail/lg-thumbnail.min.js"></script>
-
-    <script>
-        // Initialize lightGallery
-        const lgContainer = document.getElementById('animated-thumbnails');
-        if (lgContainer) {
-            lightGallery(lgContainer, {
-                speed: 500,
-                plugins: [lgZoom, lgThumbnail],
-                thumbnail: true,
-                animateThumb: true,
-                zoomFromOrigin: true,
-                allowMediaOverlap: true,
-                showCloseIcon: true,
-                selector: '.gallery-item',
-                //no caption
-                getCaptionFromTitleOrAlt: false,
-                mobileSettings: {
-                    controls: false,
-                    showCloseIcon: true,
-                    download: false,
-                    rotate: false,
-                    zoom: false
-                }
-
-
-
-            });
-        }
-
-    </script>
 
     <!-- Friends & Family Start >
     <div class="container-fluid py-5" id="family">
@@ -1050,6 +1028,41 @@
     <!-- Template Javascript -->
     <script src="js/main.js"></script>
     <script src="js/splash.js"></script>
+    <!-- lightGallery JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lightgallery/2.7.2/lightgallery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lightgallery/2.7.2/plugins/zoom/lg-zoom.min.js"></script>
+    <script
+        src="https://cdnjs.cloudflare.com/ajax/libs/lightgallery/2.7.2/plugins/thumbnail/lg-thumbnail.min.js"></script>
+
+    <script>
+        // Initialize lightGallery
+        const lgContainer = document.getElementById('animated-thumbnails');
+        if (lgContainer) {
+            lightGallery(lgContainer, {
+                speed: 500,
+                plugins: [lgZoom, lgThumbnail],
+                thumbnail: true,
+                animateThumb: true,
+                zoomFromOrigin: true,
+                allowMediaOverlap: true,
+                showCloseIcon: true,
+                selector: '.gallery-item',
+                //no caption
+                getCaptionFromTitleOrAlt: false,
+                mobileSettings: {
+                    controls: false,
+                    showCloseIcon: true,
+                    download: false,
+                    rotate: false,
+                    zoom: false
+                }
+
+
+
+            });
+        }
+
+    </script>
 </body>
 
 </html>
