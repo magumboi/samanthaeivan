@@ -41,22 +41,7 @@
         .gallery-item:hover {
             transform: scale(1.05);
         }
-        .lg-custom-theme .lg-close {
-            color: #fff;
-            background-color: rgba(228,122,46,0.8);
-            border-radius: 50%;
-            padding: 10px;
-            font-size: 18px;
-            position: absolute;
-            right: 20px;
-            top: 20px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-        .lg-custom-theme .lg-close:hover {
-            background-color: rgba(228,122,46,1);
-            transform: rotate(90deg);
-        }
+
     </style>
 </head>
 
@@ -679,11 +664,7 @@
                 animateThumb: true,
                 zoomFromOrigin: true,
                 allowMediaOverlap: true,
-                toggleThumb: true,
-                closeOnTap: true,
-                showCloseIcon: true,
-                appendSubHtmlTo: '.lg-item',
-                addClass: 'lg-custom-theme'
+                showCloseIcon: true
             });
         }
     </script>
