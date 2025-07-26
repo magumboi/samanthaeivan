@@ -381,25 +381,15 @@
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                <div class="modal-body p-0 d-flex justify-content-center align-items-center" style="min-height: 500px; background: #000;">
-                    <div id="doomContainer" style="position: relative; width: 100%; height: 500px;">
-                        <canvas id="canvas" style="width: 100%; height: 100%; background: #000; display: block;"></canvas>
-                        <div id="loadingScreen" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: #000; color: #fff; display: flex; flex-direction: column; justify-content: center; align-items: center; font-family: monospace;">
-                            <div style="font-size: 2em; margin-bottom: 20px; color: #ff0000;">🎮 JS DOOM</div>
-                            <div id="loadingText">Loading game assets...</div>
-                            <div style="margin-top: 20px; width: 50%; height: 4px; background: #333; border-radius: 2px; overflow: hidden;">
-                                <div id="loadingBar" style="width: 0%; height: 100%; background: #ff0000; transition: width 0.3s;"></div>
-                            </div>
-                            <div style="margin-top: 20px; font-size: 0.8em; color: #888; text-align: center;">
-                                Use arrow keys to move, Ctrl to shoot, Space to open doors<br>
-                                Enter to start once loaded
-                            </div>
-                        </div>
-                    </div>
+                <div class="modal-body p-0" style="background: #000;">
+                    <iframe id="doomIframe" 
+                            src="https://danihre.github.io/jsdoom/" 
+                            style="width: 100%; height: 500px; border: none; background: #000;"
+                            allow="gamepad; fullscreen; autoplay; microphone">
+                    </iframe>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close Game</button>
-                    <button type="button" id="restartGame" class="btn btn-primary" style="display: none;">Restart Game</button>
                     <small class="text-muted">Arrow keys: Move | Ctrl: Shoot | Space: Open doors | Enter: Menu</small>
                 </div>
             </div>
@@ -1450,64 +1440,11 @@
             ];
             let userInput = [];
             let konamiActivated = false;
-            let doomGame = null;
 
-            // JS Doom integration - Simplified with direct fallback
-            async function loadJSDoom() {
-                const loadingText = document.getElementById('loadingText');
-                const loadingBar = document.getElementById('loadingBar');
-                const canvas = document.getElementById('canvas');
-                const loadingScreen = document.getElementById('loadingScreen');
-                
-                // Update loading progress
-                function updateProgress(percent, text) {
-                    if (loadingBar) loadingBar.style.width = percent + '%';
-                    if (loadingText) loadingText.textContent = text;
-                }
-
-                try {
-                    updateProgress(20, 'Attempting to load JS Doom directly...');
-                    
-                    // Try to load a simplified version first
-                    updateProgress(40, 'Loading game engine...');
-                    
-                    // Since the CDN approach is failing, let's implement a simple canvas-based demo
-                    // or go straight to iframe fallback
-                    updateProgress(60, 'Checking game compatibility...');
-                    
-                    // For now, let's simulate loading and then show the iframe
-                    await new Promise(resolve => setTimeout(resolve, 1000));
-                    
-                    updateProgress(80, 'Loading fallback version...');
-                    
-                    // Direct fallback to iframe - this is more reliable
-                    throw new Error('Using iframe fallback for better compatibility');
-                    
-                } catch (error) {
-                    console.log('Loading JS Doom via iframe fallback:', error.message);
-                    
-                    updateProgress(100, 'Starting game...');
-                    
-                    setTimeout(() => {
-                        loadingScreen.innerHTML = `
-                            <iframe src="https://danihre.github.io/jsdoom/" 
-                                    style="width: 100%; height: 100%; border: none; background: #000;"
-                                    allow="gamepad; fullscreen; autoplay; microphone">
-                            </iframe>
-                        `;
-                        document.getElementById('restartGame').style.display = 'inline-block';
-                    }, 500);
-                }
-            }
-
-            function loadScript(src) {
-                return new Promise((resolve, reject) => {
-                    const script = document.createElement('script');
-                    script.src = src;
-                    script.onload = resolve;
-                    script.onerror = reject;
-                    document.head.appendChild(script);
-                });
+            // Simple function - iframe is already set up in the modal
+            function loadJSDoom() {
+                // The iframe is already loaded in the modal HTML, nothing else needed
+                console.log('🎮 JS Doom loaded in iframe');
             }
 
             document.addEventListener('keydown', function(e) {
@@ -1548,64 +1485,9 @@
 
             // Reset when modal is closed
             $('#konamiModal').on('hidden.bs.modal', function () {
-                // Stop the game if running
-                if (doomGame && typeof doomGame.stop === 'function') {
-                    doomGame.stop();
-                }
-                
-                // Reset the modal content
-                const loadingScreen = document.getElementById('loadingScreen');
-                const canvas = document.getElementById('canvas');
-                
-                if (loadingScreen) {
-                    loadingScreen.style.display = 'flex';
-                    loadingScreen.innerHTML = `
-                        <div style="font-size: 2em; margin-bottom: 20px; color: #ff0000;">🎮 JS DOOM</div>
-                        <div id="loadingText">Loading game assets...</div>
-                        <div style="margin-top: 20px; width: 50%; height: 4px; background: #333; border-radius: 2px; overflow: hidden;">
-                            <div id="loadingBar" style="width: 0%; height: 100%; background: #ff0000; transition: width 0.3s;"></div>
-                        </div>
-                        <div style="margin-top: 20px; font-size: 0.8em; color: #888; text-align: center;">
-                            Use arrow keys to move, Ctrl to shoot, Space to open doors<br>
-                            Enter to start once loaded
-                        </div>
-                    `;
-                }
-                
-                if (canvas) {
-                    const ctx = canvas.getContext('2d');
-                    ctx.clearRect(0, 0, canvas.width, canvas.height);
-                }
-                
-                document.getElementById('restartGame').style.display = 'none';
-                doomGame = null;
+                // Reset Konami code state
                 konamiActivated = false;
                 userInput = [];
-            });
-
-            // Restart game functionality
-            document.getElementById('restartGame').addEventListener('click', function() {
-                const loadingScreen = document.getElementById('loadingScreen');
-                
-                // Reset and reload
-                if (loadingScreen) {
-                    loadingScreen.style.display = 'flex';
-                    loadingScreen.innerHTML = `
-                        <div style="font-size: 2em; margin-bottom: 20px; color: #ff0000;">🎮 JS DOOM</div>
-                        <div id="loadingText">Restarting game...</div>
-                        <div style="margin-top: 20px; width: 50%; height: 4px; background: #333; border-radius: 2px; overflow: hidden;">
-                            <div id="loadingBar" style="width: 0%; height: 100%; background: #ff0000; transition: width 0.3s;"></div>
-                        </div>
-                        <div style="margin-top: 20px; font-size: 0.8em; color: #888; text-align: center;">
-                            Reloading game...
-                        </div>
-                    `;
-                    
-                    // Reload the game
-                    setTimeout(() => {
-                        loadJSDoom();
-                    }, 500);
-                }
             });
 
             // Add CSS for flash effect and game styling
@@ -1624,16 +1506,8 @@
                     background: #000;
                 }
                 
-                #canvas {
-                    image-rendering: pixelated;
-                    image-rendering: -moz-crisp-edges;
-                    image-rendering: crisp-edges;
-                }
-                
-                #doomContainer {
-                    border: 2px solid #333;
+                #doomIframe {
                     border-radius: 4px;
-                    overflow: hidden;
                 }
                 
                 @media (max-width: 768px) {
@@ -1642,7 +1516,7 @@
                         max-width: calc(100vw - 1rem);
                     }
                     
-                    #doomContainer {
+                    #doomIframe {
                         height: 400px !important;
                     }
                     
@@ -1652,7 +1526,7 @@
                 }
                 
                 @media (max-width: 576px) {
-                    #doomContainer {
+                    #doomIframe {
                         height: 300px !important;
                     }
                     
