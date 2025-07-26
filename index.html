@@ -27,6 +27,102 @@
     <link href="css/style.css" rel="stylesheet">
     <link href="css/splash.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Pacifico|Srisakdi:700" rel="stylesheet">
+
+    <style>
+        .two.two {
+            transform: scaleX(-1);
+            border-right: 14px solid #E47A2E;
+            background: url(https://i.pinimg.com/originals/ff/18/2b/ff182beb87a3aa67d3f88017181df346.png) -40px 150px / 77% no-repeat;
+
+            .bottom {
+                background: url(https://kiriata.com/2017/wp-content/uploads/ruined-3.jpg) 222px -111px / 66% no-repeat;
+
+                &::after {
+                    background: url(https://cdn.pixabay.com/photo/2016/04/10/13/52/beauty-1319951_1280.jpg) center/156% no-repeat;
+                }
+            }
+
+            .middle {
+                background: url(https://i.pinimg.com/736x/c1/2f/11/c12f11478225a9c4bc60015b61084d8e--beauty-portrait-portrait-art.jpg) -30px -20px /cover no-repeat
+            }
+
+            .top {
+                background: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRcpSBpWrUn54KC3Eu8Vgzkw2gF0DXJnjVjmXTZcsBoOzyKZFdF) right / 57% no-repeat;
+
+                &::after {
+                    background: url(https://cdn.pixabay.com/photo/2017/08/30/12/45/girl-2696947_960_720.jpg) center / 100% no-repeat
+                }
+            }
+        }
+
+        .wrap {
+            width: 600px;
+            height: 650px;
+            position: relative;
+            overflow: hidden;
+            background: url(https://www.erikamilvy.com/wp-content/uploads/2017/10/1490907831130.jpg) -300px -100px / cover no-repeat;
+
+        }
+
+        .top {
+            width: 660px;
+            height: 270px;
+            position: absolute;
+            z-index: 2;
+            -webkit-transform: rotate(-10deg);
+            transform: rotate(-10deg);
+            top: -90px;
+            left: -66px;
+            border: 14px solid #E47A2E;
+            overflow: hidden;
+            background: url(https://designrfix.com/wp-content/uploads/2013/04/Illustrator-cs6-tutorials-13apr-9b1.jpg) 250px center / 80% no-repeat;
+
+            &::after {
+                content: " ";
+                display: block;
+                width: 300px;
+                height: 300px;
+                border: 14px solid #E47A2E;
+                transform: rotate(-5deg);
+                background: url(http://speckycdn.sdm.netdna-cdn.com/wp-content/uploads/2014/05/photo_manipulation_tutorial_photoshop_21.jpg) -50px 0px / cover no-repeat;
+            }
+        }
+
+        .middle {
+            width: 320px;
+            height: 400px;
+            position: absolute;
+            right: -110px;
+            top: 132px;
+            z-index: 1;
+            transform: rotate(8deg);
+            border: 14px solid #E47A2E;
+            background: url(https://i0.wp.com/www.designdazzling.com/wp-content/uploads/2012/12/creative-photoshop-illustrator-text-tuts-19.jpg?resize=570%2C403) -100px top / cover no-repeat;
+        }
+
+        .bottom {
+            z-index: 2;
+            width: 700px;
+            height: 270px;
+            position: absolute;
+            transform: rotate(5deg);
+            bottom: -90px;
+            right: -80px;
+            border: 14px solid #E47A2E;
+            overflow: hidden;
+            background: url(https://cdn.tutsplus.com/vector/uploads/2013/05/jude_tut_owl_400x400.jpg) 150px -250px/ 80% no-repeat;
+
+            &::after {
+                content: " ";
+                display: block;
+                width: 300px;
+                height: 300px;
+                border: 14px solid #E47A2E;
+                transform: translate(-70px, -65px) rotate(17deg);
+                background: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQPKwkv0Dt6KcYUHYydy27hBs03Uja2Yu16ZYBRKEwQBDuCt9Ov) 50px -40px / cover no-repeat;
+            }
+        }
+    </style>
 </head>
 
 <body data-spy="scroll" data-target=".navbar" data-offset="51">
@@ -167,7 +263,7 @@
     <!-- Carousel Separator End -->
 
     <!-- Poem Start -->
-    <div class="container-fluid p-0 mb-5 pb-5 id=" poem"
+    <div class="container-fluid p-0 mb-5 pb-5" id="poem"
         style="background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('img/terracota.jpg') center center; background-size: cover;">
         <div class="container text-center py-5">
             <div class="row justify-content-center">
@@ -294,13 +390,7 @@
                 </div>
             </div>
             <div class="row m-0">
-                <div class="col-md-6 p-0" style="min-height: 400px; position: relative; overflow: hidden; ">
-                    <div
-                        style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: url('img/papisnovio.jpeg') center center; background-size: cover; filter: blur(8px); transform: scale(1.1);">
-                    </div>
-                    <img class="position-absolute w-100" src="img/papisnovio.jpeg"
-                        style="object-fit: cover; z-index: 1; top: 50%; left: 50%; transform: translate(-50%, -50%);">
-                </div>
+
                 <div class="col-md-6 p-0 text-center text-md-left">
                     <div class="h-100 d-flex flex-column justify-content-center bg-secondary p-5">
                         <h3 class="mb-3">Padres del Novio</h3>
@@ -319,6 +409,13 @@
                         </div-->
                     </div>
                 </div>
+                <div class="col-md-6 p-0" style="min-height: 400px; position: relative; overflow: hidden; ">
+                    <div
+                        style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: url('img/papisnovio.jpeg') center center; background-size: cover; filter: blur(8px); transform: scale(1.1);">
+                    </div>
+                    <img class="position-absolute w-100" src="img/papisnovio.jpeg"
+                        style="object-fit: cover; z-index: 1; top: 50%; left: 50%; transform: translate(-50%, -50%);">
+                </div>
             </div>
             <!--Separator Start -->
             <div class="container-fluid p-0 mb-5">
@@ -334,64 +431,24 @@
                 </div>
             </div>
             <!-- Separator End -->
-            <div class="row m-0 mb-4 mb-md-0 pb-2 pb-md-0">
-                <div class="col-md-6 p-0 text-center text-md-right">
-                    <div class="h-100 d-flex flex-column justify-content-center bg-secondary p-5">
-                        <h3 class="mb-3">Padres de la Novia</h3>
-                        <p></p>
-                        <h4 class=" font-weight-normal text-muted mb-3">Raquel Duran Olmos</h4>
-                        <h4 class="font-weight-normal text-muted mb-3">Jose de Jesus Moreno Gonzalez</h4>
-                        <!--div class="position-relative">
-                            <a class="btn btn-outline-primary btn-square mr-1" href="#"><i
-                                    class="fab fa-twitter"></i></a>
-                            <a class="btn btn-outline-primary btn-square mr-1" href="#"><i
-                                    class="fab fa-facebook-f"></i></a>
-                            <a class="btn btn-outline-primary btn-square mr-1" href="#"><i
-                                    class="fab fa-linkedin-in"></i></a>
-                            <a class="btn btn-outline-primary btn-square" href="#"><i class="fab fa-instagram"></i></a>
-                        </div-->
+            <div class="container-fluid py-5" id="padrinos">
+                <div class="d-flex align-items-center justify-content-center"
+                    style="position: relative; margin: 2rem 0;">
+                    <div class="wrap">
+                        <div class="top"></div>
+                        <div class="middle"></div>
+                        <div class="bottom"></div>
                     </div>
-                </div>
-                <div class="col-md-6 p-0" style="min-height: 400px; position: relative; overflow: hidden; ">
-                    <div
-                        style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: url('img/papisnovia2.jpeg') center center; background-size: cover; filter: blur(8px); transform: scale(1.1);">
-                    </div>
-                    <img class="position-absolute w-100" src="img/papisnovia2.jpeg"
-                        style="object-fit: cover; z-index: 1; top: 50%; left: 50%; transform: translate(-50%, -50%);">
-                </div>
-            </div>
-            <div class="row m-0">
-                <div class="col-md-6 p-0" style="min-height: 400px; position: relative; overflow: hidden; ">
-                    <div
-                        style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: url('img/familia.jpg') center center; background-size: cover; filter: blur(8px); transform: scale(1.1);">
-                    </div>
-                    <img class="position-absolute w-100" src="img/familia.jpg"
-                        style="object-fit: cover; z-index: 1; top: 50%; left: 50%; transform: translate(-50%, -50%);">
-                </div>
-                <div class="col-md-6 p-0 text-center text-md-left">
-                    <div class="h-100 d-flex flex-column justify-content-center bg-secondary p-5">
-                        <h3 class="mb-3">Padrinos de Velacion</h3>
-                        <h4 class=" font-weight-normal text-muted mb-3">Ana Georgina Hermosillo Saldivar</h4>
-                        <h4 class="font-weight-normal text-muted mb-3">Juan Martin Arias Jacobo</h4>
-
-                        <!--div class="position-relative">
-                            <a class="btn btn-outline-primary btn-square mr-1" href="#"><i
-                                    class="fab fa-instagram"></i></a>
-                            <a class="btn btn-outline-primary btn-square mr-1" href="#"><i
-                                    class="fab fa-facebook-f"></i></a>
-                            <a class="btn btn-outline-primary btn-square mr-1" href="#"><i
-                                    class="fab fa-linkedin-in"></i></a>
-                            <a class="btn btn-outline-primary btn-square" href="#"><i class="fab fa-instagram"></i></a>
-                        </div-->
+                    <div class="wrap two">
+                        <div class="top"></div>
+                        <div class="middle"></div>
+                        <div class="bottom"></div>
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
-    <!-- About End -->
 
 
-    <!-- Story Start >
+            <!-- Story Start >
     <div class="container-fluid py-5" id="story">
         <div class="container pt-5 pb-3">
             <div class="section-title position-relative text-center">
@@ -454,94 +511,99 @@
     <!-- Story End -->
 
 
-    <!-- Event Start -->
-    <div class="container-fluid py-5" id="event">
-        <div class="container py-5">
-            <div class="section-title position-relative text-center">
-                <h6 class="text-uppercase text-primary mb-3" style="letter-spacing: 3px;">Evento</h6>
-                <h1 class="font-secondary display-4">Nuestro Evento de Boda</h1>
-                <i class="far fa-heart text-dark"></i>
-            </div>
-            <div class="row justify-content-center">
-                <div class="col-md-6 text-center">
-                    <h5 class="font-weight-normal text-muted mb-3 pb-3">Será un honor contar con tu presencia en este
-                        día tan especial. Ven y celebra con nosotros el inicio de nuestra nueva vida juntos.</h5>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-6 border-right border-primary">
-                    <div class="text-center text-md-right mr-md-3 mb-4 mb-md-0">
-                        <img class="img-fluid mb-4 w-100 h-100" src="img/encino.jpg" style="object-fit: cover;">
-                        <h4 class="mb-3">Ceremonia Religiosa</h4>
-                        <p class="mb-2">Templo del Señor del Encino</p>
-                        <p class="mb-0">7:00 PM</p>
-                        <a class="btn btn-primary mt-3" href="https://maps.app.goo.gl/L8LGaV1MSceiJs2f7">Como llegar</a>
+            <!-- Event Start -->
+            <div class="container-fluid py-5" id="event">
+                <div class="container py-5">
+                    <div class="section-title position-relative text-center">
+                        <h6 class="text-uppercase text-primary mb-3" style="letter-spacing: 3px;">Evento</h6>
+                        <h1 class="font-secondary display-4">Nuestro Evento de Boda</h1>
+                        <i class="far fa-heart text-dark"></i>
+                    </div>
+                    <div class="row justify-content-center">
+                        <div class="col-md-6 text-center">
+                            <h5 class="font-weight-normal text-muted mb-3 pb-3">Será un honor contar con tu presencia en
+                                este
+                                día tan especial. Ven y celebra con nosotros el inicio de nuestra nueva vida juntos.
+                            </h5>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6 border-right border-primary">
+                            <div class="text-center text-md-right mr-md-3 mb-4 mb-md-0">
+                                <img class="img-fluid mb-4 w-100 h-100" src="img/encino.jpg" style="object-fit: cover;">
+                                <h4 class="mb-3">Ceremonia Religiosa</h4>
+                                <p class="mb-2">Templo del Señor del Encino</p>
+                                <p class="mb-0">7:00 PM</p>
+                                <a class="btn btn-primary mt-3" href="https://maps.app.goo.gl/L8LGaV1MSceiJs2f7">Como
+                                    llegar</a>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="text-center text-md-left ml-md-3">
+                                <img class="img-fluid mb-4 w-100 h-100" src="img/terralia.png"
+                                    style="object-fit: cover;">
+                                <h4 class="mb-3">Recepción</h4>
+                                <p class="mb-2">Salon Terralia</p>
+                                <p class="mb-0">9:00 PM</p>
+                                <a class="btn btn-primary mt-3" href="https://maps.app.goo.gl/xiqFyfYVQarGCn7j9">Como
+                                    llegar</a>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <div class="col-md-6">
-                    <div class="text-center text-md-left ml-md-3">
-                        <img class="img-fluid mb-4 w-100 h-100" src="img/terralia.png" style="object-fit: cover;">
-                        <h4 class="mb-3">Recepción</h4>
-                        <p class="mb-2">Salon Terralia</p>
-                        <p class="mb-0">9:00 PM</p>
-                        <a class="btn btn-primary mt-3" href="https://maps.app.goo.gl/xiqFyfYVQarGCn7j9">Como llegar</a>
+            </div>
+            <!-- Event End -->
+
+            <!-- Gallery Start -->
+            <div class="container-fluid bg-gallery" id="gallery" style="padding: 120px 0; margin: 90px 0;">
+                <div class="section-title position-relative text-center" style="margin-bottom: 120px;">
+                    <h6 class="text-uppercase text-primary mb-3" style="letter-spacing: 3px;">Galería</h6>
+                    <h1 class="font-secondary display-4 text-white">Nuestra Galería de Fotos</h1>
+                    <i class="far fa-heart text-white"></i>
+                </div>
+                <div class="owl-carousel gallery-carousel">
+                    <div class="gallery-item">
+                        <img class="img-fluid w-100" src="img/gallery-1.jpg" alt="">
+                        <a href="img/gallery-1.jpg" data-lightbox="gallery">
+                            <i class="fa fa-2x fa-plus text-white"></i>
+                        </a>
+                    </div>
+                    <div class="gallery-item">
+                        <img class="img-fluid w-100" src="img/gallery-2.jpg" alt="">
+                        <a href="img/gallery-2.jpg" data-lightbox="gallery">
+                            <i class="fa fa-2x fa-plus text-white"></i>
+                        </a>
+                    </div>
+                    <div class="gallery-item">
+                        <img class="img-fluid w-100" src="img/gallery-3.jpg" alt="">
+                        <a href="img/gallery-3.jpg" data-lightbox="gallery">
+                            <i class="fa fa-2x fa-plus text-white"></i>
+                        </a>
+                    </div>
+                    <div class="gallery-item">
+                        <img class="img-fluid w-100" src="img/gallery-4.jpg" alt="">
+                        <a href="img/gallery-4.jpg" data-lightbox="gallery">
+                            <i class="fa fa-2x fa-plus text-white"></i>
+                        </a>
+                    </div>
+                    <div class="gallery-item">
+                        <img class="img-fluid w-100" src="img/gallery-5.jpg" alt="">
+                        <a href="img/gallery-5.jpg" data-lightbox="gallery">
+                            <i class="fa fa-2x fa-plus text-white"></i>
+                        </a>
+                    </div>
+                    <div class="gallery-item">
+                        <img class="img-fluid w-100" src="img/gallery-6.jpg" alt="">
+                        <a href="img/gallery-6.jpg" data-lightbox="gallery">
+                            <i class="fa fa-2x fa-plus text-white"></i>
+                        </a>
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
-    <!-- Event End -->
-
-    <!-- Gallery Start -->
-    <div class="container-fluid bg-gallery" id="gallery" style="padding: 120px 0; margin: 90px 0;">
-        <div class="section-title position-relative text-center" style="margin-bottom: 120px;">
-            <h6 class="text-uppercase text-primary mb-3" style="letter-spacing: 3px;">Galería</h6>
-            <h1 class="font-secondary display-4 text-white">Nuestra Galería de Fotos</h1>
-            <i class="far fa-heart text-white"></i>
-        </div>
-        <div class="owl-carousel gallery-carousel">
-            <div class="gallery-item">
-                <img class="img-fluid w-100" src="img/gallery-1.jpg" alt="">
-                <a href="img/gallery-1.jpg" data-lightbox="gallery">
-                    <i class="fa fa-2x fa-plus text-white"></i>
-                </a>
-            </div>
-            <div class="gallery-item">
-                <img class="img-fluid w-100" src="img/gallery-2.jpg" alt="">
-                <a href="img/gallery-2.jpg" data-lightbox="gallery">
-                    <i class="fa fa-2x fa-plus text-white"></i>
-                </a>
-            </div>
-            <div class="gallery-item">
-                <img class="img-fluid w-100" src="img/gallery-3.jpg" alt="">
-                <a href="img/gallery-3.jpg" data-lightbox="gallery">
-                    <i class="fa fa-2x fa-plus text-white"></i>
-                </a>
-            </div>
-            <div class="gallery-item">
-                <img class="img-fluid w-100" src="img/gallery-4.jpg" alt="">
-                <a href="img/gallery-4.jpg" data-lightbox="gallery">
-                    <i class="fa fa-2x fa-plus text-white"></i>
-                </a>
-            </div>
-            <div class="gallery-item">
-                <img class="img-fluid w-100" src="img/gallery-5.jpg" alt="">
-                <a href="img/gallery-5.jpg" data-lightbox="gallery">
-                    <i class="fa fa-2x fa-plus text-white"></i>
-                </a>
-            </div>
-            <div class="gallery-item">
-                <img class="img-fluid w-100" src="img/gallery-6.jpg" alt="">
-                <a href="img/gallery-6.jpg" data-lightbox="gallery">
-                    <i class="fa fa-2x fa-plus text-white"></i>
-                </a>
-            </div>
-        </div>
-    </div>
-    <!-- Gallery End -->
+            <!-- Gallery End -->
 
 
-    <!-- Friends & Family Start >
+            <!-- Friends & Family Start >
     <div class="container-fluid py-5" id="family">
         <div class="container pt-5 pb-3">
             <div class="section-title position-relative text-center">
@@ -653,162 +715,169 @@
     </div>
     <!-- Friends & Family End -->
 
-    <!-- Mesa de Regalos Start -->
-    <div class="container-fluid py-5" id="event">
-        <div class="container py-0">
-            <div class="section-title position-relative text-center">
-                <h1 class="font-secondary display-4">Mesa de Regalos</h1>
-                <i class="far fa-heart text-dark"></i>
-            </div>
-            <div class="row justify-content-center">
-                <div class="col-md-6 text-center">
-                    <h5 class="font-weight-normal text-muted mb-3 pb-3">
-                        Tu presencia es el mejor regalo que podemos recibir. <br>Sin embargo, si deseas contribuir a
-                        nuestra nueva vida juntos, hemos creado una lista de regalos que nos ayudarán a comenzar este
-                        hermoso viaje.</h5>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-6 border-right border-primary">
-                    <div class="text-center text-md-right mr-md-3 mb-4 mb-md-0">
-                        <img class="img-fluid mb-1 " src="img/liver.png"
-                            style="object-fit: cover; width: 500px; height: 100px;">
-                        <p class="mb-3">Numero de Evento:</p>
-                        <p class="mb-2" style="font-weight: bold;">51705927</p>
-                        <p class="mb-0">(Mencionar este codigo al cajero si se realiza la compra de un regalo en la
-                            tienda)</p>
-                        <a class="btn btn-primary mt-3"
-                            href="https://mesaderegalos.liverpool.com.mx/milistaderegalos/51705927">Ver Mesa de Regalos
-                            LiVerpool</a>
+            <!-- Mesa de Regalos Start -->
+            <div class="container-fluid py-5" id="event">
+                <div class="container py-0">
+                    <div class="section-title position-relative text-center">
+                        <h1 class="font-secondary display-4">Mesa de Regalos</h1>
+                        <i class="far fa-heart text-dark"></i>
                     </div>
-                </div>
-
-                <div class="col-md-6">
-                    <div class="text-center text-md-left ml-md-3">
-                        <img class="img-fluid mb-4 w-90 h-100" src="img/amaz.png"
-                            style="object-fit: cover; width: 300px; height: 100px;">
-                        <br>
-                        <a class="btn btn-primary mt-3"
-                            href="https://www.amazon.com.mx/wedding/share/boda-ivan-y-samantha">Ver Mesa de Regalos
-                            Amazon</a>
+                    <div class="row justify-content-center">
+                        <div class="col-md-6 text-center">
+                            <h5 class="font-weight-normal text-muted mb-3 pb-3">
+                                Tu presencia es el mejor regalo que podemos recibir. <br>Sin embargo, si deseas
+                                contribuir a
+                                nuestra nueva vida juntos, hemos creado una lista de regalos que nos ayudarán a comenzar
+                                este
+                                hermoso viaje.</h5>
+                        </div>
                     </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!--Mesa de Regalos  End -->
-
-
-    <!-- RSVP Start -->
-    <div class="container-fluid py-5" id="rsvp">
-        <div class="container py-5">
-            <div class="section-title position-relative text-center">
-                <h6 class="text-uppercase text-primary mb-3" style="letter-spacing: 3px;">RSVP</h6>
-                <h1 class="font-secondary display-4">Confirma tu Asistencia</h1>
-                <i class="far fa-heart text-dark"></i>
-            </div>
-
-            <!-- RSVP Form Section -->
-            <div class="row justify-content-center">
-                <div class="col-lg-8">
-                    <div class="text-center">
-                        <p class="text-muted mb-5">Por favor, confírmanos tu asistencia para hacer de este día algo aún
-                            más especial.</p>
-
-                        <form id="rsvpForm" onsubmit="handleWhatsAppSubmit(event)">
-                            <div class="form-row">
-                                <div class="form-group col-sm-6">
-                                    <input type="text" id="guestName" name="guestName"
-                                        class="form-control bg-secondary border-0 py-4 px-3" placeholder="Tu Nombre"
-                                        required />
-                                </div>
-                                <div class="form-group col-sm-6">
-                                    <input type="tel" id="phone" name="phone"
-                                        class="form-control bg-secondary border-0 py-4 px-3" placeholder="Tu Teléfono"
-                                        required pattern="[0-9]{10}"
-                                        title="Por favor ingresa un número de teléfono válido de 10 dígitos" />
-                                </div>
+                    <div class="row">
+                        <div class="col-md-6 border-right border-primary">
+                            <div class="text-center text-md-right mr-md-3 mb-4 mb-md-0">
+                                <img class="img-fluid mb-1 " src="img/liver.png"
+                                    style="object-fit: cover; width: 500px; height: 100px;">
+                                <p class="mb-3">Numero de Evento:</p>
+                                <p class="mb-2" style="font-weight: bold;">51705927</p>
+                                <p class="mb-0">(Mencionar este codigo al cajero si se realiza la compra de un regalo en
+                                    la
+                                    tienda)</p>
+                                <a class="btn btn-primary mt-3"
+                                    href="https://mesaderegalos.liverpool.com.mx/milistaderegalos/51705927">Ver Mesa de
+                                    Regalos
+                                    LiVerpool</a>
                             </div>
-                            <div class="form-group">
-                                <textarea id="message" name="message"
-                                    class="form-control bg-secondary border-0 py-2 px-3" rows="3"
-                                    placeholder="Mensaje o comentarios adicionales (Opcional)"></textarea>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="text-center text-md-left ml-md-3">
+                                <img class="img-fluid mb-4 w-90 h-100" src="img/amaz.png"
+                                    style="object-fit: cover; width: 300px; height: 100px;">
+                                <br>
+                                <a class="btn btn-primary mt-3"
+                                    href="https://www.amazon.com.mx/wedding/share/boda-ivan-y-samantha">Ver Mesa de
+                                    Regalos
+                                    Amazon</a>
                             </div>
-                            <div>
-                                <button type="submit" class="btn btn-primary font-weight-bold py-3 px-5">
-                                    <i class="fab fa-whatsapp mr-2"></i>Confirmar por WhatsApp
-                                </button>
-                                <small class="d-block mt-3 text-muted">Al enviar el formulario, serás redirigido a
-                                    WhatsApp para confirmar tu asistencia</small>
-                            </div>
-                        </form>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
-    <!-- RSVP End -->
-
-    <script>
-        function handleWhatsAppSubmit(event) {
-            event.preventDefault();
-
-            const name = document.getElementById('guestName').value;
-            const phone = document.getElementById('phone').value;
-            const message = document.getElementById('message').value;
-
-            // Crear el mensaje para WhatsApp
-            let whatsappMessage = `¡Hola! Soy ${name}, confirmo mi asistencia a su boda.`;
-            if (message) {
-                whatsappMessage += `\n\nComentarios adicionales: ${message}`;
-            }
-
-            // Codificar el mensaje para la URL
-            const encodedMessage = encodeURIComponent(whatsappMessage);
-
-            // Abrir WhatsApp con el mensaje
-            window.open(`https://wa.me/5214494989845?text=${encodedMessage}`, '_blank');
-        }
-    </script>
+            <!--Mesa de Regalos  End -->
 
 
-    <!-- Footer Start -->
-    <div class="container-fluid bg-dark text-white py-5" id="contact" style="margin-top: 90px;">
-        <div class="container text-center py-5">
-            <div class="section-title position-relative text-center">
-                <h1 class="font-secondary display-3 text-white">Gracias</h1>
-                <i class="far fa-heart text-white"></i>
+            <!-- RSVP Start -->
+            <div class="container-fluid py-5" id="rsvp">
+                <div class="container py-5">
+                    <div class="section-title position-relative text-center">
+                        <h6 class="text-uppercase text-primary mb-3" style="letter-spacing: 3px;">RSVP</h6>
+                        <h1 class="font-secondary display-4">Confirma tu Asistencia</h1>
+                        <i class="far fa-heart text-dark"></i>
+                    </div>
+
+                    <!-- RSVP Form Section -->
+                    <div class="row justify-content-center">
+                        <div class="col-lg-8">
+                            <div class="text-center">
+                                <p class="text-muted mb-5">Por favor, confírmanos tu asistencia para hacer de este día
+                                    algo aún
+                                    más especial.</p>
+
+                                <form id="rsvpForm" onsubmit="handleWhatsAppSubmit(event)">
+                                    <div class="form-row">
+                                        <div class="form-group col-sm-6">
+                                            <input type="text" id="guestName" name="guestName"
+                                                class="form-control bg-secondary border-0 py-4 px-3"
+                                                placeholder="Tu Nombre" required />
+                                        </div>
+                                        <div class="form-group col-sm-6">
+                                            <input type="tel" id="phone" name="phone"
+                                                class="form-control bg-secondary border-0 py-4 px-3"
+                                                placeholder="Tu Teléfono" required pattern="[0-9]{10}"
+                                                title="Por favor ingresa un número de teléfono válido de 10 dígitos" />
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <textarea id="message" name="message"
+                                            class="form-control bg-secondary border-0 py-2 px-3" rows="3"
+                                            placeholder="Mensaje o comentarios adicionales (Opcional)"></textarea>
+                                    </div>
+                                    <div>
+                                        <button type="submit" class="btn btn-primary font-weight-bold py-3 px-5">
+                                            <i class="fab fa-whatsapp mr-2"></i>Confirmar por WhatsApp
+                                        </button>
+                                        <small class="d-block mt-3 text-muted">Al enviar el formulario, serás redirigido
+                                            a
+                                            WhatsApp para confirmar tu asistencia</small>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
+            <!-- RSVP End -->
+
+            <script>
+                function handleWhatsAppSubmit(event) {
+                    event.preventDefault();
+
+                    const name = document.getElementById('guestName').value;
+                    const phone = document.getElementById('phone').value;
+                    const message = document.getElementById('message').value;
+
+                    // Crear el mensaje para WhatsApp
+                    let whatsappMessage = `¡Hola! Soy ${name}, confirmo mi asistencia a su boda.`;
+                    if (message) {
+                        whatsappMessage += `\n\nComentarios adicionales: ${message}`;
+                    }
+
+                    // Codificar el mensaje para la URL
+                    const encodedMessage = encodeURIComponent(whatsappMessage);
+
+                    // Abrir WhatsApp con el mensaje
+                    window.open(`https://wa.me/5214494989845?text=${encodedMessage}`, '_blank');
+                }
+            </script>
 
 
-            <p class="m-0">&copy; <a class="text-primary" href="#">Samantha & Ivan</a>
-            </p>
-        </div>
-    </div>
-    <!-- Footer End -->
+            <!-- Footer Start -->
+            <div class="container-fluid bg-dark text-white py-5" id="contact" style="margin-top: 90px;">
+                <div class="container text-center py-5">
+                    <div class="section-title position-relative text-center">
+                        <h1 class="font-secondary display-3 text-white">Gracias</h1>
+                        <i class="far fa-heart text-white"></i>
+                    </div>
 
 
-    <!-- Scroll to Bottom -->
-    <i class="fa fa-2x fa-angle-down text-white scroll-to-bottom"></i>
+                    <p class="m-0">&copy; <a class="text-primary" href="#">Samantha & Ivan</a>
+                    </p>
+                </div>
+            </div>
+            <!-- Footer End -->
 
-    <!-- Back to Top >
+
+            <!-- Scroll to Bottom -->
+            <i class="fa fa-2x fa-angle-down text-white scroll-to-bottom"></i>
+
+            <!-- Back to Top >
     <a href="#" class="btn btn-lg btn-outline-primary btn-lg-square back-to-top"><i
             class="fa fa-angle-double-up"></i></a-->
 
 
-    <!-- JavaScript Libraries -->
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
-    <script src="lib/easing/easing.min.js"></script>
-    <script src="lib/waypoints/waypoints.min.js"></script>
-    <script src="lib/owlcarousel/owl.carousel.min.js"></script>
-    <script src="lib/isotope/isotope.pkgd.min.js"></script>
-    <script src="lib/lightbox/js/lightbox.min.js"></script>
+            <!-- JavaScript Libraries -->
+            <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+            <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+            <script src="lib/easing/easing.min.js"></script>
+            <script src="lib/waypoints/waypoints.min.js"></script>
+            <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+            <script src="lib/isotope/isotope.pkgd.min.js"></script>
+            <script src="lib/lightbox/js/lightbox.min.js"></script>
 
-    <!-- Template Javascript -->
-    <!-- Template Javascript -->
-    <script src="js/main.js"></script>
-    <script src="js/splash.js"></script>
+            <!-- Template Javascript -->
+            <!-- Template Javascript -->
+            <script src="js/main.js"></script>
+            <script src="js/splash.js"></script>
 </body>
 
 </html>
