@@ -4,6 +4,9 @@ $(document).ready(function() {
     const clickTip = $('.splash-click-tip');
     const welcomeMessage = $('.splash-welcome-message');
     
+    // Prevent page scrolling when splash screen is active
+    $('body').css('overflow', 'hidden');
+    
     // Enhanced envelope interaction
     envelope.on('click', function() {
         $(this).addClass('open');
@@ -14,6 +17,10 @@ $(document).ready(function() {
         // After envelope animation completes, fade out splash screen
         setTimeout(function() {
             splashScreen.addClass('fade-out');
+            // Re-enable scrolling when splash screen fades out
+            setTimeout(function() {
+                $('body').css('overflow', 'auto');
+            }, 500); // Wait for fade-out transition to complete
         }, 1500); // Adjust timing as needed
     });
     

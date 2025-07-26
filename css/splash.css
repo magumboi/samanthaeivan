@@ -245,10 +245,34 @@
 @media (max-width: 768px) {
     .splash-click-tip,
     .splash-welcome-message {
-        display: none;
+        display: block; /* Show messages on mobile */
+        width: 90%; /* Reduce width for mobile */
+        padding: 0 20px;
+        font-size: 0.9rem; /* Slightly smaller text */
+    }
+    
+    .splash-click-tip {
+        top: 15%; /* Adjust position for mobile */
+    }
+    
+    .splash-welcome-message {
+        top: 25%; /* Adjust position for mobile */
+    }
+    
+    .splash-click-icon {
+        font-size: 1.2rem; /* Adjust icon size for mobile */
     }
     
     .envelope {
-        margin-top: 20px; /* Reset margin for mobile */
+        margin-top: 40px; /* Adjust margin for mobile with messages */
+        transform: scale(0.9); /* Slightly smaller envelope on mobile */
+    }
+    
+    .welcome-text {
+        font-size: 1rem; /* Adjust welcome text size */
+    }
+    
+    .welcome-dots .dot {
+        font-size: 1rem; /* Adjust dots size */
     }
 }
