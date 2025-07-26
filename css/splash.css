@@ -18,6 +18,34 @@
     pointer-events: none;
 }
 
+/* Splash Messages Container */
+.splash-click-tip,
+.splash-welcome-message {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10;
+    width: 100%;
+    text-align: center;
+}
+
+.splash-click-tip {
+    top: 20%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    opacity: 0.7;
+    animation: pulseGently 2s ease-in-out infinite;
+    cursor: pointer;
+}
+
+.splash-welcome-message {
+    top: 30%;
+    opacity: 0;
+    animation: fadeInUp 2s ease-out 1s forwards;
+}
+
 .envelope {
     background: #e58477;
     border-radius: 0 0 4px 4px;
@@ -28,6 +56,7 @@
     position: relative;
     transition: all 0.3s cubic-bezier(0.42, 0, 0.58, 1);
     transform-origin: 50% 50%;
+    margin-top: 80px; /* Add space for messages above */
 }
 
 .envelope:before, .envelope:after {
@@ -106,4 +135,120 @@
     overflow: hidden;
     position: absolute;
     top: 0;
+}
+
+/* Click Tip Styles */
+.splash-click-icon {
+    color: #E47A2E;
+    font-size: 16px;
+    animation: pointingAnimation 2s ease-in-out infinite;
+}
+
+.splash-tip-text {
+    color: #666;
+    font-size: 12px;
+    font-weight: 300;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+/* Welcome Message Styles */
+.welcome-text {
+    display: block;
+    color: #666;
+    font-size: 11px;
+    font-weight: 300;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+    animation: textGlow 3s ease-in-out 2s infinite;
+}
+
+.welcome-dots {
+    display: flex;
+    justify-content: center;
+    gap: 4px;
+}
+
+.dot {
+    color: #E47A2E;
+    font-size: 12px;
+    opacity: 0;
+}
+
+.dot-1 {
+    animation: dotPulse 1.5s ease-in-out 2.5s infinite;
+}
+
+.dot-2 {
+    animation: dotPulse 1.5s ease-in-out 2.7s infinite;
+}
+
+.dot-3 {
+    animation: dotPulse 1.5s ease-in-out 2.9s infinite;
+}
+
+/* Animations */
+@keyframes pulseGently {
+    0%, 100% {
+        opacity: 0.7;
+        transform: translateX(-50%) scale(1);
+    }
+    50% {
+        opacity: 1;
+        transform: translateX(-50%) scale(1.05);
+    }
+}
+
+@keyframes pointingAnimation {
+    0%, 100% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(-3px);
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateX(-50%) translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(-50%) translateY(0);
+    }
+}
+
+@keyframes textGlow {
+    0%, 100% {
+        opacity: 0.7;
+    }
+    50% {
+        opacity: 1;
+        text-shadow: 0 0 10px rgba(228, 122, 46, 0.3);
+    }
+}
+
+@keyframes dotPulse {
+    0%, 100% {
+        opacity: 0.3;
+        transform: scale(1);
+    }
+    50% {
+        opacity: 1;
+        transform: scale(1.2);
+    }
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+    .splash-click-tip,
+    .splash-welcome-message {
+        display: none;
+    }
+    
+    .envelope {
+        margin-top: 20px; /* Reset margin for mobile */
+    }
 }
