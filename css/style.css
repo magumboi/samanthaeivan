@@ -10227,3 +10227,58 @@ a.text-dark:hover, a.text-dark:focus {
 .padrino-whatsapp-1032 { background-image: url('../img/padrinos/WhatsApp Image 2025-07-25 at 10.32.47 PM.jpeg'); }
 .padrino-whatsapp-1031-59 { background-image: url('../img/padrinos/WhatsApp Image 2025-07-25 at 10.31.59 PM.jpeg'); }
 .padrino-whatsapp-1031-26 { background-image: url('../img/padrinos/WhatsApp Image 2025-07-25 at 10.31.26 PM.jpeg'); }
+
+/* Mobile Responsive Fixes */
+@media (max-width: 768px) {
+  /* Fix container overflow */
+  .container-fluid {
+    overflow-x: hidden;
+  }
+  
+  /* Adjust padrinos container for mobile */
+  .padrinos-container {
+    height: 250px;
+    margin-bottom: 1rem;
+  }
+  
+  /* Ensure images don't overflow on mobile */
+  .padrino-image {
+    max-width: 100%;
+    height: auto;
+  }
+  
+  /* Fix any text overflow */
+  .section-title h1 {
+    font-size: 2rem !important;
+    line-height: 1.2;
+  }
+  
+  /* Ensure proper spacing on mobile */
+  .row {
+    margin-left: 0;
+    margin-right: 0;
+  }
+  
+  .col-6, .col-md-4 {
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+  }
+}
+
+@media (max-width: 576px) {
+  /* Extra small devices adjustments */
+  .padrinos-container {
+    height: 200px;
+  }
+  
+  /* Reduce title size further on very small screens */
+  .section-title h1 {
+    font-size: 1.5rem !important;
+  }
+  
+  /* Ensure proper column spacing */
+  .col-6 {
+    padding-left: 0.25rem;
+    padding-right: 0.25rem;
+  }
+}
