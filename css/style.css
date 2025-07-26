@@ -457,14 +457,14 @@ h6, .h6 {
 }
 
 .display-4 {
-  font-size: 3.5rem;
+  font-size: 4rem;
   font-weight: 300;
   line-height: 1.2;
 }
 
 @media (max-width: 1200px) {
   .display-4 {
-    font-size: calc(1.475rem + 2.7vw) ;
+    font-size: calc(1.8rem + 3.2vw);
   }
 }
 
@@ -9544,6 +9544,17 @@ a.text-dark:hover, a.text-dark:focus {
   margin-bottom: 30px;
 }
 
+.section-title h1 {
+  font-weight: 400;
+  margin-bottom: 20px;
+}
+
+.section-title h6 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  letter-spacing: 2px;
+}
+
 .section-title::before {
   position: absolute;
   content: "";
@@ -9699,10 +9710,12 @@ a.text-dark:hover, a.text-dark:focus {
 .gallery-item {
   position: relative;
   overflow: hidden;
+  border-radius: 10px;
 }
 
 .gallery-item img {
   transition: .5s;
+  transform-origin: center;
 }
 
 .gallery-item:hover img {
@@ -10068,12 +10081,14 @@ a.text-dark:hover, a.text-dark:focus {
 
 .gallery-container {
   margin-top: -80px;
+  overflow-x: hidden;
 }
 
 .gallery-image {
-  height: 200px;
+  height: 300px;
   object-fit: cover;
   border-radius: 10px;
+  transition: .5s;
 }
 
 /* Parents Section */
@@ -10265,7 +10280,7 @@ a.text-dark:hover, a.text-dark:focus {
   
   /* Fix any text overflow */
   .section-title h1 {
-    font-size: 2rem !important;
+    font-size: 2.5rem !important;
     line-height: 1.2;
   }
   
@@ -10289,7 +10304,7 @@ a.text-dark:hover, a.text-dark:focus {
   
   /* Reduce title size further on very small screens */
   .section-title h1 {
-    font-size: 1.5rem !important;
+    font-size: 2rem !important;
   }
   
   /* Ensure proper column spacing */
