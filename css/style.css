@@ -9961,6 +9961,60 @@ a.text-dark:hover, a.text-dark:focus {
   margin: 15px auto;
 }
 
+/* Splash Click Tip */
+.splash-click-tip {
+  margin-top: 25px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  opacity: 0.7;
+  animation: pulseGently 2s ease-in-out infinite;
+  cursor: pointer;
+}
+
+.splash-click-icon {
+  color: #E47A2E;
+  font-size: 16px;
+  animation: pointingAnimation 2s ease-in-out infinite;
+}
+
+.splash-tip-text {
+  color: #666;
+  font-size: 12px;
+  font-weight: 300;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+/* Animations for splash tip */
+@keyframes pulseGently {
+  0%, 100% {
+    opacity: 0.7;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.05);
+  }
+}
+
+@keyframes pointingAnimation {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-3px);
+  }
+}
+
+/* Hide tip on mobile for cleaner look */
+@media (max-width: 768px) {
+  .splash-click-tip {
+    display: none;
+  }
+}
+
 /* Navbar Styles */
 .navbar-custom {
   transition: transform 0.3s ease-in-out;
