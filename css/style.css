@@ -9729,8 +9729,7 @@ a.text-dark:hover, a.text-dark:focus {
 }
 
 .bg-gallery {
-  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(../img/gallery.jpg), no-repeat center center;
-  background-size: cover;
+  background:  url(../img/gallery.jpg), no-repeat center center;
 }
 
 .gallery-carousel .owl-nav {
@@ -9761,4 +9760,12 @@ a.text-dark:hover, a.text-dark:focus {
   #event .border-right {
     border-right: none !important;
   }
+}
+
+.gallery-info {
+  text-align: center;
+  display: block;
+  font-size: 12px;
+  opacity: 0.7;
+  font-style: italic;
 }
