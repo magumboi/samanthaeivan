@@ -381,14 +381,26 @@
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                <div class="modal-body p-0">
-                    <div class="embed-responsive" style="padding-bottom: 75%;">
-                        <iframe id="konamiFrame" class="embed-responsive-item" src="" allowfullscreen></iframe>
+                <div class="modal-body p-0 d-flex justify-content-center align-items-center" style="min-height: 500px; background: #000;">
+                    <div id="doomContainer" style="position: relative; width: 100%; height: 500px;">
+                        <canvas id="canvas" style="width: 100%; height: 100%; background: #000; display: block;"></canvas>
+                        <div id="loadingScreen" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: #000; color: #fff; display: flex; flex-direction: column; justify-content: center; align-items: center; font-family: monospace;">
+                            <div style="font-size: 2em; margin-bottom: 20px; color: #ff0000;">🎮 JS DOOM</div>
+                            <div id="loadingText">Loading game assets...</div>
+                            <div style="margin-top: 20px; width: 50%; height: 4px; background: #333; border-radius: 2px; overflow: hidden;">
+                                <div id="loadingBar" style="width: 0%; height: 100%; background: #ff0000; transition: width 0.3s;"></div>
+                            </div>
+                            <div style="margin-top: 20px; font-size: 0.8em; color: #888; text-align: center;">
+                                Use arrow keys to move, Ctrl to shoot, Space to open doors<br>
+                                Enter to start once loaded
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close Game</button>
-                    <small class="text-muted">Use arrow keys to move, Ctrl to shoot, Space to open doors</small>
+                    <button type="button" id="restartGame" class="btn btn-primary" style="display: none;">Restart Game</button>
+                    <small class="text-muted">Arrow keys: Move | Ctrl: Shoot | Space: Open doors | Enter: Menu</small>
                 </div>
             </div>
         </div>
@@ -1429,7 +1441,7 @@
     
     <!-- Konami Code Easter Egg Script -->
     <script>
-        // Konami Code Easter Egg
+        // Konami Code Easter Egg with integrated JS Doom
         (function() {
             const konamiCode = [
                 'ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown',
@@ -1438,6 +1450,82 @@
             ];
             let userInput = [];
             let konamiActivated = false;
+            let doomGame = null;
+
+            // JS Doom integration
+            async function loadJSDoom() {
+                const loadingText = document.getElementById('loadingText');
+                const loadingBar = document.getElementById('loadingBar');
+                const canvas = document.getElementById('canvas');
+                const loadingScreen = document.getElementById('loadingScreen');
+                
+                try {
+                    // Update loading progress
+                    function updateProgress(percent, text) {
+                        loadingBar.style.width = percent + '%';
+                        loadingText.textContent = text;
+                    }
+
+                    updateProgress(10, 'Loading JS Doom engine...');
+                    
+                    // Load the main JS Doom script
+                    await loadScript('https://cdn.jsdelivr.net/gh/DaniHRE/jsdoom@main/js/doom.js');
+                    
+                    updateProgress(30, 'Loading game data...');
+                    
+                    // Load additional required scripts
+                    await loadScript('https://cdn.jsdelivr.net/gh/DaniHRE/jsdoom@main/js/wad.js');
+                    
+                    updateProgress(50, 'Loading audio system...');
+                    
+                    await loadScript('https://cdn.jsdelivr.net/gh/DaniHRE/jsdoom@main/js/audio.js');
+                    
+                    updateProgress(70, 'Loading input handlers...');
+                    
+                    await loadScript('https://cdn.jsdelivr.net/gh/DaniHRE/jsdoom@main/js/input.js');
+                    
+                    updateProgress(90, 'Initializing game...');
+                    
+                    // Initialize the game
+                    if (typeof initDoom === 'function') {
+                        doomGame = initDoom(canvas);
+                        updateProgress(100, 'Game ready! Press Enter to start');
+                        
+                        setTimeout(() => {
+                            loadingScreen.style.display = 'none';
+                            canvas.focus();
+                            document.getElementById('restartGame').style.display = 'inline-block';
+                        }, 1000);
+                    } else {
+                        throw new Error('JS Doom not properly loaded');
+                    }
+                    
+                } catch (error) {
+                    console.error('Failed to load JS Doom:', error);
+                    // Fallback to iframe version
+                    loadingText.textContent = 'Loading fallback version...';
+                    updateProgress(100, 'Starting game...');
+                    
+                    setTimeout(() => {
+                        loadingScreen.innerHTML = `
+                            <iframe src="https://danihre.github.io/jsdoom/" 
+                                    style="width: 100%; height: 100%; border: none;"
+                                    allow="gamepad; fullscreen">
+                            </iframe>
+                        `;
+                    }, 1000);
+                }
+            }
+
+            function loadScript(src) {
+                return new Promise((resolve, reject) => {
+                    const script = document.createElement('script');
+                    script.src = src;
+                    script.onload = resolve;
+                    script.onerror = reject;
+                    document.head.appendChild(script);
+                });
+            }
 
             document.addEventListener('keydown', function(e) {
                 // Add the key to user input
@@ -1455,17 +1543,15 @@
                     if (matches && !konamiActivated) {
                         konamiActivated = true;
                         
-                        // Show success message with sound effect (if possible)
+                        // Show success message
                         console.log('🎮 Konami Code Activated! Loading JS Doom...');
                         
-                        // Add some visual feedback
+                        // Add visual feedback
                         document.body.style.animation = 'konamiFlash 0.5s ease-in-out';
                         
-                        // Load the game in the iframe
-                        document.getElementById('konamiFrame').src = 'https://danihre.github.io/jsdoom/';
-                        
-                        // Show the modal
+                        // Show the modal and load the game
                         $('#konamiModal').modal('show');
+                        loadJSDoom();
                         
                         // Reset after showing
                         setTimeout(() => {
@@ -1479,12 +1565,52 @@
 
             // Reset when modal is closed
             $('#konamiModal').on('hidden.bs.modal', function () {
-                document.getElementById('konamiFrame').src = '';
+                // Stop the game if running
+                if (doomGame && typeof doomGame.stop === 'function') {
+                    doomGame.stop();
+                }
+                
+                // Reset the modal content
+                const loadingScreen = document.getElementById('loadingScreen');
+                const canvas = document.getElementById('canvas');
+                const loadingBar = document.getElementById('loadingBar');
+                const loadingText = document.getElementById('loadingText');
+                
+                if (loadingScreen && canvas) {
+                    loadingScreen.style.display = 'flex';
+                    loadingScreen.innerHTML = `
+                        <div style="font-size: 2em; margin-bottom: 20px; color: #ff0000;">🎮 JS DOOM</div>
+                        <div id="loadingText">Loading game assets...</div>
+                        <div style="margin-top: 20px; width: 50%; height: 4px; background: #333; border-radius: 2px; overflow: hidden;">
+                            <div id="loadingBar" style="width: 0%; height: 100%; background: #ff0000; transition: width 0.3s;"></div>
+                        </div>
+                        <div style="margin-top: 20px; font-size: 0.8em; color: #888; text-align: center;">
+                            Use arrow keys to move, Ctrl to shoot, Space to open doors<br>
+                            Enter to start once loaded
+                        </div>
+                    `;
+                    canvas.getContext('2d').clearRect(0, 0, canvas.width, canvas.height);
+                }
+                
+                document.getElementById('restartGame').style.display = 'none';
+                doomGame = null;
                 konamiActivated = false;
                 userInput = [];
             });
 
-            // Add CSS for flash effect
+            // Restart game functionality
+            document.getElementById('restartGame').addEventListener('click', function() {
+                if (doomGame && typeof doomGame.restart === 'function') {
+                    doomGame.restart();
+                } else {
+                    // Reload the game
+                    const loadingScreen = document.getElementById('loadingScreen');
+                    loadingScreen.style.display = 'flex';
+                    loadJSDoom();
+                }
+            });
+
+            // Add CSS for flash effect and game styling
             const style = document.createElement('style');
             style.textContent = `
                 @keyframes konamiFlash {
@@ -1493,13 +1619,23 @@
                 }
                 
                 #konamiModal .modal-dialog {
-                    max-width: 90vw;
+                    max-width: 95vw;
                 }
                 
-                #konamiModal .embed-responsive iframe {
-                    border: none;
-                    width: 100%;
-                    height: 100%;
+                #konamiModal .modal-body {
+                    background: #000;
+                }
+                
+                #canvas {
+                    image-rendering: pixelated;
+                    image-rendering: -moz-crisp-edges;
+                    image-rendering: crisp-edges;
+                }
+                
+                #doomContainer {
+                    border: 2px solid #333;
+                    border-radius: 4px;
+                    overflow: hidden;
                 }
                 
                 @media (max-width: 768px) {
@@ -1508,8 +1644,22 @@
                         max-width: calc(100vw - 1rem);
                     }
                     
-                    #konamiModal .embed-responsive {
-                        padding-bottom: 85% !important;
+                    #doomContainer {
+                        height: 400px !important;
+                    }
+                    
+                    #konamiModal .modal-footer small {
+                        font-size: 0.7rem;
+                    }
+                }
+                
+                @media (max-width: 576px) {
+                    #doomContainer {
+                        height: 300px !important;
+                    }
+                    
+                    #konamiModal .modal-header h5 {
+                        font-size: 1rem;
                     }
                 }
             `;
