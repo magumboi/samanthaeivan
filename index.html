@@ -42,6 +42,136 @@
         .gallery-item:hover {
             transform: scale(1.05);
         }
+
+        /* Mini Gallery Styles */
+        .mini-gallery-container {
+            overflow: hidden;
+            width: 100%;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            margin: 30px 15px;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+        }
+
+        .mini-gallery-track {
+            display: flex;
+            animation: scroll 70s linear infinite;
+            width: calc(400px * 12);
+            /* 6 items × 2 for infinite scroll */
+        }
+
+        .mini-gallery-item {
+            flex: 0 0 400px;
+            height: 280px;
+            margin-right: 20px;
+            position: relative;
+            border-radius: 10px;
+            overflow: hidden;
+            transition: transform 0.3s ease;
+        }
+
+        .mini-gallery-item:hover {
+            transform: scale(1.05);
+            animation-play-state: paused;
+        }
+
+        .mini-gallery-container:hover .mini-gallery-track {
+            animation-play-state: paused;
+        }
+
+        .mini-gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .mini-gallery-item a {
+            display: block;
+            width: 100%;
+            height: 100%;
+            cursor: pointer;
+            text-decoration: none;
+        }
+
+        .mini-gallery-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .mini-gallery-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
+            color: white;
+            padding: 20px 15px 15px;
+            transform: translateY(100%);
+            transition: transform 0.3s ease;
+        }
+
+        .mini-gallery-item:hover .mini-gallery-overlay {
+            transform: translateY(0);
+        }
+
+        .mini-gallery-overlay h5 {
+            margin: 0 0 5px 0;
+            font-size: 1rem;
+            font-weight: 600;
+        }
+
+        .mini-gallery-overlay p {
+            margin: 0;
+            font-size: 0.85rem;
+            opacity: 0.9;
+        }
+
+        @keyframes scroll {
+            0% {
+                transform: translateX(0);
+            }
+
+            100% {
+                transform: translateX(calc(-400px * 6 - 120px));
+                /* Move by width of 6 items + gaps */
+            }
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .mini-gallery-container {
+                margin: 20px 10px;
+            }
+
+            .mini-gallery-item {
+                flex: 0 0 320px;
+                height: 220px;
+                margin-right: 15px;
+            }
+
+            .mini-gallery-track {
+                width: calc(320px * 12 + 180px);
+            }
+
+            @keyframes scroll {
+                0% {
+                    transform: translateX(0);
+                }
+
+                100% {
+                    transform: translateX(calc(-320px * 6 - 90px));
+                }
+            }
+
+            .mini-gallery-overlay h5 {
+                font-size: 0.9rem;
+            }
+
+            .mini-gallery-overlay p {
+                font-size: 0.75rem;
+            }
+        }
     </style>
 </head>
 
@@ -615,7 +745,88 @@
             <div class="row">
                 <div class="col-md-6 border-right border-primary">
                     <div class="text-center text-md-right mr-md-3 mb-4 mb-md-0">
-                        <img class="img-fluid mb-4 w-100 h-100 event-image" src="img/encino.jpg">
+                        <div class="row justify-content-center">
+                            <div class="col-lg-10">
+                                <div class="mini-gallery-container" id="church-mini-gallery">
+                                    <div class="mini-gallery-track">
+                                        <!-- Templo del Señor del Encino photos -->
+                                        <div class="mini-gallery-item">
+                                            <a href="img/encino.jpg" data-lg-size="1200-800">
+                                                <img src="img/encino.jpg" alt="Templo del Señor del Encino - Exterior">
+                                            </a>
+                                        </div>
+
+                                        <div class="mini-gallery-item">
+                                            <a href="img/encino.jpg" data-lg-size="1200-800">
+                                                <img src="img/encino.jpg" alt="Templo del Señor del Encino - Interior">
+                                            </a>
+                                        </div>
+
+                                        <div class="mini-gallery-item">
+                                            <a href="img/encino.jpg" data-lg-size="1200-800">
+                                                <img src="img/encino.jpg" alt="Templo del Señor del Encino - Altar">
+                                            </a>
+                                        </div>
+
+                                        <!-- Duplicated items for seamless infinite scroll -->
+                                        <div class="mini-gallery-item">
+                                            <a href="img/encino.jpg" data-lg-size="1200-800">
+                                                <img src="img/encino.jpg" alt="Templo del Señor del Encino - Exterior">
+                                            </a>
+                                        </div>
+
+                                        <div class="mini-gallery-item">
+                                            <a href="img/encino.jpg" data-lg-size="1200-800">
+                                                <img src="img/encino.jpg" alt="Templo del Señor del Encino - Interior">
+                                            </a>
+                                        </div>
+
+                                        <div class="mini-gallery-item">
+                                            <a href="img/encino.jpg" data-lg-size="1200-800">
+                                                <img src="img/encino.jpg" alt="Templo del Señor del Encino - Altar">
+                                            </a>
+                                        </div>
+
+                                        <!-- Additional duplicates for better scroll coverage -->
+                                        <div class="mini-gallery-item">
+                                            <a href="img/encino.jpg" data-lg-size="1200-800">
+                                                <img src="img/encino.jpg" alt="Templo del Señor del Encino - Exterior">
+                                            </a>
+                                        </div>
+
+                                        <div class="mini-gallery-item">
+                                            <a href="img/encino.jpg" data-lg-size="1200-800">
+                                                <img src="img/encino.jpg" alt="Templo del Señor del Encino - Interior">
+                                            </a>
+                                        </div>
+
+                                        <div class="mini-gallery-item">
+                                            <a href="img/encino.jpg" data-lg-size="1200-800">
+                                                <img src="img/encino.jpg" alt="Templo del Señor del Encino - Altar">
+                                            </a>
+                                        </div>
+
+                                        <div class="mini-gallery-item">
+                                            <a href="img/encino.jpg" data-lg-size="1200-800">
+                                                <img src="img/encino.jpg" alt="Templo del Señor del Encino - Exterior">
+                                            </a>
+                                        </div>
+
+                                        <div class="mini-gallery-item">
+                                            <a href="img/encino.jpg" data-lg-size="1200-800">
+                                                <img src="img/encino.jpg" alt="Templo del Señor del Encino - Interior">
+                                            </a>
+                                        </div>
+
+                                        <div class="mini-gallery-item">
+                                            <a href="img/encino.jpg" data-lg-size="1200-800">
+                                                <img src="img/encino.jpg" alt="Templo del Señor del Encino - Altar">
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                         <h4 class="mb-3">Ceremonia Religiosa</h4>
                         <p class="mb-2">Templo del Señor del Encino</p>
                         <p class="mb-0">7:00 PM</p>
@@ -625,7 +836,89 @@
                 </div>
                 <div class="col-md-6">
                     <div class="text-center text-md-left ml-md-3">
-                        <img class="img-fluid mb-4 w-100 h-100 event-image" src="img/terralia.png">
+                        <div class="row justify-content-center">
+                            <div class="col-lg-10">
+                                <div class="mini-gallery-container" id="terralia-mini-gallery">
+                                    <div class="mini-gallery-track">
+
+                                        <!-- Salon Terralia photos -->
+                                        <div class="mini-gallery-item">
+                                            <a href="img/terralia.png" data-lg-size="1200-800">
+                                                <img src="img/terralia.png" alt="Salon Terralia - Exterior">
+                                            </a>
+                                        </div>
+
+                                        <div class="mini-gallery-item">
+                                            <a href="img/terralia.png" data-lg-size="1200-800">
+                                                <img src="img/terralia.png" alt="Salon Terralia - Salon Principal">
+                                            </a>
+                                        </div>
+
+                                        <div class="mini-gallery-item">
+                                            <a href="img/terralia.png" data-lg-size="1200-800">
+                                                <img src="img/terralia.png" alt="Salon Terralia - Jardines">
+                                            </a>
+                                        </div>
+
+                                        <!-- Duplicated items for seamless infinite scroll -->
+                                        <div class="mini-gallery-item">
+                                            <a href="img/terralia.png" data-lg-size="1200-800">
+                                                <img src="img/terralia.png" alt="Salon Terralia - Exterior">
+                                            </a>
+                                        </div>
+
+                                        <div class="mini-gallery-item">
+                                            <a href="img/terralia.png" data-lg-size="1200-800">
+                                                <img src="img/terralia.png" alt="Salon Terralia - Salon Principal">
+                                            </a>
+                                        </div>
+
+                                        <div class="mini-gallery-item">
+                                            <a href="img/terralia.png" data-lg-size="1200-800">
+                                                <img src="img/terralia.png" alt="Salon Terralia - Jardines">
+                                            </a>
+                                        </div>
+
+                                        <!-- Additional duplicates for better scroll coverage -->
+                                        <div class="mini-gallery-item">
+                                            <a href="img/terralia.png" data-lg-size="1200-800">
+                                                <img src="img/terralia.png" alt="Salon Terralia - Exterior">
+                                            </a>
+                                        </div>
+
+                                        <div class="mini-gallery-item">
+                                            <a href="img/terralia.png" data-lg-size="1200-800">
+                                                <img src="img/terralia.png" alt="Salon Terralia - Salon Principal">
+                                            </a>
+                                        </div>
+
+                                        <div class="mini-gallery-item">
+                                            <a href="img/terralia.png" data-lg-size="1200-800">
+                                                <img src="img/terralia.png" alt="Salon Terralia - Jardines">
+                                            </a>
+                                        </div>
+
+                                        <div class="mini-gallery-item">
+                                            <a href="img/terralia.png" data-lg-size="1200-800">
+                                                <img src="img/terralia.png" alt="Salon Terralia - Exterior">
+                                            </a>
+                                        </div>
+
+                                        <div class="mini-gallery-item">
+                                            <a href="img/terralia.png" data-lg-size="1200-800">
+                                                <img src="img/terralia.png" alt="Salon Terralia - Salon Principal">
+                                            </a>
+                                        </div>
+
+                                        <div class="mini-gallery-item">
+                                            <a href="img/terralia.png" data-lg-size="1200-800">
+                                                <img src="img/terralia.png" alt="Salon Terralia - Jardines">
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                         <h4 class="mb-3">Recepción</h4>
                         <p class="mb-2">Salon Terralia</p>
                         <p class="mb-0">9:00 PM</p>
@@ -973,7 +1266,7 @@
         }
 
         // Pre-fill form with saved data when page loads
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', function () {
             const savedName = getCookie('rsvp_name');
             const savedPhone = getCookie('rsvp_phone');
             const savedMessage = getCookie('rsvp_message');
@@ -1061,7 +1354,7 @@
         src="https://cdnjs.cloudflare.com/ajax/libs/lightgallery/2.7.2/plugins/thumbnail/lg-thumbnail.min.js"></script>
 
     <script>
-        // Initialize lightGallery
+        // Initialize lightGallery for main gallery
         const lgContainer = document.getElementById('animated-thumbnails');
         if (lgContainer) {
             lightGallery(lgContainer, {
@@ -1073,7 +1366,6 @@
                 allowMediaOverlap: true,
                 showCloseIcon: true,
                 selector: '.gallery-item',
-                //no caption
                 getCaptionFromTitleOrAlt: false,
                 mobileSettings: {
                     controls: false,
@@ -1082,12 +1374,54 @@
                     rotate: false,
                     zoom: false
                 }
-
-
-
             });
         }
 
+        // Initialize lightGallery for church mini-gallery
+        const churchMiniGallery = document.getElementById('church-mini-gallery');
+        if (churchMiniGallery) {
+            lightGallery(churchMiniGallery, {
+                speed: 500,
+                plugins: [lgZoom],
+                selector: '.mini-gallery-item a',
+                getCaptionFromTitleOrAlt: false,
+                download: false,
+                share: false,
+                counter: true,
+                showCloseIcon: true,
+                closable: true,
+                mousewheel: true,
+                mobileSettings: {
+                    controls: false,
+                    showCloseIcon: true,
+                    download: false,
+                    rotate: false
+                }
+            });
+        }
+
+        // Initialize lightGallery for terralia mini-gallery
+        const terraliaMiniGallery = document.getElementById('terralia-mini-gallery');
+        if (terraliaMiniGallery) {
+            lightGallery(terraliaMiniGallery, {
+                speed: 500,
+                plugins: [lgZoom],
+                selector: '.mini-gallery-item a',
+                getCaptionFromTitleOrAlt: false,
+                download: false,
+                share: false,
+                counter: true,
+                showCloseIcon: true,
+                closable: true,
+                mousewheel: true,
+                mobileSettings: {
+                    controls: false,
+                    showCloseIcon: true,
+                    download: false,
+                    rotate: false
+                }
+            });
+        }
     </script>
 </body>
 
