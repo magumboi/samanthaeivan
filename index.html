@@ -49,16 +49,15 @@
     <!-- Splash Screen >
     <div class="splash-screen">
         <div class="envelope">
-            <div class="card" style="text-align: center; padding: 20px;">
-                <h2 style="font-family: 'Great Vibes', cursive; font-size: 2.5em; margin-bottom: 15px;">Samantha & Ivan
+            <div class="card splash-card">
+                <h2 class="splash-title">Samantha & Ivan
                 </h2>
-                <div style="margin: 15px 0;">
-                    <i class="far fa-heart" style="color: #E47A2E; font-size: 24px;"></i>
+                <div class="splash-heart-container">
+                    <i class="far fa-heart splash-heart"></i>
                 </div>
-                <p
-                    style="font-family: 'Montserrat', sans-serif; text-transform: uppercase; letter-spacing: 2px; margin: 10px 0;">
+                <p class="splash-subtitle">
                     ¡Nos casamos!</p>
-                <div style="width: 50px; height: 1px; background-color: #E47A2E; margin: 15px auto;"></div>
+                <div class="splash-divider"></div>
             </div>
             <div class="flap-container">
                 <div class="flap"></div>
@@ -66,9 +65,8 @@
         </div>
     </div>
 
-    <!-- Navbar Start >
-    <nav class="navbar fixed-top shadow-sm navbar-expand-lg bg-dark navbar-dark py-3 py-lg-0 px-lg-5"
-        style="transition: transform 0.3s ease-in-out;">
+    <!-- Navbar Start -->
+    <nav class="navbar fixed-top shadow-sm navbar-expand-lg bg-dark navbar-dark py-3 py-lg-0 px-lg-5 navbar-custom">
         <a href="index.html" class="navbar-brand d-block d-lg-none">
             <h1 class="font-secondary text-white mb-n2">Samantha <span class="text-primary">&</span> Ivan</h1>
         </a>
@@ -88,7 +86,7 @@
             <div class="navbar-nav mr-auto py-0">
                 <a href="#family" class="nav-item nav-link">Familia</a>
                 <a href="#event" class="nav-item nav-link">Evento</a>
-                <a href="#rsvp" class="nav-item nav-link" id="rsvp-nav-link" style="display: none;">RSVP</a>
+                <a href="#rsvp" class="nav-item nav-link rsvp-hidden" id="rsvp-nav-link">RSVP</a>
                 <a href="#contact" class="nav-item nav-link">Contacto</a>
             </div>
         </div>
@@ -100,15 +98,13 @@
     <div class="container-fluid p-0 mb-5 pb-5" id="home">
         <div id="header-carousel" class="carousel slide carousel-fade" data-ride="carousel">
             <div class="carousel-inner">
-                <div class="carousel-item position-relative active" style="height: 100vh; min-height: 400px;">
-                    <img class="position-absolute w-100 h-100" src="https://i.imgur.com/wzQJgeF.jpeg"
-                        style="object-fit: cover;">
+                <div class="carousel-item position-relative active carousel-item-custom">
+                    <img class="position-absolute w-100 h-100 carousel-image" src="https://i.imgur.com/wzQJgeF.jpeg">
                     <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
-                        <div class="p-3" style="max-width: 900px;">
+                        <div class="p-3 carousel-content">
                             <h1 class="display-1 font-secondary text-white mt-n3 mb-md-4">Samantha & Ivan</h1>
                             <div class="d-inline-block border-top border-bottom border-light py-3 px-4">
-                                <h3 class="text-uppercase font-weight-normal text-white m-0"
-                                    style="letter-spacing: 2px;">Nos vamos a casar</h3>
+                                <h3 class="text-uppercase font-weight-normal text-white m-0 carousel-subtitle">Nos vamos a casar</h3>
                             </div>
                             <!--button type="button" class="btn-play mx-auto" data-toggle="modal"
                                 data-src="https://www.youtube.com/embed/DWRcNpR6Kdc" data-target="#videoModal">
@@ -117,15 +113,13 @@
                         </div>
                     </div>
                 </div>
-                <div class="carousel-item position-relative" style="height: 100vh; min-height: 400px;">
-                    <img class="position-absolute w-100 h-100" src="https://i.imgur.com/edSpuyU.jpeg"
-                        style="object-fit: cover;">
+                <div class="carousel-item position-relative carousel-item-custom">
+                    <img class="position-absolute w-100 h-100 carousel-image" src="https://i.imgur.com/edSpuyU.jpeg">
                     <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
-                        <div class="p-3" style="max-width: 900px;">
+                        <div class="p-3 carousel-content">
                             <h1 class="display-1 font-secondary text-white mt-n3 mb-md-4">Samantha & Ivan</h1>
                             <div class="d-inline-block border-top border-bottom border-light py-3 px-4">
-                                <h3 class="text-uppercase font-weight-normal text-white m-0"
-                                    style="letter-spacing: 2px;">Nos vamos a casar</h3>
+                                <h3 class="text-uppercase font-weight-normal text-white m-0 carousel-subtitle">Nos vamos a casar</h3>
                             </div>
                             <!--button type="button" class="btn-play mx-auto" data-toggle="modal"
                                 data-src="https://www.youtube.com/embed/DWRcNpR6Kdc" data-target="#videoModal">
@@ -134,15 +128,13 @@
                         </div>
                     </div>
                 </div>
-                <div class="carousel-item position-relative" style="height: 100vh; min-height: 400px;">
-                    <img class="position-absolute w-100 h-100" src="https://i.imgur.com/v5p3P0V.jpeg"
-                        style="object-fit: cover;">
+                <div class="carousel-item position-relative carousel-item-custom">
+                    <img class="position-absolute w-100 h-100 carousel-image" src="https://i.imgur.com/v5p3P0V.jpeg">
                     <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
-                        <div class="p-3" style="max-width: 900px;">
+                        <div class="p-3 carousel-content">
                             <h1 class="display-1 font-secondary text-white mt-n3 mb-md-4">Samantha & Ivan</h1>
                             <div class="d-inline-block border-top border-bottom border-light py-3 px-4">
-                                <h3 class="text-uppercase font-weight-normal text-white m-0"
-                                    style="letter-spacing: 2px;">Nos vamos a casar</h3>
+                                <h3 class="text-uppercase font-weight-normal text-white m-0 carousel-subtitle">Nos vamos a casar</h3>
                             </div>
                             <!--button type="button" class="btn-play mx-auto" data-toggle="modal"
                                 data-src="https://www.youtube.com/embed/DWRcNpR6Kdc" data-target="#videoModal">
@@ -151,15 +143,13 @@
                         </div>
                     </div>
                 </div>
-                <div class="carousel-item position-relative" style="height: 100vh; min-height: 400px;">
-                    <img class="position-absolute w-100 h-100" src="https://i.imgur.com/hrrdXPI.jpeg"
-                        style="object-fit: cover;">
+                <div class="carousel-item position-relative carousel-item-custom">
+                    <img class="position-absolute w-100 h-100 carousel-image" src="https://i.imgur.com/hrrdXPI.jpeg">
                     <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
-                        <div class="p-3" style="max-width: 900px;">
+                        <div class="p-3 carousel-content">
                             <h1 class="display-1 font-secondary text-white mt-n3 mb-md-4">Samantha & Ivan</h1>
                             <div class="d-inline-block border-top border-bottom border-light py-3 px-4">
-                                <h3 class="text-uppercase font-weight-normal text-white m-0"
-                                    style="letter-spacing: 2px;">Nos vamos a casar</h3>
+                                <h3 class="text-uppercase font-weight-normal text-white m-0 carousel-subtitle">Nos vamos a casar</h3>
                             </div>
                             <!--button type="button" class="btn-play mx-auto" data-toggle="modal"
                                 data-src="https://www.youtube.com/embed/DWRcNpR6Kdc" data-target="#videoModal">
@@ -170,12 +160,12 @@
                 </div>
             </div>
             <!--a class="carousel-control-prev justify-content-start" href="#header-carousel" data-slide="prev">
-                <div class="px-0" style="width: 68px; height: 68px;">
+                <div class="px-0 carousel-control-custom">
                     <span class="carousel-control-prev-icon mt-3"></span>
                 </div>
             </a>
             <a class="carousel-control-next justify-content-end" href="#header-carousel" data-slide="next">
-                <div class="px-0" style="width: 68px; height: 68px;">
+                <div class="px-0 carousel-control-custom">
                     <span class="carousel-control-next-icon mt-3"></span>
                 </div>
             </a-->
@@ -206,12 +196,10 @@
 
     <!-- Carousel Separator Start -->
     <div class="container-fluid p-0 mb-5">
-        <div class="d-flex align-items-center justify-content-center" style="position: relative; margin: 2rem 0;">
-            <div
-                style="height: 2px; background: linear-gradient(90deg, transparent, #E47A2E, transparent); width: 100%; position: relative;">
-                <div class="d-flex align-items-center justify-content-center"
-                    style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); background-color: white; padding: 0 20px;">
-                    <i class="far fa-heart text-primary" style="font-size: 24px;"></i>
+        <div class="d-flex align-items-center justify-content-center separator-container">
+            <div class="separator-line">
+                <div class="d-flex align-items-center justify-content-center separator-heart-container">
+                    <i class="far fa-heart text-primary separator-heart"></i>
                 </div>
             </div>
         </div>
@@ -219,13 +207,11 @@
     <!-- Carousel Separator End -->
 
     <!-- Poem Start -->
-    <div class="container-fluid p-0 mb-5 pb-5" id="poem"
-        style="background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('img/terracota.jpg') center center; background-size: cover;">
+    <div class="container-fluid p-0 mb-5 pb-5 poem-section" id="poem">
         <div class="container text-center py-5">
             <div class="row justify-content-center">
                 <div class="col-lg-8">
-                    <p
-                        style="font-size: 1.5em; font-style: italic; line-height: 1.8; padding: 2rem; border-left: 4px solid rgba(255,255,255,0.5); margin: 2rem 0; color: #fff; text-shadow: 1px 1px 3px rgba(0,0,0,0.5);">
+                    <p class="poem-text">
                         "Te soñé sin saber tu nombre,
                         y el destino, con manos suaves,
                         nos reunió en el momento exacto.
@@ -251,37 +237,27 @@
                 <i class="far fa-heart text-dark"></i>
             </div>
 
-            <h3 class="text-dark mb-4" style="font-size: 1.5em;"> 11 de
+            <h3 class="text-dark mb-4 countdown-date"> 11 de
                 Octubre 2025</h3>
-            <div id="countdown" class="d-flex justify-content-center align-items-center flex-wrap" style="gap: 1.5rem;">
-                <div class="countdown-item"
-                    style="background: rgba(228,122,46,0.1); border-radius: 12px; padding: 1.2rem 1.5rem; min-width: 120px; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
-                    <span id="days" style="font-size: 3em; font-weight: 600; color: #E47A2E; display: block;">00</span>
-                    <p
-                        style="font-size: 1em; color: #666; margin-top: 0.5rem; text-transform: uppercase; letter-spacing: 2px;">
+            <div id="countdown" class="d-flex justify-content-center align-items-center flex-wrap countdown-container">
+                <div class="countdown-item">
+                    <span id="days" class="countdown-number">00</span>
+                    <p class="countdown-label">
                         Días</p>
                 </div>
-                <div class="countdown-item"
-                    style="background: rgba(228,122,46,0.1); border-radius: 12px; padding: 1.2rem 1.5rem; min-width: 120px; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
-                    <span id="hours" style="font-size: 3em; font-weight: 600; color: #E47A2E; display: block;">00</span>
-                    <p
-                        style="font-size: 1em; color: #666; margin-top: 0.5rem; text-transform: uppercase; letter-spacing: 2px;">
+                <div class="countdown-item">
+                    <span id="hours" class="countdown-number">00</span>
+                    <p class="countdown-label">
                         Horas</p>
                 </div>
-                <div class="countdown-item"
-                    style="background: rgba(228,122,46,0.1); border-radius: 12px; padding: 1.2rem 1.5rem; min-width: 120px; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
-                    <span id="minutes"
-                        style="font-size: 3em; font-weight: 600; color: #E47A2E; display: block;">00</span>
-                    <p
-                        style="font-size: 1em; color: #666; margin-top: 0.5rem; text-transform: uppercase; letter-spacing: 2px;">
+                <div class="countdown-item">
+                    <span id="minutes" class="countdown-number">00</span>
+                    <p class="countdown-label">
                         Minutos</p>
                 </div>
-                <div class="countdown-item"
-                    style="background: rgba(228,122,46,0.1); border-radius: 12px; padding: 1.2rem 1.5rem; min-width: 120px; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
-                    <span id="seconds"
-                        style="font-size: 3em; font-weight: 600; color: #E47A2E; display: block;">00</span>
-                    <p
-                        style="font-size: 1em; color: #666; margin-top: 0.5rem; text-transform: uppercase; letter-spacing: 2px;">
+                <div class="countdown-item">
+                    <span id="seconds" class="countdown-number">00</span>
+                    <p class="countdown-label">
                         Segundos</p>
                 </div>
             </div>
@@ -315,47 +291,47 @@
 
     <!-- Gallery Start -->
     <div class="container-fluid py-5" id="gallery">
-        <div class="section-title position-relative text-center" style="margin-bottom: 120px;">
-            <h6 class="text-uppercase text-primary mb-3" style="letter-spacing: 3px;">Galería</h6>
+        <div class="section-title position-relative text-center gallery-section-title">
+            <h6 class="text-uppercase text-primary mb-3 gallery-subtitle">Galería</h6>
             <h1 class="font-secondary display-4">Nuestra Galería de Fotos</h1>
             <i class="far fa-heart"></i>
         </div>
 
-        <div class="container-fluid" style="margin-top: -80px;">
+        <div class="container-fluid gallery-container">
             <div class="row" id="animated-thumbnails">
                 <div class="col-6 col-md-4 mb-3">
                     <a class="gallery-item" href="https://i.imgur.com/sxlSynu.jpeg" data-lg-size="1600-1067">
-                        <img class="img-fluid w-100" style="height: 200px; object-fit: cover; border-radius: 10px;"
+                        <img class="img-fluid w-100 gallery-image"
                             src="https://i.imgur.com/sxlSynu.jpeg" />
                     </a>
                 </div>
                 <div class="col-6 col-md-4 mb-3">
                     <a class="gallery-item" href="https://i.imgur.com/23Q60wk.jpeg" data-lg-size="1600-1067">
-                        <img class="img-fluid w-100" style="height: 200px; object-fit: cover; border-radius: 10px;"
+                        <img class="img-fluid w-100 gallery-image"
                             src="https://i.imgur.com/23Q60wk.jpeg" />
                     </a>
                 </div>
                 <div class="col-6 col-md-4 mb-3">
                     <a class="gallery-item" href="https://i.imgur.com/hrrdXPI.jpeg" data-lg-size="1600-1067">
-                        <img class="img-fluid w-100" style="height: 200px; object-fit: cover; border-radius: 10px;"
+                        <img class="img-fluid w-100 gallery-image"
                             src="https://i.imgur.com/hrrdXPI.jpeg" />
                     </a>
                 </div>
                 <div class="col-6 col-md-4 mb-3">
                     <a class="gallery-item" href="https://i.imgur.com/v5p3P0V.jpeg" data-lg-size="1600-1067">
-                        <img class="img-fluid w-100" style="height: 200px; object-fit: cover; border-radius: 10px;"
+                        <img class="img-fluid w-100 gallery-image"
                             src="https://i.imgur.com/v5p3P0V.jpeg" />
                     </a>
                 </div>
                 <div class="col-6 col-md-4 mb-3">
                     <a class="gallery-item" href="https://i.imgur.com/OvNlXZe.jpeg" data-lg-size="1600-1067">
-                        <img class="img-fluid w-100" style="height: 200px; object-fit: cover; border-radius: 10px;"
+                        <img class="img-fluid w-100 gallery-image"
                             src="https://i.imgur.com/OvNlXZe.jpeg" />
                     </a>
                 </div>
                 <div class="col-6 col-md-4 mb-3">
                     <a class="gallery-item" href="https://i.imgur.com/edSpuyU.jpeg" data-lg-size="1600-1067">
-                        <img class="img-fluid w-100" style="height: 200px; object-fit: cover; border-radius: 10px;"
+                        <img class="img-fluid w-100 gallery-image"
                             src="https://i.imgur.com/edSpuyU.jpeg" />
                     </a>
                 </div>
@@ -390,12 +366,10 @@
                         </div-->
                     </div>
                 </div>
-                <div class="col-md-6 p-0" style="min-height: 400px; position: relative; overflow: hidden; ">
-                    <div
-                        style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: url('img/papisnovia2.jpeg') center center; background-size: cover; filter: blur(8px); transform: scale(1.1);">
+                <div class="col-md-6 p-0 parent-image-container">
+                    <div class="parent-blur-background parent-novia-bg">
                     </div>
-                    <img class="position-absolute w-100" src="img/papisnovia2.jpeg"
-                        style="object-fit: cover; z-index: 1; top: 50%; left: 50%; transform: translate(-50%, -50%);">
+                    <img class="position-absolute w-100 parent-image" src="img/papisnovia2.jpeg">
                 </div>
             </div>
             <div class="row m-0">
@@ -418,12 +392,10 @@
                         </div-->
                     </div>
                 </div>
-                <div class="col-md-6 p-0" style="min-height: 400px; position: relative; overflow: hidden; ">
-                    <div
-                        style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: url('img/papisnovio.jpeg') center center; background-size: cover; filter: blur(8px); transform: scale(1.1);">
+                <div class="col-md-6 p-0 parent-image-container">
+                    <div class="parent-blur-background parent-novio-bg">
                     </div>
-                    <img class="position-absolute w-100" src="img/papisnovio.jpeg"
-                        style="object-fit: cover; z-index: 1; top: 50%; left: 50%; transform: translate(-50%, -50%);">
+                    <img class="position-absolute w-100 parent-image" src="img/papisnovio.jpeg">>
                 </div>
             </div>
         </div>
@@ -436,93 +408,103 @@
             </div>
             <div class="row g-4">
                 <div class="col-md-4 col-6">
-                    <div class="position-relative mb-4" style="height: 300px; overflow: hidden;">
-                        <img src="img/padrinos/tios.png" class="w-100 h-100"
-                            style="object-fit: cover; border-radius: 10px;">
-                        <div class="position-absolute bottom-0 start-0 w-100 p-3"
-                            style="background: linear-gradient(to top, rgba(0,0,0,0.7), transparent);">
+                    <div class="position-relative mb-4 padrinos-container">
+                        <!-- Blur background -->
+                        <div class="padrino-blur-background padrino-tios"></div>
+                        <!-- Main image -->
+                        <img src="img/padrinos/tios.png" class="position-absolute w-100 h-100 padrino-image">
+                        <div class="position-absolute bottom-0 start-0 w-100 p-3 padrino-overlay">
                         </div>
                     </div>
                 </div>
                 <div class="col-md-4 col-6">
-                    <div class="position-relative mb-4" style="height: 300px; overflow: hidden;">
-                        <img src="img/padrinos/WhatsApp Image 2025-07-25 at 10.29.16 PM.jpeg" class="w-100 h-100"
-                            style="object-fit: cover; border-radius: 10px;">
-                        <div class="position-absolute bottom-0 start-0 w-100 p-3"
-                            style="background: linear-gradient(to top, rgba(0,0,0,0.7), transparent);">
+                    <div class="position-relative mb-4 padrinos-container">
+                        <!-- Blur background -->
+                        <div class="padrino-blur-background padrino-whatsapp-1029"></div>
+                        <!-- Main image -->
+                        <img src="img/padrinos/WhatsApp Image 2025-07-25 at 10.29.16 PM.jpeg" class="position-absolute w-100 h-100 padrino-image">
+                        <div class="position-absolute bottom-0 start-0 w-100 p-3 padrino-overlay">
                         </div>
                     </div>
                 </div>
                 <div class="col-md-4 col-6">
-                    <div class="position-relative mb-4" style="height: 300px; overflow: hidden;">
-                        <img src="img/padrinos/134729796_5546604262031792_50840232422395492_n.jpg" class="w-100 h-100"
-                            style="object-fit: cover; border-radius: 10px;">
-                        <div class="position-absolute bottom-0 start-0 w-100 p-3"
-                            style="background: linear-gradient(to top, rgba(0,0,0,0.7), transparent);">
+                    <div class="position-relative mb-4 padrinos-container">
+                        <!-- Blur background -->
+                        <div class="padrino-blur-background padrino-facebook"></div>
+                        <!-- Main image -->
+                        <img src="img/padrinos/134729796_5546604262031792_50840232422395492_n.jpg" class="position-absolute w-100 h-100 padrino-image">
+                        <div class="position-absolute bottom-0 start-0 w-100 p-3 padrino-overlay">
                         </div>
                     </div>
                 </div>
                 <div class="col-md-4 col-6">
-                    <div class="position-relative mb-4" style="height: 300px; overflow: hidden;">
-                        <img src="img/padrinos/WhatsApp Image 2025-07-25 at 10.30.38 PM.jpeg" class="w-100 h-100"
-                            style="object-fit: cover; border-radius: 10px;">
-                        <div class="position-absolute bottom-0 start-0 w-100 p-3"
-                            style="background: linear-gradient(to top, rgba(0,0,0,0.7), transparent);">
+                    <div class="position-relative mb-4 padrinos-container">
+                        <!-- Blur background -->
+                        <div class="padrino-blur-background padrino-whatsapp-1030"></div>
+                        <!-- Main image -->
+                        <img src="img/padrinos/WhatsApp Image 2025-07-25 at 10.30.38 PM.jpeg" class="position-absolute w-100 h-100 padrino-image">
+                        <div class="position-absolute bottom-0 start-0 w-100 p-3 padrino-overlay">
                         </div>
                     </div>
                 </div>
                 <div class="col-md-4 col-6">
-                    <div class="position-relative mb-4" style="height: 300px; overflow: hidden;">
-                        <img src="img/padrinos/452861357_361196306819310_5917184759369865383_n.jpg" class="w-100 h-100"
-                            style="object-fit: cover; border-radius: 10px;">
-                        <div class="position-absolute bottom-0 start-0 w-100 p-3"
-                            style="background: linear-gradient(to top, rgba(0,0,0,0.7), transparent);">
+                    <div class="position-relative mb-4 padrinos-container">
+                        <!-- Blur background -->
+                        <div class="padrino-blur-background padrino-facebook-2"></div>
+                        <!-- Main image -->
+                        <img src="img/padrinos/452861357_361196306819310_5917184759369865383_n.jpg" class="position-absolute w-100 h-100 padrino-image">
+                        <div class="position-absolute bottom-0 start-0 w-100 p-3 padrino-overlay">
                         </div>
                     </div>
                 </div>
                 <div class="col-md-4 col-6">
-                    <div class="position-relative mb-4" style="height: 300px; overflow: hidden;">
-                        <img src="img/padrinos/WhatsApp Image 2025-07-25 at 10.30.59 PM.jpeg" class="w-100 h-100"
-                            style="object-fit: cover; border-radius: 10px;">
-                        <div class="position-absolute bottom-0 start-0 w-100 p-3"
-                            style="background: linear-gradient(to top, rgba(0,0,0,0.7), transparent);">
+                    <div class="position-relative mb-4 padrinos-container">
+                        <!-- Blur background -->
+                        <div class="padrino-blur-background padrino-whatsapp-1030-59"></div>
+                        <!-- Main image -->
+                        <img src="img/padrinos/WhatsApp Image 2025-07-25 at 10.30.59 PM.jpeg" class="position-absolute w-100 h-100 padrino-image">
+                        <div class="position-absolute bottom-0 start-0 w-100 p-3 padrino-overlay">
                         </div>
                     </div>
                 </div>
                 <div class="col-md-4 col-6">
-                    <div class="position-relative mb-4" style="height: 300px; overflow: hidden;">
-                        <img src="img/padrinos/WhatsApp Image 2025-07-26 at 10.52.29 AM.jpeg" class="w-100 h-100"
-                            style="object-fit: cover; border-radius: 10px;">
-                        <div class="position-absolute bottom-0 start-0 w-100 p-3"
-                            style="background: linear-gradient(to top, rgba(0,0,0,0.7), transparent);">
+                    <div class="position-relative mb-4 padrinos-container">
+                        <!-- Blur background -->
+                        <div class="padrino-blur-background padrino-whatsapp-1052"></div>
+                        <!-- Main image -->
+                        <img src="img/padrinos/WhatsApp Image 2025-07-26 at 10.52.29 AM.jpeg" class="position-absolute w-100 h-100 padrino-image">
+                        <div class="position-absolute bottom-0 start-0 w-100 p-3 padrino-overlay">
                         </div>
                     </div>
                 </div>
                 <div class="col-md-4 col-6">
-                    <div class="position-relative mb-4" style="height: 300px; overflow: hidden;">
-                        <img src="img/padrinos/WhatsApp Image 2025-07-25 at 10.32.47 PM.jpeg" class="w-100 h-100"
-                            style="object-fit: cover; border-radius: 10px;">
-                        <div class="position-absolute bottom-0 start-0 w-100 p-3"
-                            style="background: linear-gradient(to top, rgba(0,0,0,0.7), transparent);">
+                    <div class="position-relative mb-4 padrinos-container">
+                        <!-- Blur background -->
+                        <div class="padrino-blur-background padrino-whatsapp-1032"></div>
+                        <!-- Main image -->
+                        <img src="img/padrinos/WhatsApp Image 2025-07-25 at 10.32.47 PM.jpeg" class="position-absolute w-100 h-100 padrino-image">
+                        <div class="position-absolute bottom-0 start-0 w-100 p-3 padrino-overlay">
                         </div>
                     </div>
                 </div>
 
                 <div class="col-md-4 col-6">
-                    <div class="position-relative mb-4" style="height: 300px; overflow: hidden;">
-                        <img src="img/padrinos/WhatsApp Image 2025-07-25 at 10.31.59 PM.jpeg" class="w-100 h-100"
-                            style="object-fit: cover; border-radius: 10px;">
-                        <div class="position-absolute bottom-0 start-0 w-100 p-3"
-                            style="background: linear-gradient(to top, rgba(0,0,0,0.7), transparent);">
+                    <div class="position-relative mb-4 padrinos-container">
+                        <!-- Blur background -->
+                        <div class="padrino-blur-background padrino-whatsapp-1031-59"></div>
+                        <!-- Main image -->
+                        <img src="img/padrinos/WhatsApp Image 2025-07-25 at 10.31.59 PM.jpeg" class="position-absolute w-100 h-100 padrino-image">
+                        <div class="position-absolute bottom-0 start-0 w-100 p-3 padrino-overlay">
                         </div>
                     </div>
                 </div>
                 <div class="col-md-4 col-6">
-                    <div class="position-relative mb-4" style="height: 300px; overflow: hidden;">
-                        <img src="img/padrinos/WhatsApp Image 2025-07-25 at 10.31.26 PM.jpeg" class="w-100 h-100"
-                            style="object-fit: cover; border-radius: 10px;">
-                        <div class="position-absolute bottom-0 start-0 w-100 p-3"
-                            style="background: linear-gradient(to top, rgba(0,0,0,0.7), transparent);">
+                    <div class="position-relative mb-4 padrinos-container">
+                        <!-- Blur background -->
+                        <div class="padrino-blur-background padrino-whatsapp-1031-26"></div>
+                        <!-- Main image -->
+                        <img src="img/padrinos/WhatsApp Image 2025-07-25 at 10.31.26 PM.jpeg" class="position-absolute w-100 h-100 padrino-image">
+                        <div class="position-absolute bottom-0 start-0 w-100 p-3 padrino-overlay">
                         </div>
                     </div>
                 </div>
@@ -532,12 +514,10 @@
     </div>
     <!--Separator Start -->
     <div class="container-fluid p-0 mb-5">
-        <div class="d-flex align-items-center justify-content-center" style="position: relative; margin: 2rem 0;">
-            <div
-                style="height: 2px; background: linear-gradient(90deg, transparent, #E47A2E, transparent); width: 100%; position: relative;">
-                <div class="d-flex align-items-center justify-content-center"
-                    style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); background-color: white; padding: 0 20px;">
-                    <i class="far fa-heart text-primary" style="font-size: 24px;"></i>
+        <div class="d-flex align-items-center justify-content-center separator-container">
+            <div class="separator-line">
+                <div class="d-flex align-items-center justify-content-center separator-heart-container">
+                    <i class="far fa-heart text-primary separator-heart"></i>
                 </div>
             </div>
         </div>
@@ -549,7 +529,7 @@
     <div class="container-fluid py-5" id="story">
         <div class="container pt-5 pb-3">
             <div class="section-title position-relative text-center">
-                <h6 class="text-uppercase text-primary mb-3" style="letter-spacing: 3px;">Story</h6>
+                <h6 class="text-uppercase text-primary mb-3 story-subtitle">Story</h6>
                 <h1 class="font-secondary display-4">Our Love Story</h1>
                 <i class="far fa-heart text-dark"></i>
             </div>
@@ -612,7 +592,7 @@
     <div class="container-fluid py-0" id="event">
         <div class="container py-5">
             <div class="section-title position-relative text-center">
-                <h6 class="text-uppercase text-primary mb-3" style="letter-spacing: 3px;">Evento</h6>
+                <h6 class="text-uppercase text-primary mb-3 event-subtitle">Evento</h6>
                 <h1 class="font-secondary display-4">Nuestro Evento de Boda</h1>
                 <i class="far fa-heart text-dark"></i>
             </div>
@@ -627,7 +607,7 @@
             <div class="row">
                 <div class="col-md-6 border-right border-primary">
                     <div class="text-center text-md-right mr-md-3 mb-4 mb-md-0">
-                        <img class="img-fluid mb-4 w-100 h-100" src="img/encino.jpg" style="object-fit: cover;">
+                        <img class="img-fluid mb-4 w-100 h-100 event-image" src="img/encino.jpg">
                         <h4 class="mb-3">Ceremonia Religiosa</h4>
                         <p class="mb-2">Templo del Señor del Encino</p>
                         <p class="mb-0">7:00 PM</p>
@@ -637,7 +617,7 @@
                 </div>
                 <div class="col-md-6">
                     <div class="text-center text-md-left ml-md-3">
-                        <img class="img-fluid mb-4 w-100 h-100" src="img/terralia.png" style="object-fit: cover;">
+                        <img class="img-fluid mb-4 w-100 h-100 event-image" src="img/terralia.png">>
                         <h4 class="mb-3">Recepción</h4>
                         <p class="mb-2">Salon Terralia</p>
                         <p class="mb-0">9:00 PM</p>
@@ -659,7 +639,7 @@
                             <li>
                                 <div class="content">
                                     <img src="img/timeline/guests.png" alt="Llegada de los Invitados"
-                                        style="width: 50px; height: 50px; margin-right: 10px; vertical-align: middle; ">
+                                        class="timeline-icon">
                                     <h3>Llegada de los Invitados</h3>
                                     <p>Te esperamos en el Templo del Señor del Encino para dar inicio a nuestra
                                         ceremonia religiosa.</p>
@@ -672,7 +652,7 @@
                             <li>
                                 <div class="content">
                                     <img src="img/timeline/church.png" alt="Ceremonia Religiosa"
-                                        style="width: 50px; height: 50px; margin-right: 10px; vertical-align: middle; margin-bottom: 10px;">
+                                        class="timeline-icon timeline-icon-mb-10">
                                     <h3>Ceremonia Religiosa</h3>
                                     <p>Celebración de nuestro matrimonio en una ceremonia llena de amor y bendiciones.
                                     </p>
@@ -685,7 +665,7 @@
                             <li>
                                 <div class="content">
                                     <img src="img/timeline/photo-camera.png" alt="Salida de la Iglesia"
-                                        style="width: 50px; height: 50px; margin-right: 10px; vertical-align: middle; margin-bottom: 10px;">
+                                        class="timeline-icon timeline-icon-mb-10">
                                     <h3>Sesión de Fotos</h3>
                                     <p>Momento para capturar los primeros recuerdos como esposos junto a nuestros seres
                                         queridos.</p>
@@ -698,7 +678,7 @@
                             <li>
                                 <div class="content">
                                     <img src="img/timeline/reception.png" alt="Recepción"
-                                        style="width: 50px; height: 50px; margin-right: 10px; vertical-align: middle; margin-bottom: 10px;">
+                                        class="timeline-icon timeline-icon-mb-10">
                                     <h3>Recepción</h3>
                                     <p>Bienvenida en Salón Terralia para comenzar la celebración.</p>
                                 </div>
@@ -710,7 +690,7 @@
                             <li>
                                 <div class="content">
                                     <img src="img/timeline/romantic-dinner.png" alt="Cena"
-                                        style="width: 50px; height: 50px; margin-right: 10px; vertical-align: middle; margin-bottom: 10px;">
+                                        class="timeline-icon timeline-icon-mb-10">
                                     <h3>Cena</h3>
                                     <p>Disfrutaremos de una deliciosa cena en compañía de nuestros invitados.</p>
                                 </div>
@@ -722,7 +702,7 @@
                             <li>
                                 <div class="content">
                                     <img src="img/timeline/dance.png" alt="Primer Baile"
-                                        style="width: 50px; height: 50px; margin-right: 10px; vertical-align: middle; margin-bottom: 10px;">
+                                        class="timeline-icon timeline-icon-mb-10">
                                     <h3>Primer Baile</h3>
                                     <p>Nuestro primer baile como esposos, un momento mágico para compartir con todos
                                         ustedes.</p>
@@ -736,7 +716,7 @@
                             <li>
                                 <div class="content">
                                     <img src="img/timeline/disco-ball.png" alt="Baile y Celebración"
-                                        style="width: 50px; height: 50px; margin-right: 10px; vertical-align: middle; margin-bottom: 10px;">
+                                        class="timeline-icon timeline-icon-mb-10">
                                     <h3>Baile y Celebración</h3>
                                     <p>¡Qué comience la fiesta! Música y baile para celebrar nuestro amor.</p>
                                 </div>
@@ -744,7 +724,7 @@
                                     <h4>11:00 PM</h4>
                                 </div>
                             </li>
-                            <div style="clear:both; margin-bottom: -70px;"></div>
+                            <div class="timeline-clear"></div>
                         </ul>
                     </div>
                 </div>
@@ -757,7 +737,7 @@
     <div class="container-fluid py-5" id="family">
         <div class="container pt-5 pb-3">
             <div class="section-title position-relative text-center">
-                <h6 class="text-uppercase text-primary mb-3" style="letter-spacing: 3px;">Friends & Family</h6>
+                <h6 class="text-uppercase text-primary mb-3 friends-subtitle">Friends & Family</h6>
                 <h1 class="font-secondary display-4">Groomsmen & Bridesmaid</h1>
                 <i class="far fa-heart text-dark"></i>
             </div>
@@ -866,7 +846,7 @@
     <!-- Friends & Family End -->
 
     <!-- Mesa de Regalos Start -->
-    <div class="container-fluid py-0" id="event" style="margin-top: -50px;">
+    <div class="container-fluid py-0 mesa-regalos-section" id="event">
         <div class="container py-0">
             <div class="section-title position-relative text-center">
                 <h1 class="font-secondary display-4">Mesa de Regalos</h1>
@@ -886,9 +866,9 @@
                 <div class="col-md-6 border-right border-primary">
                     <div class="text-center text-md-right mr-md-3 mb-4 mb-md-0">
                         <img class="img-fluid mb-1 " src="img/liver.png"
-                            style="object-fit: cover; width: 500px; height: 100px;">
+                            class="mesa-regalos-image">
                         <p class="mb-3">Número de Evento:</p>
-                        <p class="mb-2" style="font-weight: bold;">51705927</p>
+                        <p class="mb-2 mesa-regalos-number">51705927</p>
                         <p class="mb-0">(Mencionar este codigo al cajero si se realiza la compra de un regalo en
                             la
                             tienda)</p>
@@ -899,10 +879,10 @@
                     </div>
                 </div>
 
-                <div class="col-md-6" style="margin-top: 70px;">
+                <div class="col-md-6 mesa-regalos-col">
                     <div class="text-center text-md-left ml-md-3">
                         <img class="img-fluid mb-4 w-90 h-100" src="img/amaz.png"
-                            style="object-fit: cover; width: 300px; height: 100px;">
+                            class="mesa-regalos-image-2">
                         <br>
                         <a class="btn btn-primary mt-3"
                             href="https://www.amazon.com.mx/wedding/share/boda-ivan-y-samantha">Ver Mesa de
@@ -920,7 +900,7 @@
     <div class="container-fluid py-5" id="rsvp">
         <div class="container py-5">
             <div class="section-title position-relative text-center">
-                <h6 class="text-uppercase text-primary mb-3" style="letter-spacing: 3px;">RSVP</h6>
+                <h6 class="text-uppercase text-primary mb-3 rsvp-subtitle">RSVP</h6>
                 <h1 class="font-secondary display-4">Confirma tu Asistencia</h1>
                 <i class="far fa-heart text-dark"></i>
             </div>
@@ -991,7 +971,7 @@
 
 
     <!-- Footer Start -->
-    <div class="container-fluid bg-dark text-white py-5" id="contact" style="margin-top: 90px;">
+    <div class="container-fluid bg-dark text-white py-5 contact-section" id="contact">
         <div class="container text-center py-5">
             <div class="section-title position-relative text-center">
                 <h1 class="font-secondary display-3 text-white">Gracias</h1>

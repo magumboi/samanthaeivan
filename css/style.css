@@ -9912,3 +9912,314 @@ a.text-dark:hover, a.text-dark:focus {
     right:inherit;
   }
 }
+
+/* Custom Wedding Website Styles */
+
+/* Splash Screen Styles */
+.splash-card {
+  text-align: center;
+  padding: 20px;
+}
+
+.splash-title {
+  font-family: 'Great Vibes', cursive;
+  font-size: 2.5em;
+  margin-bottom: 15px;
+}
+
+.splash-heart-container {
+  margin: 15px 0;
+}
+
+.splash-heart {
+  color: #E47A2E;
+  font-size: 24px;
+}
+
+.splash-subtitle {
+  font-family: 'Montserrat', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin: 10px 0;
+}
+
+.splash-divider {
+  width: 50px;
+  height: 1px;
+  background-color: #E47A2E;
+  margin: 15px auto;
+}
+
+/* Navbar Styles */
+.navbar-custom {
+  transition: transform 0.3s ease-in-out;
+}
+
+.rsvp-hidden {
+  display: none;
+}
+
+/* Carousel Styles */
+.carousel-item-custom {
+  height: 100vh;
+  min-height: 400px;
+}
+
+.carousel-image {
+  object-fit: cover;
+}
+
+.carousel-content {
+  max-width: 900px;
+}
+
+.carousel-subtitle {
+  letter-spacing: 2px;
+}
+
+.carousel-control-custom {
+  width: 68px;
+  height: 68px;
+}
+
+/* Separator Styles */
+.separator-container {
+  position: relative;
+  margin: 2rem 0;
+}
+
+.separator-line {
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #E47A2E, transparent);
+  width: 100%;
+  position: relative;
+}
+
+.separator-heart-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  padding: 0 20px;
+}
+
+.separator-heart {
+  font-size: 24px;
+}
+
+/* Poem Section */
+.poem-section {
+  background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('../img/terracota.jpg') center center;
+  background-size: cover;
+}
+
+.poem-text {
+  font-size: 1.5em;
+  font-style: italic;
+  line-height: 1.8;
+  padding: 2rem;
+  border-left: 4px solid rgba(255,255,255,0.5);
+  margin: 2rem 0;
+  color: #fff;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+}
+
+/* Countdown Styles */
+.countdown-date {
+  font-size: 1.5em;
+}
+
+.countdown-container {
+  gap: 1.5rem;
+}
+
+.countdown-item {
+  background: rgba(228,122,46,0.1);
+  border-radius: 12px;
+  padding: 1.2rem 1.5rem;
+  min-width: 120px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+.countdown-number {
+  font-size: 3em;
+  font-weight: 600;
+  color: #E47A2E;
+  display: block;
+}
+
+.countdown-label {
+  font-size: 1em;
+  color: #666;
+  margin-top: 0.5rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+/* Gallery Styles */
+.gallery-section-title {
+  margin-bottom: 120px;
+}
+
+.gallery-subtitle {
+  letter-spacing: 3px;
+}
+
+.gallery-container {
+  margin-top: -80px;
+}
+
+.gallery-image {
+  height: 200px;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+/* Parents Section */
+.parent-image-container {
+  min-height: 400px;
+  position: relative;
+  overflow: hidden;
+}
+
+.parent-blur-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-size: cover;
+  filter: blur(8px);
+  transform: scale(1.1);
+}
+
+.parent-image {
+  object-fit: cover;
+  z-index: 1;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/* Padrinos Section */
+.padrinos-container {
+  height: 300px;
+  overflow: hidden;
+}
+
+.padrino-blur-background {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  filter: blur(8px);
+  transform: scale(1.1);
+}
+
+.padrino-image {
+  object-fit: contain;
+  border-radius: 10px;
+  z-index: 1;
+}
+
+.padrino-overlay {
+  z-index: 2;
+  background: linear-gradient(to top, rgba(0,0,0,0.7), transparent);
+}
+
+/* Event Section */
+.event-subtitle {
+  letter-spacing: 3px;
+}
+
+.event-image {
+  object-fit: cover;
+}
+
+/* Timeline Images */
+.timeline-icon {
+  width: 50px;
+  height: 50px;
+  margin-right: 10px;
+  vertical-align: middle;
+}
+
+.timeline-icon-mb-10 {
+  margin-bottom: 10px;
+}
+
+.timeline-clear {
+  clear: both;
+  margin-bottom: -70px;
+}
+
+/* Mesa de Regalos */
+.mesa-regalos-section {
+  margin-top: -50px;
+}
+
+.mesa-regalos-image {
+  object-fit: cover;
+  width: 500px;
+  height: 100px;
+}
+
+.mesa-regalos-number {
+  font-weight: bold;
+}
+
+/* Story Section */
+.story-subtitle {
+  letter-spacing: 3px;
+}
+
+/* Friends Section */
+.friends-subtitle {
+  letter-spacing: 3px;
+}
+
+/* RSVP Section */
+.rsvp-subtitle {
+  letter-spacing: 3px;
+}
+
+/* Mesa Regalos Additional */
+.mesa-regalos-col {
+  margin-top: 70px;
+}
+
+.mesa-regalos-image-2 {
+  object-fit: cover;
+  width: 300px;
+  height: 100px;
+}
+
+/* Contact Section */
+.contact-section {
+  margin-top: 90px;
+}
+
+/* Background Classes for Parent Images */
+.parent-novia-bg {
+  background: url('../img/papisnovia2.jpeg') center center;
+  background-size: cover;
+}
+
+.parent-novio-bg {
+  background: url('../img/papisnovio.jpeg') center center;
+  background-size: cover;
+}
+
+/* Padrino Background Classes */
+.padrino-tios { background-image: url('../img/padrinos/tios.png'); }
+.padrino-whatsapp-1029 { background-image: url('../img/padrinos/WhatsApp Image 2025-07-25 at 10.29.16 PM.jpeg'); }
+.padrino-facebook { background-image: url('../img/padrinos/134729796_5546604262031792_50840232422395492_n.jpg'); }
+.padrino-whatsapp-1030 { background-image: url('../img/padrinos/WhatsApp Image 2025-07-25 at 10.30.38 PM.jpeg'); }
+.padrino-facebook-2 { background-image: url('../img/padrinos/452861357_361196306819310_5917184759369865383_n.jpg'); }
+.padrino-whatsapp-1030-59 { background-image: url('../img/padrinos/WhatsApp Image 2025-07-25 at 10.30.59 PM.jpeg'); }
+.padrino-whatsapp-1052 { background-image: url('../img/padrinos/WhatsApp Image 2025-07-26 at 10.52.29 AM.jpeg'); }
+.padrino-whatsapp-1032 { background-image: url('../img/padrinos/WhatsApp Image 2025-07-25 at 10.32.47 PM.jpeg'); }
+.padrino-whatsapp-1031-59 { background-image: url('../img/padrinos/WhatsApp Image 2025-07-25 at 10.31.59 PM.jpeg'); }
+.padrino-whatsapp-1031-26 { background-image: url('../img/padrinos/WhatsApp Image 2025-07-25 at 10.31.26 PM.jpeg'); }
