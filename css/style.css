@@ -9950,8 +9950,6 @@ a.text-dark:hover, a.text-dark:focus {
 }
 
 .splash-subtitle {
-  font-family: 'Montserrat', sans-serif;
-  text-transform: uppercase;
   letter-spacing: 2px;
   margin: 10px 0;
 }
