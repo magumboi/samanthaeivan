@@ -41,6 +41,22 @@
         .gallery-item:hover {
             transform: scale(1.05);
         }
+        .lg-custom-theme .lg-close {
+            color: #fff;
+            background-color: rgba(228,122,46,0.8);
+            border-radius: 50%;
+            padding: 10px;
+            font-size: 18px;
+            position: absolute;
+            right: 20px;
+            top: 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .lg-custom-theme .lg-close:hover {
+            background-color: rgba(228,122,46,1);
+            transform: rotate(90deg);
+        }
     </style>
 </head>
 
@@ -207,7 +223,7 @@
     <!-- Poem End -->
 
     <!-- Gallery Start -->
-    <div class="container-fluid" id="gallery" style="padding: 100px 0;">
+    <div class="container-fluid" id="gallery" style="padding: 60px 0;">
         <div class="section-title position-relative text-center" style="margin-bottom: 120px;">
             <h6 class="text-uppercase text-primary mb-3" style="letter-spacing: 3px;">Galería</h6>
             <h1 class="font-secondary display-4">Nuestra Galería de Fotos</h1>
@@ -215,25 +231,37 @@
         </div>
 
         <div class="container">
-            <div class="gallery-container d-flex align-items-center justify-content-center flex-wrap" id="animated-thumbnails">
-                <a class="gallery-item m-2" href="img/gallery-1.jpg" data-lg-size="1600-1067">
-                    <img class="img-fluid" style="height: 200px; object-fit: cover; border-radius: 10px;" src="img/gallery-1.jpg" />
-                </a>
-                <a class="gallery-item m-2" href="img/gallery-2.jpg" data-lg-size="1600-1067">
-                    <img class="img-fluid" style="height: 200px; object-fit: cover; border-radius: 10px;" src="img/gallery-2.jpg" />
-                </a>
-                <a class="gallery-item m-2" href="img/gallery-3.jpg" data-lg-size="1600-1067">
-                    <img class="img-fluid" style="height: 200px; object-fit: cover; border-radius: 10px;" src="img/gallery-3.jpg" />
-                </a>
-                <a class="gallery-item m-2" href="img/gallery-4.jpg" data-lg-size="1600-1067">
-                    <img class="img-fluid" style="height: 200px; object-fit: cover; border-radius: 10px;" src="img/gallery-4.jpg" />
-                </a>
-                <a class="gallery-item m-2" href="img/gallery-5.jpg" data-lg-size="1600-1067">
-                    <img class="img-fluid" style="height: 200px; object-fit: cover; border-radius: 10px;" src="img/gallery-5.jpg" />
-                </a>
-                <a class="gallery-item m-2" href="img/gallery-6.jpg" data-lg-size="1600-1067">
-                    <img class="img-fluid" style="height: 200px; object-fit: cover; border-radius: 10px;" src="img/gallery-6.jpg" />
-                </a>
+            <div class="row" id="animated-thumbnails">
+                <div class="col-6 col-md-4 mb-3">
+                    <a class="gallery-item" href="img/gallery-1.jpg" data-lg-size="1600-1067">
+                        <img class="img-fluid w-100" style="height: 200px; object-fit: cover; border-radius: 10px;" src="img/gallery-1.jpg" />
+                    </a>
+                </div>
+                <div class="col-6 col-md-4 mb-3">
+                    <a class="gallery-item" href="img/gallery-2.jpg" data-lg-size="1600-1067">
+                        <img class="img-fluid w-100" style="height: 200px; object-fit: cover; border-radius: 10px;" src="img/gallery-2.jpg" />
+                    </a>
+                </div>
+                <div class="col-6 col-md-4 mb-3">
+                    <a class="gallery-item" href="img/gallery-3.jpg" data-lg-size="1600-1067">
+                        <img class="img-fluid w-100" style="height: 200px; object-fit: cover; border-radius: 10px;" src="img/gallery-3.jpg" />
+                    </a>
+                </div>
+                <div class="col-6 col-md-4 mb-3">
+                    <a class="gallery-item" href="img/gallery-4.jpg" data-lg-size="1600-1067">
+                        <img class="img-fluid w-100" style="height: 200px; object-fit: cover; border-radius: 10px;" src="img/gallery-4.jpg" />
+                    </a>
+                </div>
+                <div class="col-6 col-md-4 mb-3">
+                    <a class="gallery-item" href="img/gallery-5.jpg" data-lg-size="1600-1067">
+                        <img class="img-fluid w-100" style="height: 200px; object-fit: cover; border-radius: 10px;" src="img/gallery-5.jpg" />
+                    </a>
+                </div>
+                <div class="col-6 col-md-4 mb-3">
+                    <a class="gallery-item" href="img/gallery-6.jpg" data-lg-size="1600-1067">
+                        <img class="img-fluid w-100" style="height: 200px; object-fit: cover; border-radius: 10px;" src="img/gallery-6.jpg" />
+                    </a>
+                </div>
             </div>
         </div>
     </div>
@@ -651,7 +679,11 @@
                 animateThumb: true,
                 zoomFromOrigin: true,
                 allowMediaOverlap: true,
-                toggleThumb: true
+                toggleThumb: true,
+                closeOnTap: true,
+                showCloseIcon: true,
+                appendSubHtmlTo: '.lg-item',
+                addClass: 'lg-custom-theme'
             });
         }
     </script>
