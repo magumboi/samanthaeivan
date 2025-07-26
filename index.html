@@ -1376,16 +1376,24 @@
     <!-- JavaScript Libraries -->
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
-    <script src="lib/easing/easing.min.js"></script>
-    <script src="lib/waypoints/waypoints.min.js"></script>
-    <script src="lib/owlcarousel/owl.carousel.min.js"></script>
-    <script src="lib/isotope/isotope.pkgd.min.js"></script>
-    <script src="lib/lightbox/js/lightbox.min.js"></script>
+    <script>
+        // Cache busting for local JS files
+        const cacheBuster = new Date().getTime();
+        document.write('<script src="lib/easing/easing.min.js?v=' + cacheBuster + '"><\/script>');
+        document.write('<script src="lib/waypoints/waypoints.min.js?v=' + cacheBuster + '"><\/script>');
+        document.write('<script src="lib/owlcarousel/owl.carousel.min.js?v=' + cacheBuster + '"><\/script>');
+        document.write('<script src="lib/isotope/isotope.pkgd.min.js?v=' + cacheBuster + '"><\/script>');
+        document.write('<script src="lib/lightbox/js/lightbox.min.js?v=' + cacheBuster + '"><\/script>');
+    </script>
 
     <!-- Template Javascript -->
     <!-- Template Javascript -->
-    <script src="js/main.js"></script>
-    <script src="js/splash.js"></script>
+    <script>
+        // Cache busting for main template JS files
+        const mainCacheBuster = new Date().getTime();
+        document.write('<script src="js/main.js?v=' + mainCacheBuster + '"><\/script>');
+        document.write('<script src="js/splash.js?v=' + mainCacheBuster + '"><\/script>');
+    </script>
     <!-- lightGallery JS -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lightgallery/2.7.2/lightgallery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lightgallery/2.7.2/plugins/zoom/lg-zoom.min.js"></script>
