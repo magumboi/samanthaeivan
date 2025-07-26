@@ -1045,7 +1045,13 @@
     <script type="module"
         src="https://cdnjs.cloudflare.com/ajax/libs/lightgallery/2.8.3/plugins/fullscreen/lg-fullscreen.min.js"></script>
     <script>
-
+        import lightGallery from 'lightgallery';
+        import lgZoom from 'lightgallery/plugins/zoom';
+        import lgThumbnail from 'lightgallery/plugins/thumbnail';
+        import lgShare from 'lightgallery/plugins/share';
+        import lgRotate from 'lightgallery/plugins/rotate';
+        import lgAutoplay from 'lightgallery/plugins/autoplay';
+        import lgFullscreen from 'lightgallery/plugins/fullscreen';
 
         $("#animated-thumbnails-gallery")
             .justifiedGallery({
