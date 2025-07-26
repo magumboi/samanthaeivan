@@ -10120,13 +10120,17 @@ a.text-dark:hover, a.text-dark:focus {
 
 .padrino-image {
   object-fit: contain;
-  border-radius: 10px;
+  border-radius: 50%;
   z-index: 1;
+}
+
+.padrino-image-fill {
+  object-fit: cover;
 }
 
 .padrino-overlay {
   z-index: 2;
-  background: linear-gradient(to top, rgba(0,0,0,0.7), transparent);
+  background: transparent;
 }
 
 /* Event Section */
