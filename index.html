@@ -371,6 +371,29 @@
     </div>
     <!-- Video Modal End -->
 
+    <!-- Konami Code Easter Egg Modal -->
+    <div class="modal fade" id="konamiModal" tabindex="-1" role="dialog" aria-labelledby="konamiModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-xl" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="konamiModalLabel">🎮 Easter Egg Unlocked! - JS Doom</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body p-0">
+                    <div class="embed-responsive" style="padding-bottom: 75%;">
+                        <iframe id="konamiFrame" class="embed-responsive-item" src="" allowfullscreen></iframe>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close Game</button>
+                    <small class="text-muted">Use arrow keys to move, Ctrl to shoot, Space to open doors</small>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- Carousel Separator Start -->
     <div class="container-fluid p-0 mb-3" style="margin-top: -80px;">
         <div class="d-flex align-items-center justify-content-center separator-container">
@@ -1403,6 +1426,96 @@
     <!-- JavaScript Libraries -->
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Konami Code Easter Egg Script -->
+    <script>
+        // Konami Code Easter Egg
+        (function() {
+            const konamiCode = [
+                'ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown',
+                'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight',
+                'KeyB', 'KeyA'
+            ];
+            let userInput = [];
+            let konamiActivated = false;
+
+            document.addEventListener('keydown', function(e) {
+                // Add the key to user input
+                userInput.push(e.code);
+                
+                // Keep only the last 10 keys (length of Konami code)
+                if (userInput.length > konamiCode.length) {
+                    userInput.shift();
+                }
+                
+                // Check if the sequence matches
+                if (userInput.length === konamiCode.length) {
+                    const matches = userInput.every((key, index) => key === konamiCode[index]);
+                    
+                    if (matches && !konamiActivated) {
+                        konamiActivated = true;
+                        
+                        // Show success message with sound effect (if possible)
+                        console.log('🎮 Konami Code Activated! Loading JS Doom...');
+                        
+                        // Add some visual feedback
+                        document.body.style.animation = 'konamiFlash 0.5s ease-in-out';
+                        
+                        // Load the game in the iframe
+                        document.getElementById('konamiFrame').src = 'https://danihre.github.io/jsdoom/';
+                        
+                        // Show the modal
+                        $('#konamiModal').modal('show');
+                        
+                        // Reset after showing
+                        setTimeout(() => {
+                            konamiActivated = false;
+                            userInput = [];
+                            document.body.style.animation = '';
+                        }, 1000);
+                    }
+                }
+            });
+
+            // Reset when modal is closed
+            $('#konamiModal').on('hidden.bs.modal', function () {
+                document.getElementById('konamiFrame').src = '';
+                konamiActivated = false;
+                userInput = [];
+            });
+
+            // Add CSS for flash effect
+            const style = document.createElement('style');
+            style.textContent = `
+                @keyframes konamiFlash {
+                    0%, 100% { filter: brightness(1); }
+                    50% { filter: brightness(1.3) hue-rotate(45deg); }
+                }
+                
+                #konamiModal .modal-dialog {
+                    max-width: 90vw;
+                }
+                
+                #konamiModal .embed-responsive iframe {
+                    border: none;
+                    width: 100%;
+                    height: 100%;
+                }
+                
+                @media (max-width: 768px) {
+                    #konamiModal .modal-dialog {
+                        margin: 0.5rem;
+                        max-width: calc(100vw - 1rem);
+                    }
+                    
+                    #konamiModal .embed-responsive {
+                        padding-bottom: 85% !important;
+                    }
+                }
+            `;
+            document.head.appendChild(style);
+        })();
+    </script>
     <script>
         // Cache busting for local JS files
         const cacheBuster = new Date().getTime();
