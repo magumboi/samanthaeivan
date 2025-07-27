@@ -53,7 +53,7 @@
 }
 
 .splash-click-tip {
-    top: 15%;
+    top: 10%;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -64,7 +64,7 @@
 }
 
 .splash-welcome-message {
-    top: 20%;
+    top: 15%;
     opacity: 0;
     animation: fadeInUp 2s ease-out 1s forwards;
 }
@@ -305,12 +305,12 @@
     }
 
     .splash-click-tip {
-        top: 15%;
+        top: 10%;
         /* Adjust position for mobile */
     }
 
     .splash-welcome-message {
-        top: 25%;
+        top: 20%;
         /* Adjust position for mobile */
     }
 
