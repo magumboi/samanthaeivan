@@ -8,12 +8,19 @@
     background-size: cover;
     background-attachment: fixed;
     background-repeat: no-repeat;
+    backdrop-filter: blur(5px);
+    filter: blur(2px);
     z-index: 9999;
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    transition: opacity 1.0s ease-in-out;
+    transition: opacity 1.0s ease-in-out, filter 0.8s ease-in-out;
+}
+
+.splash-screen.loaded {
+    backdrop-filter: blur(0px);
+    filter: blur(0px);
 }
 
 /* Mobile fix for background */
@@ -53,7 +60,7 @@
 }
 
 .splash-click-tip {
-    top: 10%;
+    top: 65%;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -305,8 +312,8 @@
     }
 
     .splash-click-tip {
-        top: 10%;
-        /* Adjust position for mobile */
+        top: 75%;
+        /* Adjust position for mobile - below envelope */
     }
 
     .splash-welcome-message {

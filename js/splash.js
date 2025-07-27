@@ -7,6 +7,13 @@ $(document).ready(function() {
     // Prevent page scrolling when splash screen is active
     $('body').css('overflow', 'hidden');
     
+    // Handle background image loading
+    const img = new Image();
+    img.onload = function() {
+        splashScreen.addClass('loaded');
+    };
+    img.src = 'img/terracota3.jpg';
+    
     // Enhanced envelope interaction
     envelope.on('click', function() {
         $(this).addClass('open');
