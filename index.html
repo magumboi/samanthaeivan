@@ -372,7 +372,8 @@
     <!-- Video Modal End -->
 
     <!-- Konami Code Easter Egg Modal -->
-    <div class="modal fade" id="konamiModal" tabindex="-1" role="dialog" aria-labelledby="konamiModalLabel" aria-hidden="true">
+    <div class="modal fade" id="konamiModal" tabindex="-1" role="dialog" aria-labelledby="konamiModalLabel"
+        aria-hidden="true">
         <div class="modal-dialog modal-xl" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -382,10 +383,9 @@
                     </button>
                 </div>
                 <div class="modal-body p-0" style="background: #000;">
-                    <iframe id="doomIframe" 
-                            src="https://danihre.github.io/jsdoom/" 
-                            style="width: 100%; height: 500px; border: none; background: #000;"
-                            allow="gamepad; fullscreen; autoplay; microphone">
+                    <iframe id="doomIframe" src="https://danihre.github.io/jsdoom/"
+                        style="width: 100%; height: 500px; border: none; background: #000;"
+                        allow="gamepad; fullscreen; autoplay; microphone">
                     </iframe>
                 </div>
                 <div class="modal-footer">
@@ -628,6 +628,17 @@
                 <div class="col-md-4 col-6">
                     <div class="position-relative mb-4 padrinos-container">
                         <!-- Blur background -->
+                        <div class="padrino-blur-background padrino-whatsapp-1052"></div>
+                        <!-- Main image -->
+                        <img src="img/padrinos/WhatsApp Image 2025-07-26 at 10.52.29 AM.jpeg"
+                            class="position-absolute w-100 h-100 padrino-image">
+                        <div class="position-absolute bottom-0 start-0 w-100 p-3 padrino-overlay">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 col-6">
+                    <div class="position-relative mb-4 padrinos-container">
+                        <!-- Blur background -->
                         <div class="padrino-blur-background padrino-facebook"></div>
                         <!-- Main image -->
                         <img src="img/padrinos/134729796_5546604262031792_50840232422395492_n.jpg"
@@ -636,6 +647,7 @@
                         </div>
                     </div>
                 </div>
+
                 <div class="col-md-4 col-6">
                     <div class="position-relative mb-4 padrinos-container">
                         <!-- Blur background -->
@@ -669,17 +681,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-4 col-6">
-                    <div class="position-relative mb-4 padrinos-container">
-                        <!-- Blur background -->
-                        <div class="padrino-blur-background padrino-whatsapp-1052"></div>
-                        <!-- Main image -->
-                        <img src="img/padrinos/WhatsApp Image 2025-07-26 at 10.52.29 AM.jpeg"
-                            class="position-absolute w-100 h-100 padrino-image">
-                        <div class="position-absolute bottom-0 start-0 w-100 p-3 padrino-overlay">
-                        </div>
-                    </div>
-                </div>
+
                 <div class="col-md-4 col-6">
                     <div class="position-relative mb-4 padrinos-container">
                         <!-- Blur background -->
@@ -1248,23 +1250,26 @@
             <div class="row justify-content-center">
                 <div class="col-lg-8 text-center">
                     <p class="font-weight-normal text-muted mb-4 pb-3 lead">
-                        En nuestra celebración honraremos una hermosa tradición mexicana: el <strong>Baile del Billete</strong>. 
-                        Durante la fiesta, tendremos un momento especial donde bailaremos con nuestros invitados, 
+                        En nuestra celebración honraremos una hermosa tradición mexicana: el <strong>Baile del
+                            Billete</strong>.
+                        Durante la fiesta, tendremos un momento especial donde bailaremos con nuestros invitados,
                         quienes podrán acompañar este momento con una bendición económica si así lo desean.
                     </p>
                     <p class="text-muted mb-4">
-                        Esta tradición simboliza <strong>buena suerte y abundancia</strong> para nuestra nueva vida juntos. 
-                        Los billetes se colocan tradicionalmente en el vestido y traje con alfileres mientras bailamos, 
+                        Esta tradición simboliza <strong>buena suerte y abundancia</strong> para nuestra nueva vida
+                        juntos.
+                        Los billetes se colocan tradicionalmente en el vestido y traje con alfileres mientras bailamos,
                         representando los deseos de prosperidad de nuestros seres queridos.
                     </p>
                     <p class="text-muted mb-4">
-                        <em>Su presencia es el regalo más valioso que pueden darnos. La participación en esta tradición 
-                        es completamente opcional y desde el corazón.</em>
+                        <em>Su presencia es el regalo más valioso que pueden darnos. La participación en esta tradición
+                            es completamente opcional y desde el corazón.</em>
                     </p>
                     <div class="mt-4 pt-3">
                         <i class="fas fa-music text-primary mb-3" style="font-size: 2rem;"></i>
                         <p class="text-muted mb-0">
-                            <small>Este momento especial tendrá lugar durante la fiesta, después de nuestro primer baile como esposos.</small>
+                            <small>Este momento especial tendrá lugar durante la fiesta, después de nuestro primer baile
+                                como esposos.</small>
                         </p>
                     </div>
                 </div>
@@ -1416,11 +1421,11 @@
     <!-- JavaScript Libraries -->
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
-    
+
     <!-- Konami Code Easter Egg Script -->
     <script>
         // Konami Code Easter Egg with integrated JS Doom
-        (function() {
+        (function () {
             const konamiCode = [
                 'ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown',
                 'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight',
@@ -1435,32 +1440,32 @@
                 console.log('🎮 JS Doom loaded in iframe');
             }
 
-            document.addEventListener('keydown', function(e) {
+            document.addEventListener('keydown', function (e) {
                 // Add the key to user input
                 userInput.push(e.code);
-                
+
                 // Keep only the last 10 keys (length of Konami code)
                 if (userInput.length > konamiCode.length) {
                     userInput.shift();
                 }
-                
+
                 // Check if the sequence matches
                 if (userInput.length === konamiCode.length) {
                     const matches = userInput.every((key, index) => key === konamiCode[index]);
-                    
+
                     if (matches && !konamiActivated) {
                         konamiActivated = true;
-                        
+
                         // Show success message
                         console.log('🎮 Konami Code Activated! Loading JS Doom...');
-                        
+
                         // Add visual feedback
                         document.body.style.animation = 'konamiFlash 0.5s ease-in-out';
-                        
+
                         // Show the modal and load the game
                         $('#konamiModal').modal('show');
                         loadJSDoom();
-                        
+
                         // Reset after showing
                         setTimeout(() => {
                             konamiActivated = false;
