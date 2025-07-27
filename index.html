@@ -1458,6 +1458,23 @@
                 const iframe = document.getElementById('doomIframe');
                 if (iframe) {
                     iframe.src = 'https://danihre.github.io/jsdoom/';
+                    
+                    // Auto-click the dosbox-start button when iframe loads
+                    iframe.onload = function() {
+                        try {
+                            setTimeout(() => {
+                                const iframeDoc = iframe.contentDocument || iframe.contentWindow.document;
+                                const startButton = iframeDoc.querySelector('.dosbox-start');
+                                if (startButton) {
+                                    startButton.click();
+                                    console.log('🎮 Auto-clicked dosbox-start button');
+                                }
+                            }, 1000); // Wait 1 second for the iframe to fully load
+                        } catch (e) {
+                            // Cross-origin restrictions may prevent access
+                            console.log('🎮 Cannot auto-click due to cross-origin restrictions');
+                        }
+                    };
                 }
                 console.log('🎮 JS Doom loaded in iframe');
             }
