@@ -7,12 +7,32 @@
     background: url('../img/terracota.jpg') center center;
     background-size: cover;
     background-attachment: fixed;
+    background-repeat: no-repeat;
     z-index: 9999;
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
     transition: opacity 0.5s ease-in-out;
+}
+
+/* Mobile fix for background */
+@media (max-width: 768px) {
+    .splash-screen {
+        background-attachment: scroll;
+        min-height: 100vh;
+        height: 100vh;
+        overflow: hidden;
+    }
+}
+
+/* iOS Safari specific fixes */
+@supports (-webkit-touch-callout: none) {
+    .splash-screen {
+        background-attachment: scroll;
+        min-height: -webkit-fill-available;
+        height: -webkit-fill-available;
+    }
 }
 
 .splash-screen.fade-out {
