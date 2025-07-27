@@ -1422,7 +1422,7 @@
             </div>
 
 
-            <p class="m-0">&copy; <a class="text-primary" href="#">Samantha & Ivan</a>
+            <p class="m-0">&copy; <a class="text-primary" href="#" onclick="openDoomModal(event)">Samantha & Ivan</a>
             </p>
         </div>
     </div>
@@ -1453,11 +1453,30 @@
             let userInput = [];
             let konamiActivated = false;
 
-            // Simple function - iframe is already set up in the modal
+            // Function to load JS Doom
             function loadJSDoom() {
-                // The iframe is already loaded in the modal HTML, nothing else needed
+                const iframe = document.getElementById('doomIframe');
+                if (iframe) {
+                    iframe.src = 'https://danihre.github.io/jsdoom/';
+                }
                 console.log('🎮 JS Doom loaded in iframe');
             }
+
+            // Function to unload iframe
+            function unloadJSDoom() {
+                const iframe = document.getElementById('doomIframe');
+                if (iframe) {
+                    iframe.src = 'about:blank';
+                }
+                console.log('🎮 JS Doom unloaded');
+            }
+
+            // Global function to open doom modal (for footer link)
+            window.openDoomModal = function(event) {
+                event.preventDefault();
+                $('#konamiModal').modal('show');
+                loadJSDoom();
+            };
 
             document.addEventListener('keydown', function (e) {
                 // Add the key to user input
@@ -1495,11 +1514,13 @@
                 }
             });
 
-            // Reset when modal is closed
+            // Reset when modal is closed and unload iframe
             $('#konamiModal').on('hidden.bs.modal', function () {
                 // Reset Konami code state
                 konamiActivated = false;
                 userInput = [];
+                // Unload the iframe to free up resources
+                unloadJSDoom();
             });
 
             // Add CSS for flash effect and game styling
