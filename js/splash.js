@@ -20,8 +20,8 @@ $(document).ready(function() {
             // Re-enable scrolling when splash screen fades out
             setTimeout(function() {
                 $('body').css('overflow', 'auto');
-            }, 500); // Wait for fade-out transition to complete
-        }, 1500); // Adjust timing as needed
+            }, 1500); // Wait for fade-out transition to complete (updated for longer fade)
+        }, 3000); // Extended hold time to appreciate the completed animation
     });
     
     // Add hover effects for better user experience

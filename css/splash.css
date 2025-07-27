@@ -13,7 +13,7 @@
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    transition: opacity 0.5s ease-in-out;
+    transition: opacity 1.0s ease-in-out;
 }
 
 /* Mobile fix for background */
@@ -123,7 +123,7 @@
 
 .envelope.open .card {
     transform: translateX(14%) translateY(-200px);
-    transition-delay: 0.6s;
+    transition-delay: 1.0s;
 }
 
 .envelope .card {
@@ -136,7 +136,7 @@
     height: 85%;
     padding: 10px 20px;
     transform: translateX(14%);
-    transition: all 0.3s cubic-bezier(0.42, 0, 0.58, 1) 0s;
+    transition: all 0.6s cubic-bezier(0.42, 0, 0.58, 1) 0s;
 }
 
 .envelope .card h2 {
