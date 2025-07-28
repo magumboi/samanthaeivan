@@ -374,14 +374,14 @@
     <!-- Konami Code Easter Egg Modal -->
     <div class="modal fade" id="konamiModal" tabindex="-1" role="dialog" aria-labelledby="konamiModalLabel"
         aria-hidden="true">
-        <div class="modal-dialog modal-xl" role="document">
-            <div class="modal-content">
+        <div class="modal-dialog modal-xl" role="document" style="max-width: 100vw; width: 100vw; height: 100vh; margin: 0;">
+            <div class="modal-content" style="height: 100vh; border-radius: 0;">
                 <div class="modal-header p-2 border-0">
                     <button type="button" class="close ml-auto" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                <div class="modal-body p-0" style="background: #000;">
+                <div class="modal-body p-0" style="background: #000; height: calc(100vh - 50px);">
                     <iframe id="doomIframe" src="https://magumboi.github.io/jsdoom/"
                         style="width: 100%; height: 100%; border: none; background: #000;"
                         allow="gamepad; fullscreen; autoplay; microphone">
@@ -1543,13 +1543,22 @@
                     50% { filter: brightness(1.3) hue-rotate(45deg); }
                 }
                 
+                #konamiModal.modal {
+                    padding: 0 !important;
+                }
+                
                 #konamiModal .modal-dialog {
-                    max-width: 95vw;
+                    max-width: 100vw !important;
+                    width: 100vw !important;
+                    height: 100vh !important;
+                    margin: 0 !important;
                 }
                 
                 #konamiModal .modal-content {
                     background: #000;
                     border: none;
+                    height: 100vh !important;
+                    border-radius: 0 !important;
                 }
                 
                 #konamiModal .modal-header {
@@ -1557,6 +1566,11 @@
                     border: none;
                     padding: 8px 15px;
                     min-height: auto;
+                    position: absolute;
+                    top: 0;
+                    right: 0;
+                    z-index: 1050;
+                    width: auto;
                 }
                 
                 #konamiModal .modal-header .close {
@@ -1564,6 +1578,7 @@
                     opacity: 0.8;
                     font-size: 1.5rem;
                     margin: 0;
+                    text-shadow: 0 1px 3px rgba(0,0,0,0.8);
                 }
                 
                 #konamiModal .modal-header .close:hover {
@@ -1573,28 +1588,14 @@
                 #konamiModal .modal-body {
                     background: #000;
                     padding: 0;
+                    height: 100vh !important;
                 }
                 
                 #doomIframe {
                     border-radius: 0;
                     display: block;
-                }
-                
-                @media (max-width: 768px) {
-                    #konamiModal .modal-dialog {
-                        margin: 0.5rem;
-                        max-width: calc(100vw - 1rem);
-                    }
-                    
-                    #doomIframe {
-                        height: 500px !important;
-                    }
-                }
-                
-                @media (max-width: 576px) {
-                    #doomIframe {
-                        height: 400px !important;
-                    }
+                    width: 100% !important;
+                    height: 100% !important;
                 }
             `;
             document.head.appendChild(style);
