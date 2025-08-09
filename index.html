@@ -1278,11 +1278,6 @@
                                     <div class="col-md-8 mb-3">
                                         <div class="banking-card bg-white p-4 rounded shadow-sm border position-relative" 
                                              style="transition: transform 0.2s, box-shadow 0.2s;">
-                                            <div class="d-flex justify-content-between align-items-start mb-3">
-                                                <h6 class="text-primary mb-0 font-weight-bold">
-                                                    <i class="fas fa-heart mr-2"></i>Cuenta para Luna de Miel
-                                                </h6>
-                                            </div>
                                             <div class="banking-info" id="honeymoon-info">
                                                 <div class="mb-2 banking-field" onclick="copyIndividualData('[Nombre del Banco]', 'Banco')" style="cursor: pointer;">
                                                     <div class="d-flex justify-content-between align-items-center">
@@ -1604,12 +1599,14 @@
         .banking-field {
             transition: all 0.2s ease;
             border-radius: 5px;
+            padding: 12px 8px !important;
+            margin-bottom: 8px !important;
         }
         
         .banking-field:hover {
             background-color: #f8f9fa !important;
-            padding: 8px !important;
-            margin: -8px !important;
+            padding: 16px 12px !important;
+            margin: -4px 0 4px 0 !important;
         }
         
         .copy-field-btn {
@@ -1622,6 +1619,7 @@
             justify-content: center;
             transition: all 0.2s ease;
             font-size: 0.75rem;
+            flex-shrink: 0;
         }
         
         .copy-field-btn:hover {
@@ -1634,6 +1632,7 @@
             font-family: 'Courier New', monospace;
             font-size: 0.9rem;
             letter-spacing: 0.5px;
+            word-break: break-all;
         }
         
         .toast-header.bg-success {
@@ -1642,16 +1641,93 @@
         
         .font-weight-medium {
             font-weight: 500;
+            line-height: 1.4;
         }
         
+        /* Mejoras específicas para móviles */
         @media (max-width: 768px) {
             .banking-card {
-                margin-bottom: 1rem;
+                margin-bottom: 2rem !important;
+                padding: 1.5rem !important;
+            }
+            
+            .banking-field {
+                padding: 16px 12px !important;
+                margin-bottom: 16px !important;
+            }
+            
+            .banking-field:hover {
+                padding: 20px 16px !important;
+                margin: -4px 0 12px 0 !important;
             }
             
             .copy-field-btn {
-                width: 32px;
-                height: 32px;
+                width: 36px;
+                height: 36px;
+                font-size: 0.85rem;
+            }
+            
+            .banking-info .font-monospace {
+                font-size: 0.95rem;
+                letter-spacing: 0.3px;
+            }
+            
+            .font-weight-medium {
+                font-size: 1rem;
+                line-height: 1.5;
+            }
+            
+            small.text-muted {
+                font-size: 0.85rem !important;
+                margin-bottom: 6px !important;
+                display: block;
+            }
+            
+            .d-flex.justify-content-between.align-items-center {
+                gap: 12px;
+            }
+            
+            /* Mejor espaciado en el contenedor principal */
+            .col-md-8.mb-3 {
+                margin-bottom: 2rem !important;
+            }
+            
+            /* Ajuste del título de la tarjeta */
+            .banking-card h6 {
+                font-size: 1.1rem !important;
+                margin-bottom: 1rem !important;
+            }
+        }
+        
+        /* Mejoras para pantallas muy pequeñas */
+        @media (max-width: 480px) {
+            .banking-card {
+                padding: 1.25rem !important;
+            }
+            
+            .banking-field {
+                padding: 18px 14px !important;
+                margin-bottom: 18px !important;
+            }
+            
+            .banking-field:hover {
+                padding: 22px 18px !important;
+            }
+            
+            .copy-field-btn {
+                width: 38px;
+                height: 38px;
+            }
+            
+            .banking-info .font-monospace {
+                font-size: 0.9rem;
+                line-height: 1.6;
+            }
+            
+            /* Mejor distribución del espacio */
+            .d-flex.justify-content-between.align-items-center {
+                gap: 16px;
+                align-items: flex-start !important;
             }
         }
     </style>
