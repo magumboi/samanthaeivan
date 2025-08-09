@@ -1271,25 +1271,98 @@
                     <div class="row justify-content-center mt-5">
                         <div class="col-lg-10">
                             <div class="bg-light p-4 rounded-lg border">
-                                <h5 class="text-primary mb-3">
+                                <h5 class="text-primary mb-4">
                                     <i class="fas fa-university mr-2"></i>Información para Transferencias
                                 </h5>
-                                <div class="row">
-                                    <div class="col-md-6 mb-3">
-                                        <div class="bg-white p-3 rounded border-left border-primary">
-                                            <p class="mb-1 small"><strong>Banco:</strong> [Nombre del Banco]</p>
-                                            <p class="mb-1 small"><strong>Número de Cuenta:</strong> [Número de Cuenta]</p>
-                                            <p class="mb-1 small"><strong>CLABE:</strong> [CLABE Interbancaria]</p>
-                                            <p class="mb-0 small"><strong>Titular:</strong> [Nombre Completo]</p>
+                                <div class="row justify-content-center">
+                                    <div class="col-md-8 mb-3">
+                                        <div class="banking-card bg-white p-4 rounded shadow-sm border position-relative" 
+                                             style="transition: transform 0.2s, box-shadow 0.2s;">
+                                            <div class="d-flex justify-content-between align-items-start mb-3">
+                                                <h6 class="text-primary mb-0 font-weight-bold">
+                                                    <i class="fas fa-heart mr-2"></i>Cuenta para Luna de Miel
+                                                </h6>
+                                            </div>
+                                            <div class="banking-info" id="honeymoon-info">
+                                                <div class="mb-2 banking-field" onclick="copyIndividualData('[Nombre del Banco]', 'Banco')" style="cursor: pointer;">
+                                                    <div class="d-flex justify-content-between align-items-center">
+                                                        <div>
+                                                            <small class="text-muted">Banco</small>
+                                                            <div class="font-weight-medium">[Nombre del Banco]</div>
+                                                        </div>
+                                                        <button class="btn btn-outline-primary btn-sm copy-field-btn" 
+                                                                onclick="event.stopPropagation(); copyIndividualData('[Nombre del Banco]', 'Banco')"
+                                                                title="Copiar banco">
+                                                            <i class="fas fa-copy"></i>
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                                <div class="mb-2 banking-field" onclick="copyIndividualData('[Número de Cuenta]', 'Número de Cuenta')" style="cursor: pointer;">
+                                                    <div class="d-flex justify-content-between align-items-center">
+                                                        <div>
+                                                            <small class="text-muted">Número de Cuenta</small>
+                                                            <div class="font-weight-medium font-monospace">[Número de Cuenta]</div>
+                                                        </div>
+                                                        <button class="btn btn-outline-primary btn-sm copy-field-btn" 
+                                                                onclick="event.stopPropagation(); copyIndividualData('[Número de Cuenta]', 'Número de Cuenta')"
+                                                                title="Copiar número de cuenta">
+                                                            <i class="fas fa-copy"></i>
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                                <div class="mb-2 banking-field" onclick="copyIndividualData('[CLABE Interbancaria]', 'CLABE')" style="cursor: pointer;">
+                                                    <div class="d-flex justify-content-between align-items-center">
+                                                        <div>
+                                                            <small class="text-muted">CLABE</small>
+                                                            <div class="font-weight-medium font-monospace">[CLABE Interbancaria]</div>
+                                                        </div>
+                                                        <button class="btn btn-outline-primary btn-sm copy-field-btn" 
+                                                                onclick="event.stopPropagation(); copyIndividualData('[CLABE Interbancaria]', 'CLABE')"
+                                                                title="Copiar CLABE">
+                                                            <i class="fas fa-copy"></i>
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                                <div class="mb-0 banking-field" onclick="copyIndividualData('[Nombre Completo del Titular]', 'Titular')" style="cursor: pointer;">
+                                                    <div class="d-flex justify-content-between align-items-center">
+                                                        <div>
+                                                            <small class="text-muted">Titular</small>
+                                                            <div class="font-weight-medium">[Nombre Completo del Titular]</div>
+                                                        </div>
+                                                        <button class="btn btn-outline-primary btn-sm copy-field-btn" 
+                                                                onclick="event.stopPropagation(); copyIndividualData('[Nombre Completo del Titular]', 'Titular')"
+                                                                title="Copiar titular">
+                                                            <i class="fas fa-copy"></i>
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="mt-3">
+                                <div class="mt-4 text-center">
                                     <p class="text-muted mb-0 small">
                                         <i class="fas fa-info-circle mr-1"></i>
                                         También aceptamos contribuciones en efectivo durante la celebración
                                     </p>
                                 </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Notification Toast -->
+                    <div class="position-fixed" style="top: 20px; right: 20px; z-index: 9999;">
+                        <div id="copyNotification" class="toast" role="alert" aria-live="assertive" aria-atomic="true" 
+                             data-delay="3000" style="min-width: 300px;">
+                            <div class="toast-header bg-success text-white">
+                                <i class="fas fa-check-circle mr-2"></i>
+                                <strong class="mr-auto">¡Información copiada!</strong>
+                                <button type="button" class="ml-2 mb-1 close text-white" data-dismiss="toast">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="toast-body">
+                                La información bancaria ha sido copiada al portapapeles.
                             </div>
                         </div>
                     </div>
@@ -1431,6 +1504,157 @@
             }
         }
     </script>
+
+    <!-- Banking Information Copy Functionality -->
+    <script>
+        // Individual banking field copy functionality
+        function copyIndividualData(data, fieldType) {
+            // Copy to clipboard
+            if (navigator.clipboard && window.isSecureContext) {
+                // Modern clipboard API
+                navigator.clipboard.writeText(data).then(() => {
+                    showIndividualCopyNotification(fieldType);
+                }).catch(err => {
+                    console.error('Error copying to clipboard:', err);
+                    fallbackCopyTextToClipboard(data, fieldType);
+                });
+            } else {
+                // Fallback for older browsers
+                fallbackCopyTextToClipboard(data, fieldType);
+            }
+
+            // Add visual feedback to the clicked field
+            const clickedElement = event.currentTarget;
+            if (clickedElement) {
+                clickedElement.style.backgroundColor = '#e3f2fd';
+                clickedElement.style.transform = 'scale(0.98)';
+                setTimeout(() => {
+                    clickedElement.style.backgroundColor = '';
+                    clickedElement.style.transform = 'scale(1)';
+                }, 200);
+            }
+        }
+
+        // Fallback copy function for older browsers
+        function fallbackCopyTextToClipboard(text, fieldType) {
+            const textArea = document.createElement("textarea");
+            textArea.value = text;
+            textArea.style.position = "fixed";
+            textArea.style.left = "-999999px";
+            textArea.style.top = "-999999px";
+            document.body.appendChild(textArea);
+            textArea.focus();
+            textArea.select();
+            
+            try {
+                document.execCommand('copy');
+                showIndividualCopyNotification(fieldType);
+            } catch (err) {
+                console.error('Fallback: Oops, unable to copy', err);
+            }
+            
+            document.body.removeChild(textArea);
+        }
+
+        // Show individual copy notification
+        function showIndividualCopyNotification(fieldType) {
+            const notification = document.getElementById('copyNotification');
+            const notificationBody = notification.querySelector('.toast-body');
+            
+            if (notification && notificationBody) {
+                notificationBody.textContent = `${fieldType} copiado al portapapeles.`;
+                $(notification).toast('show');
+            }
+        }
+
+        // Add hover effects to banking fields
+        document.addEventListener('DOMContentLoaded', function() {
+            const bankingFields = document.querySelectorAll('.banking-field');
+            
+            bankingFields.forEach(field => {
+                field.addEventListener('mouseenter', function() {
+                    this.style.backgroundColor = '#f8f9fa';
+                    this.style.borderRadius = '5px';
+                    this.style.padding = '8px';
+                    this.style.margin = '-8px';
+                });
+                
+                field.addEventListener('mouseleave', function() {
+                    this.style.backgroundColor = '';
+                    this.style.borderRadius = '';
+                    this.style.padding = '';
+                    this.style.margin = '';
+                });
+            });
+        });
+    </script>
+
+    <!-- Banking Cards Custom Styles -->
+    <style>
+        .banking-card {
+            border: 2px solid #e9ecef !important;
+            transition: all 0.3s ease !important;
+        }
+        
+        .banking-card:hover {
+            border-color: #007bff !important;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1) !important;
+        }
+        
+        .banking-field {
+            transition: all 0.2s ease;
+            border-radius: 5px;
+        }
+        
+        .banking-field:hover {
+            background-color: #f8f9fa !important;
+            padding: 8px !important;
+            margin: -8px !important;
+        }
+        
+        .copy-field-btn {
+            border-radius: 50%;
+            width: 28px;
+            height: 28px;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s ease;
+            font-size: 0.75rem;
+        }
+        
+        .copy-field-btn:hover {
+            background-color: #007bff;
+            color: white;
+            transform: scale(1.1);
+        }
+        
+        .banking-info .font-monospace {
+            font-family: 'Courier New', monospace;
+            font-size: 0.9rem;
+            letter-spacing: 0.5px;
+        }
+        
+        .toast-header.bg-success {
+            background-color: #28a745 !important;
+        }
+        
+        .font-weight-medium {
+            font-weight: 500;
+        }
+        
+        @media (max-width: 768px) {
+            .banking-card {
+                margin-bottom: 1rem;
+            }
+            
+            .copy-field-btn {
+                width: 32px;
+                height: 32px;
+            }
+        }
+    </style>
 
 
     <!-- Footer Start -->
