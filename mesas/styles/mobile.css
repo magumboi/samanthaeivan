@@ -1,0 +1,620 @@
+/* CSS Mobile-First Optimizado para Seating Plan */
+
+/* Reset y base */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: #333;
+    overflow-x: hidden;
+    height: 100vh;
+    touch-action: manipulation;
+}
+
+/* Header móvil */
+.mobile-header {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    padding: 15px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.mobile-header h1 {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: #2c3e50;
+}
+
+.header-stats {
+    background: #3498db;
+    color: white;
+    padding: 8px 12px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
+/* Contenedor principal - Pantalla completa sin panel inferior */
+.mobile-container {
+    height: calc(100vh - 60px);
+    padding: 10px;
+    overflow: hidden;
+    position: relative;
+}
+
+/* Venue móvil */
+.mobile-venue {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    background: linear-gradient(45deg, #f8f9fa 0%, #e9ecef 100%);
+    border-radius: 15px;
+    overflow: auto;
+    -webkit-overflow-scrolling: touch;
+    box-shadow: inset 0 0 20px rgba(0,0,0,0.1);
+}
+
+/* Mesas móviles optimizadas */
+.mobile-table {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    background: linear-gradient(135deg, #ffffff 0%, #f1f3f4 100%);
+    border: 3px solid #dee2e6;
+    touch-action: manipulation;
+    user-select: none;
+}
+
+/* Tamaños optimizados para móvil */
+.mobile-table.round {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%);
+    border-color: #2196f3;
+}
+
+.mobile-table.square {
+    width: 75px;
+    height: 75px;
+    background: linear-gradient(135deg, #fff3e0 0%, #ffcc80 100%);
+    border-color: #ff9800;
+}
+
+.mobile-table.rectangular {
+    width: 70px;
+    height: 90px;
+    background: linear-gradient(135deg, #f3e5f5 0%, #ce93d8 100%);
+    border-color: #9c27b0;
+}
+
+.mobile-table.bride-groom {
+    width: 27%;
+    height: 9%;
+    min-width: 120px;
+    min-height: 60px;
+    background: linear-gradient(135deg, #ffd700 0%, #ffed4e 25%, #fff59d 50%, #ffecb3 75%, #ffe082 100%);
+    border: 2px solid #8d6e63;
+    border-radius: 15px;
+    box-shadow: 
+        0 8px 25px rgba(255,215,0,0.4),
+        0 4px 12px rgba(0,0,0,0.2);
+}
+
+/* Efectos hover/touch para móvil */
+.mobile-table:active {
+    transform: scale(0.95);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+}
+
+.mobile-table:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.2);
+}
+
+/* Etiquetas de mesa optimizadas */
+.table-label {
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: #2c3e50;
+    text-align: center;
+    line-height: 1.1;
+    margin-bottom: 2px;
+}
+
+.table-guests {
+    font-size: 0.7rem;
+    font-weight: 500;
+    color: #6c757d;
+    background: rgba(255,255,255,0.8);
+    padding: 2px 6px;
+    border-radius: 10px;
+    min-width: 35px;
+    text-align: center;
+}
+
+/* Posicionamiento EXACTO del layout original */
+/* Columna izquierda */
+#table8 { top: 2%; left: 5%; }   /* Mesa 8 - top far left (cuadrada) */
+#table7 { top: 20%; left: 5%; }  /* Mesa 7 - top left (redonda) */
+#table6 { top: 43%; left: 7%; }  /* Mesa 6 - center left (cuadrada) */
+#table5 { top: 61%; left: 7%; }  /* Mesa 5 - middle left (redonda) */
+#table4 { top: 80%; left: 2%; }  /* Mesa 4 - bottom far left (cuadrada) */
+
+/* Columna centro-izquierda */
+#table3 { top: 1%; left: 19%; }  /* Mesa 3 - top center left (redonda) */
+#table2 { top: 30%; left: 23%; } /* Mesa 2 - center left (rectangular) */
+#table1 { top: 74%; left: 20%; } /* Mesa 1 - bottom center left (redonda) */
+
+/* Columna centro-derecha */
+#table11 { top: 6%; left: 65%; } /* Mesa 11 - top right (redonda) */
+#table10 { top: 36%; left: 66%; } /* Mesa 10 - center right (cuadrada) */
+#table9 { top: 60%; left: 64%; } /* Mesa 9 - middle right (redonda) */
+
+/* Columna derecha */
+#table15 { top: 3%; left: 83%; } /* Mesa 15 - top far right (cuadrada) */
+#table14 { top: 27%; left: 79%; } /* Mesa 14 - center right (redonda) */
+#table13 { top: 56%; left: 81%; } /* Mesa 13 - middle far right (cuadrada) */
+#table12 { top: 75%; left: 78%; } /* Mesa 12 - bottom right (redonda) */
+
+/* Mesa de novios - posición original */
+#brideGroomTable { top: 86%; left: 36.5%; }
+
+/* Áreas especiales */
+.mobile-special {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 15px;
+    font-weight: 600;
+    color: #fff;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.3);
+}
+
+.dance-floor {
+    top: 28%;
+    left: 38.5%;
+    width: 23%;
+    height: 40%;
+    background: linear-gradient(45deg, #d4af37, #ffd700);
+    border: 2px solid #b8941f;
+    border-radius: 10px;
+}
+
+.dj-area {
+    top: 8%;
+    left: 45%;
+    width: 10%;
+    height: 8%;
+    background: linear-gradient(45deg, #666, #888);
+    border: none;
+    border-radius: 8px;
+    flex-direction: row;
+    gap: 0;
+    justify-content: space-around;
+}
+
+.turntable {
+    width: 15px;
+    height: 15px;
+    min-width: 15px;
+    min-height: 15px;
+    background: radial-gradient(circle, #ff4444 30%, #666 70%);
+    border-radius: 50%;
+    animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+.special-label {
+    font-size: min(1rem, 2.5vw);
+    text-align: center;
+    font-weight: 700;
+}
+
+.mobile-table.bride-groom .table-label {
+    font-size: min(1rem, 2.5vw);
+    font-weight: 700;
+    color: #8d6e63;
+    text-shadow: 0 2px 4px rgba(255,255,255,0.8);
+}
+
+/* Panel inferior eliminado - ya no necesario */
+
+/* Modal móvil */
+.mobile-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+    backdrop-filter: blur(5px);
+}
+
+.mobile-modal.active {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.modal-content {
+    background: white;
+    border-radius: 15px;
+    width: 100%;
+    max-width: 400px;
+    max-height: 80vh;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    border-bottom: 1px solid #dee2e6;
+    background: #f8f9fa;
+}
+
+.modal-header h3 {
+    font-size: 1.2rem;
+    color: #2c3e50;
+}
+
+.modal-close {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    color: #6c757d;
+    cursor: pointer;
+    padding: 5px;
+    border-radius: 50%;
+    width: 35px;
+    height: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-close:active {
+    background: #dee2e6;
+}
+
+.modal-body {
+    padding: 20px;
+    overflow-y: auto;
+    max-height: 60vh;
+    -webkit-overflow-scrolling: touch;
+}
+
+.table-visual {
+    width: 220px;
+    height: 220px;
+    margin: 0 auto 20px;
+    position: relative;
+}
+
+/* Contenedor de visualización de mesa */
+.table-visual-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Mesa redonda */
+.visual-table.round-table {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%);
+    border: 3px solid #2196f3;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    z-index: 2;
+}
+
+/* Mesa de novios (rectangular) */
+.visual-table.bride-groom-table {
+    width: 100px;
+    height: 60px;
+    border-radius: 8px;
+    background: linear-gradient(135deg, #fce4ec 0%, #f8bbd9 100%);
+    border: 3px solid #e91e63;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    z-index: 2;
+}
+
+.table-label {
+    font-weight: 700;
+    font-size: 0.7rem;
+    text-align: center;
+    color: #1976d2;
+}
+
+.bride-groom-table .table-label {
+    color: #ad1457;
+    font-size: 0.6rem;
+}
+
+/* Contenedor de sillas */
+.chairs-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+/* Sillas generales */
+.chair {
+    position: absolute;
+    width: 35px;
+    height: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+.chair:hover {
+    transform: scale(1.05);
+}
+
+.chair-back {
+    width: 25px;
+    height: 25px;
+    border-radius: 50% 50% 10px 10px;
+    background: linear-gradient(135deg, #8d6e63 0%, #6d4c41 100%);
+    border: 2px solid #5d4037;
+    margin-bottom: 2px;
+}
+
+.chair-name {
+    font-size: 0.55rem;
+    font-weight: 600;
+    color: #2c3e50;
+    text-align: center;
+    line-height: 1.1;
+    max-width: 45px;
+    word-wrap: break-word;
+    background: rgba(255, 255, 255, 0.95);
+    padding: 3px 2px;
+    border-radius: 4px;
+    border: 1px solid #ddd;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+}
+
+/* Posicionamiento absoluto para todas las sillas */
+
+/* Sillas disponibles */
+.chair.available .chair-name {
+    color: #95a5a6;
+    background: rgba(236, 240, 241, 0.9);
+    font-style: italic;
+}
+
+/* Estilos para niños */
+.chair.child .chair-back {
+    width: 20px;
+    height: 20px;
+    background: linear-gradient(135deg, #ffb74d 0%, #ff9800 100%);
+    border-color: #f57c00;
+}
+
+.chair.child .chair-name {
+    font-size: 0.5rem;
+    background: rgba(255, 243, 224, 0.95);
+    border-color: #ffb74d;
+}
+
+/* Estilos para adultos */
+.chair.adult .chair-back {
+    background: linear-gradient(135deg, #8d6e63 0%, #6d4c41 100%);
+    border-color: #5d4037;
+}
+
+/* Animación suave */
+.chair-back {
+    transition: all 0.3s ease;
+}
+
+.chair:active .chair-back {
+    transform: scale(0.9);
+}
+
+/* Responsive para pantallas muy pequeñas */
+@media (max-width: 360px) {
+    .table-visual {
+        width: 180px;
+        height: 180px;
+    }
+    
+    .chair {
+        width: 30px;
+        height: 35px;
+    }
+    
+    .chair-back {
+        width: 20px;
+        height: 20px;
+    }
+    
+    .chair-name {
+        font-size: 0.45rem;
+        max-width: 35px;
+        padding: 2px 1px;
+    }
+    
+    .visual-table.round-table {
+        width: 70px;
+        height: 70px;
+    }
+    
+    .visual-table.bride-groom-table {
+        width: 85px;
+        height: 50px;
+    }
+}
+
+/* Efecto visual mejorado para sillas ocupadas vs disponibles */
+.chair:not(.available) .chair-back {
+    background: linear-gradient(135deg, #8d6e63 0%, #6d4c41 100%);
+    border-color: #5d4037;
+}
+
+.chair.available .chair-back {
+    background: linear-gradient(135deg, #bdbdbd 0%, #9e9e9e 100%);
+    border-color: #757575;
+}
+
+.chair:not(.available):hover .chair-back {
+    background: linear-gradient(135deg, #a1887f 0%, #8d6e63 100%);
+}
+
+.chair.available:hover .chair-back {
+    background: linear-gradient(135deg, #81c784 0%, #66bb6a 100%);
+    border-color: #4caf50;
+}
+
+.assigned-guests, .available-guests {
+    margin-bottom: 20px;
+}
+
+.assigned-guests h4, .available-guests h4 {
+    font-size: 1rem;
+    margin-bottom: 10px;
+    color: #2c3e50;
+}
+
+.guest-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.guest-chip {
+    background: #3498db;
+    color: white;
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.guest-chip:active {
+    transform: scale(0.95);
+    background: #2980b9;
+}
+
+.guest-chip.available {
+    background: #95a5a6;
+}
+
+.guest-chip.available:active {
+    background: #7f8c8d;
+}
+
+/* Animaciones */
+@keyframes slideUp {
+    from {
+        transform: translateY(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.mobile-modal.active .modal-content {
+    animation: slideUp 0.3s ease;
+}
+
+/* Responsive para diferentes tamaños de móvil */
+@media (max-width: 480px) {
+    .mobile-table.round {
+        width: 70px;
+        height: 70px;
+    }
+    
+    .mobile-table.square {
+        width: 65px;
+        height: 65px;
+    }
+    
+    .mobile-table.rectangular {
+        width: 60px;
+        height: 80px;
+    }
+    
+    .mobile-table.bride-groom {
+        width: 100px;
+        height: 50px;
+    }
+    
+    .table-label {
+        font-size: 0.7rem;
+    }
+    
+    .table-guests {
+        font-size: 0.6rem;
+    }
+}
+
+@media (max-width: 360px) {
+    .mobile-container {
+        padding: 5px;
+        height: calc(100vh - 50px);
+    }
+    
+    .mobile-table.round {
+        width: 60px;
+        height: 60px;
+    }
+    
+    .mobile-table.square {
+        width: 55px;
+        height: 55px;
+    }
+    
+    .mobile-table.rectangular {
+        width: 50px;
+        height: 70px;
+    }
+}

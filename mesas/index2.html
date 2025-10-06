@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plan de Asientos - Boda</title>
+    <link rel="stylesheet" href="styles/main.css">
+</head>
+<body>
+    <div class="container">
+        <main>
+            <div class="layout-container">
+                <div class="venue-layout" id="venueLayout">
+                    <!-- DJ Area -->
+                    <div class="dj-area" id="djArea">
+                        <div class="turntable"></div>
+                        <div class="turntable"></div>
+                    </div>
+
+                    <!-- Dance Floor -->
+                    <div class="dance-floor" id="danceFloor">
+                        <span>Pista de Baile</span>
+                    </div>
+
+                    <!-- Bride and Groom Table -->
+                    <div class="bride-groom-table" id="brideGroomTable">
+                        <span>Mesa de novios</span>
+                    </div>
+
+                    <!-- Round Tables -->
+                    <div class="table round-table" id="table1" data-table-id="1" data-capacity="10">
+                        <span class="table-label">Mesa 1</span>
+                        <div class="seats"></div>
+                    </div>
+
+                    <div class="table round-table" id="table3" data-table-id="3" data-capacity="10">
+                        <span class="table-label">Mesa 3</span>
+                        <div class="seats"></div>
+                    </div>
+
+                    <div class="table round-table" id="table5" data-table-id="5" data-capacity="10">
+                        <span class="table-label">Mesa 5</span>
+                        <div class="seats"></div>
+                    </div>
+
+                    <div class="table round-table" id="table7" data-table-id="7" data-capacity="10">
+                        <span class="table-label">Mesa 7</span>
+                        <div class="seats"></div>
+                    </div>
+
+                    <div class="table round-table" id="table9" data-table-id="9" data-capacity="10">
+                        <span class="table-label">Mesa 9</span>
+                        <div class="seats"></div>
+                    </div>
+
+                    <div class="table round-table" id="table11" data-table-id="11" data-capacity="10">
+                        <span class="table-label">Mesa 11</span>
+                        <div class="seats"></div>
+                    </div>
+
+                    <div class="table round-table" id="table12" data-table-id="12" data-capacity="10">
+                        <span class="table-label">Mesa 12</span>
+                        <div class="seats"></div>
+                    </div>
+
+                    <div class="table round-table" id="table14" data-table-id="14" data-capacity="10">
+                        <span class="table-label">Mesa 14</span>
+                        <div class="seats"></div>
+                    </div>
+
+                    <!-- Square Tables -->
+                    <div class="table square-table" id="table4" data-table-id="4" data-capacity="10">
+                        <span class="table-label">Mesa 4</span>
+                        <div class="seats"></div>
+                    </div>
+
+                    <div class="table square-table" id="table6" data-table-id="6" data-capacity="10">
+                        <span class="table-label">Mesa 6</span>
+                        <div class="seats"></div>
+                    </div>
+
+                    <div class="table square-table" id="table8" data-table-id="8" data-capacity="10">
+                        <span class="table-label">Mesa 8</span>
+                        <div class="seats"></div>
+                    </div>
+
+                    <div class="table square-table" id="table10" data-table-id="10" data-capacity="10">
+                        <span class="table-label">Mesa 10</span>
+                        <div class="seats"></div>
+                    </div>
+
+                    <div class="table square-table" id="table13" data-table-id="13" data-capacity="10">
+                        <span class="table-label">Mesa 13</span>
+                        <div class="seats"></div>
+                    </div>
+
+                    <div class="table square-table" id="table15" data-table-id="15" data-capacity="10">
+                        <span class="table-label">Mesa 15</span>
+                        <div class="seats"></div>
+                    </div>
+
+                    <!-- Rectangular Tables -->
+                    <div class="table rect-table" id="table2" data-table-id="2" data-capacity="10">
+                        <span class="table-label">Mesa 2</span>
+                        <div class="seats"></div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Add Guest Modal -->
+    <div id="addGuestModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Agregar Invitado</h2>
+            <form id="addGuestForm">
+                <div class="form-group">
+                    <label for="guestName">Nombre:</label>
+                    <input type="text" id="guestName" required>
+                </div>
+                <div class="form-group">
+                    <label for="guestType">Tipo:</label>
+                    <select id="guestType">
+                        <option value="adulto">Adulto</option>
+                        <option value="niño">Niño</option>
+                        <option value="vip">VIP</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="guestDiet">Restricciones dietéticas:</label>
+                    <input type="text" id="guestDiet" placeholder="Opcional">
+                </div>
+                <div class="form-actions">
+                    <button type="submit" class="btn btn-primary">Agregar</button>
+                    <button type="button" class="btn btn-secondary" id="cancelAdd">Cancelar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Modal de Detalles de Mesa -->
+    <div id="tableDetailsModal" class="modal">
+        <div class="modal-content table-details-modal">
+            <span class="close" id="closeTableDetails">&times;</span>
+            <h2 id="tableDetailsTitle">Mesa 1</h2>
+            <div class="table-visual-container">
+                <div id="tableVisual" class="table-visual">
+                    <!-- Aquí se generarán dinámicamente las sillas -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="scripts/main.js"></script>
+    <script src="scripts/dragdrop.js"></script>
+    <script src="scripts/storage.js"></script>
+</body>
+</html>

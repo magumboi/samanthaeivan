@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>Plan de Asientos - Boda</title>
+    <link rel="stylesheet" href="styles/mobile.css">
+</head>
+<body>
+    <!-- Header móvil optimizado -->
+    <div class="mobile-header">
+        <h1>Plan de Asientos</h1>
+        <div class="header-stats">
+            <span id="guestCount">0</span> invitados
+        </div>
+    </div>
+
+    <!-- Contenedor principal optimizado para móviles -->
+    <div class="mobile-container">
+        <!-- Layout del venue -->
+        <div class="mobile-venue" id="mobileVenue">
+            <!-- Mesa de novios -->
+            <div class="mobile-table bride-groom" id="brideGroomTable" data-table="bride-groom">
+                <div class="table-label">Mesa Novios</div>
+                <div class="table-capacity">Presidencial</div>
+            </div>
+
+            <!-- Mesas principales -->
+            <div class="mobile-table round" id="table1" data-table="1" data-capacity="10">
+                <div class="table-label">Mesa 1</div>
+                <div class="table-guests">0/10</div>
+            </div>
+
+            <div class="mobile-table rectangular" id="table2" data-table="2" data-capacity="10">
+                <div class="table-label">Mesa 2</div>
+                <div class="table-guests">0/10</div>
+            </div>
+
+            <div class="mobile-table round" id="table3" data-table="3" data-capacity="10">
+                <div class="table-label">Mesa 3</div>
+                <div class="table-guests">0/10</div>
+            </div>
+
+            <div class="mobile-table round" id="table4" data-table="4" data-capacity="10">
+                <div class="table-label">Mesa 4</div>
+                <div class="table-guests">0/10</div>
+            </div>
+
+            <div class="mobile-table round" id="table5" data-table="5" data-capacity="10">
+                <div class="table-label">Mesa 5</div>
+                <div class="table-guests">0/10</div>
+            </div>
+
+            <div class="mobile-table round" id="table6" data-table="6" data-capacity="10">
+                <div class="table-label">Mesa 6</div>
+                <div class="table-guests">0/10</div>
+            </div>
+
+            <div class="mobile-table round" id="table7" data-table="7" data-capacity="10">
+                <div class="table-label">Mesa 7</div>
+                <div class="table-guests">0/10</div>
+            </div>
+
+            <div class="mobile-table square" id="table8" data-table="8" data-capacity="10">
+                <div class="table-label">Mesa 8</div>
+                <div class="table-guests">0/10</div>
+            </div>
+
+            <div class="mobile-table round" id="table9" data-table="9" data-capacity="10">
+                <div class="table-label">Mesa 9</div>
+                <div class="table-guests">0/10</div>
+            </div>
+
+            <div class="mobile-table rectangular" id="table10" data-table="10" data-capacity="10">
+                <div class="table-label">Mesa 10</div>
+                <div class="table-guests">0/10</div>
+            </div>
+
+            <div class="mobile-table round" id="table11" data-table="11" data-capacity="10">
+                <div class="table-label">Mesa 11</div>
+                <div class="table-guests">0/10</div>
+            </div>
+
+            <div class="mobile-table round" id="table12" data-table="12" data-capacity="10">
+                <div class="table-label">Mesa 12</div>
+                <div class="table-guests">0/10</div>
+            </div>
+
+            <div class="mobile-table round" id="table13" data-table="13" data-capacity="10">
+                <div class="table-label">Mesa 13</div>
+                <div class="table-guests">0/10</div>
+            </div>
+
+            <div class="mobile-table round" id="table14" data-table="14" data-capacity="10">
+                <div class="table-label">Mesa 14</div>
+                <div class="table-guests">0/10</div>
+            </div>
+
+            <div class="mobile-table round" id="table15" data-table="15" data-capacity="10">
+                <div class="table-label">Mesa 15</div>
+                <div class="table-guests">0/10</div>
+            </div>
+
+            <!-- Pista de baile -->
+            <div class="mobile-special dance-floor">
+                <div class="special-label">Pista de Baile</div>
+            </div>
+
+            <!-- Area DJ -->
+            <div class="mobile-special dj-area">
+                <div class="special-label">DJ</div>
+                <div class="turntable"></div>
+                <div class="turntable"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal móvil para detalles de mesa -->
+    <div class="mobile-modal" id="mobileModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="modalTitle">Mesa 1</h3>
+                <button class="modal-close" id="modalClose">×</button>
+            </div>
+            <div class="modal-body">
+                <div class="table-visual" id="modalTableVisual"></div>
+                <div class="assigned-guests" id="modalAssignedGuests"></div>
+                <div class="available-guests" id="modalAvailableGuests"></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="scripts/mobile-app.js"></script>
+</body>
+</html>
