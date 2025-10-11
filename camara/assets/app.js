@@ -96,7 +96,7 @@ function loadConfig() {
 
     try {
         // Usar URL precargada como fallback
-        discordWebhookUrl = localStorage.getItem(WEBHOOK_STORAGE_KEY) || 'https://discord.com/api/webhooks/TU_WEBHOOK_ID/TU_WEBHOOK_TOKEN';
+        discordWebhookUrl = localStorage.getItem(WEBHOOK_STORAGE_KEY) || 'https://discord.com/api/webhooks/1426614372460925018/vEN7UvEcBs_3Vvo7KA-EqECddf6g52-Krxj0fE31-UASqaLKzXhz98_lzSCA6DnxvFbT';
         botName = localStorage.getItem(BOT_NAME_STORAGE_KEY) || 'Cámara Bot';
         userName = localStorage.getItem(USER_NAME_STORAGE_KEY) || '';
         autoFocus = localStorage.getItem(AUTO_FOCUS_KEY) !== 'false';
@@ -124,7 +124,7 @@ function loadConfig() {
  */
 function saveConfig() {
     // Usar la URL precargada como fallback
-    const webhookUrl = document.getElementById('webhook-url').value.trim() || 'https://discord.com/api/webhooks/TU_WEBHOOK_ID/TU_WEBHOOK_TOKEN';
+    const webhookUrl = document.getElementById('webhook-url').value.trim() || 'https://discord.com/api/webhooks/1426614372460925018/vEN7UvEcBs_3Vvo7KA-EqECddf6g52-Krxj0fE31-UASqaLKzXhz98_lzSCA6DnxvFbT';
     const newBotName = document.getElementById('bot-name').value.trim() || 'Cámara Bot';
     const newUserName = document.getElementById('user-name').value.trim();
     const newAutoFocus = document.getElementById('auto-focus').checked;
