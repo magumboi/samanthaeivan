@@ -1,4 +1,23 @@
-# � Cámara de Boda - Samantha & Iván
+# � Cámara d## Cómo usar la cámara de boda
+
+### 🎊 **Primera visita:**
+1. **👋 Bienvenida**: Al abrir la app, se muestra un mensaje de bienvenida personalizado
+2. **📝 Identificación**: Se solicita el nombre del invitado para identificar las fotos
+3. **⚡ Opciones**: Puede agregar su nombre o saltarse este paso por ahora
+
+### 📸 **Capturando momentos:**
+1. **📸 Capturar momento**: Presiona "Capturar momento" para tomar una foto
+2. **🤖 Subida automática**: La foto se agrega automáticamente al álbum de boda
+3. **✅ Confirmación discreta**: Aparece un indicador si la foto se guardó correctamente
+4. **🎭 Opciones adicionales**: Se muestra un modal con opciones para el invitado:
+   - **💒 Compartir en álbum**: Subir manualmente si la automática falló
+   - **💾 Guardar en mi teléfono**: Descargar una copia personal
+   - **🗑️ Descartar**: Cerrar sin hacer nada más
+5. **💕 Momento preservado**: La foto queda guardada con tu nombre y la hora exacta
+
+### 🔄 **Visitas posteriores:**
+- Los invitados que ya ingresaron su nombre no verán el modal de bienvenida
+- Pueden cambiar su nombre en cualquier momento desde configuración (⚙️)amantha & Iván
 
 ## Propósito especial
 

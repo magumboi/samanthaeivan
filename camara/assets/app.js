@@ -174,6 +174,112 @@ function updateCameraConstraints() {
 // ========== MODAL FUNCTIONS ==========
 
 /**
+ * Show welcome modal for guest name
+ */
+function showWelcomeModal() {
+    Swal.fire({
+        title: '💒 ¡Bienvenido a nuestra boda!',
+        html: `
+            <div style="text-align: center; margin: 20px 0;">
+                <p style="margin-bottom: 20px; color: rgba(255,255,255,0.9);">
+                    Samantha & Iván - 11 de Octubre 2025
+                </p>
+                <p style="margin-bottom: 25px; font-size: 16px;">
+                    Para identificar tus fotos en nuestro álbum de boda, 
+                    <br>por favor comparte tu nombre:
+                </p>
+                <input 
+                    type="text" 
+                    id="welcome-guest-name" 
+                    placeholder="Escribe tu nombre aquí..." 
+                    style="
+                        width: 100%; 
+                        padding: 12px 16px; 
+                        border: 2px solid rgba(255,255,255,0.3); 
+                        border-radius: 10px; 
+                        background: rgba(255,255,255,0.1); 
+                        color: white; 
+                        font-size: 16px;
+                        text-align: center;
+                        margin-bottom: 15px;
+                    "
+                    maxlength="50"
+                />
+                <small style="color: rgba(255,255,255,0.6); display: block;">
+                    💡 También puedes saltarte este paso y agregarlo después en configuración
+                </small>
+            </div>
+        `,
+        showCancelButton: true,
+        confirmButtonText: '💕 ¡Empezar a capturar momentos!',
+        cancelButtonText: '⏭️ Saltar por ahora',
+        allowOutsideClick: false,
+        allowEscapeKey: false,
+        background: 'rgba(0, 0, 0, 0.95)',
+        color: '#ffffff',
+        customClass: {
+            popup: 'swal2-dark welcome-modal',
+            confirmButton: 'swal2-confirm',
+            cancelButton: 'swal2-cancel'
+        },
+        didOpen: () => {
+            // Focus on input field
+            const input = document.getElementById('welcome-guest-name');
+            if (input) {
+                setTimeout(() => input.focus(), 300);
+                
+                // Allow Enter key to confirm
+                input.addEventListener('keypress', (e) => {
+                    if (e.key === 'Enter') {
+                        Swal.clickConfirm();
+                    }
+                });
+            }
+        }
+    }).then((result) => {
+        if (result.isConfirmed) {
+            const guestName = document.getElementById('welcome-guest-name').value.trim();
+            if (guestName) {
+                // Save the name
+                userName = guestName;
+                if (isLocalStorageAvailable()) {
+                    localStorage.setItem(USER_NAME_STORAGE_KEY, guestName);
+                }
+                
+                // Update the config field if it exists
+                const userNameInput = document.getElementById('user-name');
+                if (userNameInput) {
+                    userNameInput.value = guestName;
+                }
+                
+                // Show thank you message
+                Swal.fire({
+                    title: `¡Gracias ${guestName}! 💕`,
+                    html: `
+                        <div style="text-align: center;">
+                            <p style="margin-bottom: 15px;">Tus fotos aparecerán identificadas en nuestro álbum de boda</p>
+                            <p style="color: rgba(255,255,255,0.7); font-size: 14px;">
+                                ¡Ahora puedes empezar a capturar momentos especiales! 📸
+                            </p>
+                        </div>
+                    `,
+                    icon: 'success',
+                    timer: 3000,
+                    showConfirmButton: false,
+                    background: 'rgba(0, 0, 0, 0.9)',
+                    color: '#ffffff',
+                    customClass: {
+                        popup: 'swal2-dark'
+                    }
+                });
+            }
+        }
+        // Continue with camera initialization either way
+        continueInitialization();
+    });
+}
+
+/**
  * Open configuration modal
  */
 function openConfig() {
@@ -790,7 +896,29 @@ function initializeApp() {
                 popup: 'swal2-dark'
             }
         });
+        return;
     }
+    
+    // Check if user name is already saved
+    if (!userName || userName.trim() === '') {
+        // First time user - show welcome modal
+        hideLoadingScreen();
+        setTimeout(() => {
+            showWelcomeModal();
+        }, 500);
+    } else {
+        // Returning user - continue directly
+        continueInitialization();
+    }
+}
+
+/**
+ * Continue initialization after welcome modal
+ */
+function continueInitialization() {
+    console.log('📸 Continuando inicialización de cámara...');
+    showLoadingScreen();
+    cameraStart();
 }
 
 /**
