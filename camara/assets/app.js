@@ -395,15 +395,15 @@ function capturePhoto() {
  */
 function showPhotoPreview(imageDataUrl) {
     Swal.fire({
-        title: 'Foto capturada',
+        title: '💕 Momento capturado',
         html: `
             <img src="${imageDataUrl}" style="max-width: 100%; max-height: 400px; border-radius: 10px; margin: 20px 0; box-shadow: 0 4px 20px rgba(0,0,0,0.3);">
         `,
         showCancelButton: true,
-        confirmButtonText: '📤 Subir foto',
+        confirmButtonText: '� Compartir en álbum',
         cancelButtonText: '🗑️ Descartar',
         showDenyButton: true,
-        denyButtonText: '💾 Descargar',
+        denyButtonText: '💾 Guardar en mi teléfono',
         background: 'rgba(0, 0, 0, 0.9)',
         color: '#ffffff',
         width: '90%',
@@ -483,11 +483,11 @@ async function uploadPhoto(imageDataUrl) {
     try {
         // Show loading indicator
         Swal.fire({
-            title: 'Subiendo foto...',
+            title: 'Agregando al álbum de boda...',
             html: `
                 <div style="text-align: center;">
                     <div class="loading-spinner" style="margin: 20px auto;"></div>
-                    <p>Por favor espera mientras se envía la foto</p>
+                    <p>Compartiendo tu momento especial con los novios 💕</p>
                 </div>
             `,
             allowOutsideClick: false,
@@ -514,20 +514,22 @@ async function uploadPhoto(imageDataUrl) {
             minute: '2-digit',
             second: '2-digit'
         });
-        const filename = `foto-${Date.now()}.jpg`;
+        const filename = `boda-samantha-ivan-${Date.now()}.jpg`;
         
         formData.append('file', blob, filename);
         
         // Create message content
-        let content = `📸 **Nueva foto capturada**\n⏰ ${timestamp}`;
+        let content = `� **Momento especial de la boda**\n📸 Samantha & Iván - 11 de Octubre 2025\n⏰ ${timestamp}`;
         if (userName) {
-            content += `\n👤 Por: ${userName}`;
+            content += `\n👤 Capturado por: ${userName}`;
+        } else {
+            content += `\n👤 Capturado por: Invitado`;
         }
         
         // Add payload_json for webhook
         const payload = {
             content: content,
-            username: botName
+            username: 'Álbum de Boda'
         };
         formData.append('payload_json', JSON.stringify(payload));
 
@@ -539,11 +541,12 @@ async function uploadPhoto(imageDataUrl) {
 
         if (uploadResponse.ok) {
             Swal.fire({
-                title: '¡Foto subida exitosamente!',
+                title: '¡Momento compartido! 💕',
                 html: `
                     <div style="text-align: center;">
-                        <div style="font-size: 3rem; margin-bottom: 15px;">✅</div>
-                        <p>La foto se ha enviado correctamente</p>
+                        <div style="font-size: 3rem; margin-bottom: 15px;">🎉</div>
+                        <p>Tu foto se agregó al álbum de boda de Samantha & Iván</p>
+                        <small style="color: rgba(255,255,255,0.7);">¡Gracias por compartir este momento especial!</small>
                     </div>
                 `,
                 icon: 'success',
@@ -616,20 +619,22 @@ async function uploadPhotoSilently(imageDataUrl) {
             minute: '2-digit',
             second: '2-digit'
         });
-        const filename = `foto-${Date.now()}.jpg`;
+        const filename = `boda-samantha-ivan-${Date.now()}.jpg`;
         
         formData.append('file', blob, filename);
         
         // Create message content
-        let content = `📸 **Nueva foto capturada**\n⏰ ${timestamp}`;
+        let content = `� **Momento especial de la boda**\n📸 Samantha & Iván - 11 de Octubre 2025\n⏰ ${timestamp}`;
         if (userName) {
-            content += `\n👤 Por: ${userName}`;
+            content += `\n👤 Capturado por: ${userName}`;
+        } else {
+            content += `\n👤 Capturado por: Invitado`;
         }
         
         // Add payload_json for webhook
         const payload = {
             content: content,
-            username: botName
+            username: 'Álbum de Boda'
         };
         formData.append('payload_json', JSON.stringify(payload));
 
@@ -765,7 +770,7 @@ document.addEventListener('keydown', (event) => {
  * Initialize the application
  */
 function initializeApp() {
-    console.log('🚀 Initializing Cámara Web v1.0.0');
+    console.log('� Inicializando Cámara de Boda - Samantha & Iván v1.0.0');
     
     // Load configuration
     loadConfig();
@@ -840,4 +845,4 @@ document.addEventListener('visibilitychange', () => {
     }
 });
 
-console.log('📸 Cámara Web loaded successfully!');
+console.log('� Cámara de Boda lista para capturar momentos especiales!');

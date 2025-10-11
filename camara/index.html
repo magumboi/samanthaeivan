@@ -9,10 +9,10 @@
     <meta name="theme-color" content="#000000">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <meta name="apple-mobile-web-app-title" content="Cámara Web">
+    <meta name="apple-mobile-web-app-title" content="Cámara de Boda">
     
-    <title>Cámara Web</title>
-    <meta name="description" content="Aplicación de cámara web standalone para tomar fotos">
+    <title>📸 Cámara de Boda - Samantha & Iván</title>
+    <meta name="description" content="Captura los momentos especiales de nuestra boda - Samantha & Iván, 11 de Octubre 2025">
     
     <!-- Favicon -->
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📸</text></svg>">
@@ -42,7 +42,7 @@
                 <button id="config--button" aria-label="Configuración" onclick="openConfig()">⚙️</button>
                 
                 <!-- Camera trigger - center -->
-                <button id="camera--trigger">Tomar foto</button>
+                <button id="camera--trigger">📸 Capturar momento</button>
                 
                 <!-- Camera toggle - right -->
                 <button id="camera--toggle" aria-label="Cambiar cámara">🔄</button>
@@ -60,8 +60,11 @@
             <input type="hidden" id="bot-name" value="Cámara Bot" />
             
             <div class="config-section">
-                <h3>👤 Usuario</h3>
-                <input type="text" id="user-name" class="config-input" placeholder="Tu nombre (opcional)" />
+                <h3>👤 Invitado</h3>
+                <input type="text" id="user-name" class="config-input" placeholder="Tu nombre (aparecerá en las fotos)" />
+                <small style="color: rgba(255,255,255,0.6); font-size: 12px; display: block; margin-top: 5px;">
+                    Ayúdanos a identificar quién tomó cada foto especial 💕
+                </small>
             </div>
 
             <div class="config-section">
@@ -81,7 +84,9 @@
             <button class="config-button" onclick="saveConfig()">Guardar Configuración</button>
             
             <div class="config-info">
-                <small>Versión 1.0.0 | Cámara Web</small>
+                <small>💒 Boda Samantha & Iván | 11 de Octubre 2025</small>
+                <br>
+                <small style="color: rgba(255,255,255,0.5);">¡Comparte tus fotos favoritas de nuestra celebración!</small>
             </div>
         </div>
     </div>
@@ -90,7 +95,8 @@
     <div id="loadingScreen" class="loading-screen">
         <div class="loading-content">
             <div class="camera-icon">📸</div>
-            <h2>Cargando cámara...</h2>
+            <h2>Preparando cámara de boda...</h2>
+            <p style="color: rgba(255,255,255,0.7); margin-top: 10px;">Captura los momentos especiales de Samantha & Iván</p>
             <div class="loading-spinner"></div>
         </div>
     </div>

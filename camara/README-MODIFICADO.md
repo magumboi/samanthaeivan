@@ -1,25 +1,25 @@
-# 📸 Cámara Web - Versión Híbrida
+# � Cámara de Boda - Samantha & Iván
 
-## ¿Qué cambió?
+## Propósito especial
 
-Esta versión ha sido modificada para que:
+Esta aplicación está diseñada específicamente para la boda de **Samantha & Iván** el **11 de Octubre 2025**:
 
-✅ **Sin menciones de Discord**: Se eliminaron todas las referencias visibles  
-✅ **Subida automática silenciosa**: Las fotos se suben automáticamente al capturarlas  
-✅ **Vista previa adicional**: También muestra opciones para el usuario  
-✅ **Doble funcionalidad**: Subida automática + control manual  
-✅ **Mejor de ambos mundos**: Respaldo automático + opciones adicionales  
+✅ **Álbum colaborativo**: Los invitados pueden agregar fotos al álbum de boda  
+✅ **Subida automática**: Las fotos se comparten automáticamente con los novios  
+✅ **Vista previa personalizada**: Opciones adicionales para los invitados  
+✅ **Experiencia temática**: Interfaz personalizada para el evento  
+✅ **Momentos preservados**: Cada foto queda registrada con fecha, hora y autor  
 
-## Funcionamiento
+## Cómo usar la cámara de boda
 
-1. **Tomar foto**: Presiona el botón "Tomar foto"
-2. **Subida automática**: La foto se sube silenciosamente en segundo plano
-3. **Indicador de éxito**: Aparece un ✅ verde si la subida fue exitosa
-4. **Vista previa**: Simultáneamente se muestra un modal con opciones adicionales:
-   - **📤 Subir foto**: Permite subir nuevamente (por si falló la automática)
-   - **💾 Descargar**: Guarda una copia local en el dispositivo
-   - **🗑️ Descartar**: Cierra el modal sin acción adicional
-5. **Doble respaldo**: La foto ya está subida + opciones adicionales disponibles
+1. **📸 Capturar momento**: Presiona "Capturar momento" para tomar una foto
+2. **🤖 Subida automática**: La foto se agrega automáticamente al álbum de boda
+3. **✅ Confirmación discreta**: Aparece un indicador si la foto se guardó correctamente
+4. **🎭 Opciones adicionales**: Se muestra un modal con opciones para el invitado:
+   - **� Compartir en álbum**: Subir manualmente si la automática falló
+   - **💾 Guardar en mi teléfono**: Descargar una copia personal
+   - **🗑️ Descartar**: Cerrar sin hacer nada más
+5. **💕 Momento preservado**: La foto queda guardada con tu nombre y la hora exacta
 
 ## Configuración
 
