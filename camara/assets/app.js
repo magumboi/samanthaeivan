@@ -383,19 +383,119 @@ function capturePhoto() {
     cameraOutput.src = imageDataUrl;
     cameraOutput.classList.add("taken");
 
-    // Upload automatically and silently
-    uploadPhotoSilently(imageDataUrl);
+    // Show photo preview with options
+    showPhotoPreview(imageDataUrl);
 }
 
+/**
+ * Show captured photo preview with action options
+ */
+function showPhotoPreview(imageDataUrl) {
+    Swal.fire({
+        title: 'Foto capturada',
+        html: `
+            <img src="${imageDataUrl}" style="max-width: 100%; max-height: 400px; border-radius: 10px; margin: 20px 0; box-shadow: 0 4px 20px rgba(0,0,0,0.3);">
+        `,
+        showCancelButton: true,
+        confirmButtonText: '📤 Subir foto',
+        cancelButtonText: '🗑️ Descartar',
+        showDenyButton: true,
+        denyButtonText: '💾 Descargar',
+        background: 'rgba(0, 0, 0, 0.9)',
+        color: '#ffffff',
+        width: '90%',
+        customClass: {
+            popup: 'swal2-dark',
+            confirmButton: 'swal2-confirm',
+            cancelButton: 'swal2-cancel',
+            denyButton: 'swal2-deny'
+        }
+    }).then((result) => {
+        if (result.isConfirmed) {
+            // Upload photo
+            uploadPhoto(imageDataUrl);
+        } else if (result.isDenied) {
+            // Download photo
+            downloadPhoto(imageDataUrl);
+        }
+        
+        // Hide photo preview
+        cameraOutput.classList.remove("taken");
+    });
+}
 
+/**
+ * Download photo to device
+ */
+function downloadPhoto(imageDataUrl) {
+    try {
+        const link = document.createElement('a');
+        link.href = imageDataUrl;
+        
+        const timestamp = new Date().toISOString().replace(/[:.]/g, '-');
+        let filename = `camera-photo-${timestamp}.jpg`;
+        
+        if (userName) {
+            filename = `${userName}-${filename}`;
+        }
+        
+        link.download = filename;
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+        
+        Swal.fire({
+            title: '¡Foto descargada!',
+            text: 'La foto se ha guardado en tu dispositivo',
+            icon: 'success',
+            timer: 2000,
+            showConfirmButton: false,
+            background: 'rgba(0, 0, 0, 0.9)',
+            color: '#ffffff',
+            customClass: {
+                popup: 'swal2-dark'
+            }
+        });
+    } catch (error) {
+        console.error('Error downloading photo:', error);
+        Swal.fire({
+            title: 'Error al descargar',
+            text: 'No se pudo descargar la foto',
+            icon: 'error',
+            background: 'rgba(0, 0, 0, 0.9)',
+            color: '#ffffff',
+            customClass: {
+                popup: 'swal2-dark'
+            }
+        });
+    }
+}
 
 // ========== UPLOAD FUNCTIONS ==========
 
 /**
- * Upload photo silently in the background
+ * Upload photo with user feedback
  */
-async function uploadPhotoSilently(imageDataUrl) {
+async function uploadPhoto(imageDataUrl) {
     try {
+        // Show loading indicator
+        Swal.fire({
+            title: 'Subiendo foto...',
+            html: `
+                <div style="text-align: center;">
+                    <div class="loading-spinner" style="margin: 20px auto;"></div>
+                    <p>Por favor espera mientras se envía la foto</p>
+                </div>
+            `,
+            allowOutsideClick: false,
+            showConfirmButton: false,
+            background: 'rgba(0, 0, 0, 0.9)',
+            color: '#ffffff',
+            customClass: {
+                popup: 'swal2-dark'
+            }
+        });
+
         // Convert data URL to blob
         const response = await fetch(imageDataUrl);
         const blob = await response.blob();
@@ -428,66 +528,69 @@ async function uploadPhotoSilently(imageDataUrl) {
         };
         formData.append('payload_json', JSON.stringify(payload));
 
-        // Send silently in background
+        // Send to server
         const uploadResponse = await fetch(uploadUrl, {
             method: 'POST',
             body: formData
         });
 
         if (uploadResponse.ok) {
-            console.log('Foto subida exitosamente');
-            // Show brief success indicator
-            showBriefSuccess();
+            Swal.fire({
+                title: '¡Foto subida exitosamente!',
+                html: `
+                    <div style="text-align: center;">
+                        <div style="font-size: 3rem; margin-bottom: 15px;">✅</div>
+                        <p>La foto se ha enviado correctamente</p>
+                    </div>
+                `,
+                icon: 'success',
+                timer: 3000,
+                showConfirmButton: false,
+                background: 'rgba(0, 0, 0, 0.9)',
+                color: '#ffffff',
+                customClass: {
+                    popup: 'swal2-dark'
+                }
+            });
         } else {
-            console.error('Error en la subida:', uploadResponse.status);
+            const errorText = await uploadResponse.text();
+            console.error('Upload API error:', uploadResponse.status, errorText);
+            throw new Error(`Upload API error: ${uploadResponse.status}`);
         }
     } catch (error) {
         console.error('Error uploading photo:', error);
-    } finally {
-        // Hide the photo preview after a brief moment
-        setTimeout(() => {
-            cameraOutput.classList.remove("taken");
-        }, 1500);
-    }
-}
-
-/**
- * Show brief success indicator
- */
-function showBriefSuccess() {
-    // Create temporary success indicator
-    const successDiv = document.createElement('div');
-    successDiv.innerHTML = '✅';
-    successDiv.style.cssText = `
-        position: fixed;
-        top: 20px;
-        right: 20px;
-        background: rgba(0, 0, 0, 0.8);
-        color: white;
-        padding: 10px 15px;
-        border-radius: 10px;
-        font-size: 24px;
-        z-index: 9999;
-        opacity: 0;
-        transition: opacity 0.3s ease;
-    `;
-    
-    document.body.appendChild(successDiv);
-    
-    // Animate in
-    setTimeout(() => {
-        successDiv.style.opacity = '1';
-    }, 100);
-    
-    // Remove after delay
-    setTimeout(() => {
-        successDiv.style.opacity = '0';
-        setTimeout(() => {
-            if (successDiv.parentNode) {
-                successDiv.parentNode.removeChild(successDiv);
+        
+        let errorMessage = 'No se pudo subir la foto';
+        if (error.name === 'TypeError' && error.message.includes('fetch')) {
+            errorMessage = 'Error de conexión. Verifica tu conexión a internet.';
+        } else if (error.message.includes('404')) {
+            errorMessage = 'El servidor no está disponible.';
+        } else if (error.message.includes('401')) {
+            errorMessage = 'Error de autorización en el servidor.';
+        }
+        
+        Swal.fire({
+            title: 'Error al subir',
+            html: `
+                <div style="text-align: center;">
+                    <p>${errorMessage}</p>
+                    <div style="margin-top: 15px; font-size: 0.9em; color: rgba(255,255,255,0.7);">
+                        <strong>Posibles soluciones:</strong><br>
+                        • Verifica tu conexión a internet<br>
+                        • Intenta nuevamente en unos minutos<br>
+                        • Puedes descargar la foto como respaldo
+                    </div>
+                </div>
+            `,
+            icon: 'error',
+            confirmButtonText: 'Entendido',
+            background: 'rgba(0, 0, 0, 0.9)',
+            color: '#ffffff',
+            customClass: {
+                popup: 'swal2-dark'
             }
-        }, 300);
-    }, 2000);
+        });
+    }
 }
 
 // ========== EVENT LISTENERS ==========
