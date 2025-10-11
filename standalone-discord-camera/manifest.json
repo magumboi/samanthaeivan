@@ -1,0 +1,87 @@
+{
+  "name": "Cámara Discord Standalone",
+  "short_name": "CámaraDiscord",
+  "description": "Aplicación de cámara web standalone que sube fotos directamente a Discord",
+  "version": "1.0.0",
+  "start_url": "./index.html",
+  "display": "fullscreen",
+  "orientation": "portrait-primary",
+  "theme_color": "#000000",
+  "background_color": "#000000",
+  "scope": "./",
+  "lang": "es",
+  "dir": "ltr",
+  "icons": [
+    {
+      "src": "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 192 192'><circle cx='96' cy='96' r='96' fill='%23000'/><text x='96' y='130' font-size='120' text-anchor='middle' fill='white'>📸</text></svg>",
+      "sizes": "192x192",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'><circle cx='256' cy='256' r='256' fill='%23000'/><text x='256' y='340' font-size='300' text-anchor='middle' fill='white'>📸</text></svg>",
+      "sizes": "512x512",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 390 844'><rect width='390' height='844' fill='%23000'/><text x='195' y='422' font-size='60' text-anchor='middle' fill='white'>📸 Cámara Discord</text></svg>",
+      "sizes": "390x844",
+      "type": "image/svg+xml",
+      "form_factor": "narrow",
+      "label": "Pantalla principal de la cámara"
+    }
+  ],
+  "categories": ["photo", "utilities", "productivity"],
+  "shortcuts": [
+    {
+      "name": "Tomar foto",
+      "short_name": "Foto",
+      "description": "Tomar una foto rápidamente",
+      "url": "./index.html?action=photo",
+      "icons": [
+        {
+          "src": "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 96 96'><circle cx='48' cy='48' r='48' fill='%237289da'/><text x='48' y='65' font-size='50' text-anchor='middle' fill='white'>📸</text></svg>",
+          "sizes": "96x96",
+          "type": "image/svg+xml"
+        }
+      ]
+    },
+    {
+      "name": "Configuración",
+      "short_name": "Config",
+      "description": "Abrir configuración",
+      "url": "./index.html?action=config",
+      "icons": [
+        {
+          "src": "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 96 96'><circle cx='48' cy='48' r='48' fill='%23666'/><text x='48' y='65' font-size='50' text-anchor='middle' fill='white'>⚙️</text></svg>",
+          "sizes": "96x96",
+          "type": "image/svg+xml"
+        }
+      ]
+    }
+  ],
+  "prefer_related_applications": false,
+  "related_applications": [],
+  "protocol_handlers": [],
+  "file_handlers": [
+    {
+      "action": "./",
+      "accept": {
+        "image/jpeg": [".jpg", ".jpeg"],
+        "image/png": [".png"]
+      }
+    }
+  ],
+  "share_target": {
+    "action": "./",
+    "method": "GET",
+    "params": {
+      "title": "title",
+      "text": "text",
+      "url": "url"
+    }
+  }
+}

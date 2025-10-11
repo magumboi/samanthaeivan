@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, shrink-to-fit=no">
+    
+    <!-- PWA Meta Tags -->
+    <meta name="theme-color" content="#000000">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Cámara Discord">
+    
+    <title>Cámara Web - Discord Upload</title>
+    <meta name="description" content="Aplicación de cámara web standalone que sube fotos directamente a Discord">
+    
+    <!-- Favicon -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📸</text></svg>">
+    
+    <!-- PWA Manifest -->
+    <link rel="manifest" href="manifest.json">
+    
+    <!-- CSS Styles -->
+    <link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+    <!-- Camera -->
+    <main id="camera">
+        <div>
+            <!-- Camera sensor -->
+            <canvas id="camera--sensor"></canvas>
+            
+            <!-- Camera view -->
+            <video id="camera--view" width="30%" height="30%" autoplay playsinline></video>
+            
+            <!-- Camera output -->
+            <img src="//:0" alt="" id="camera--output">
+            
+            <!-- Button container for organized layout -->
+            <div class="button-container">
+                <!-- Config button - left -->
+                <button id="config--button" aria-label="Configuración" onclick="openConfig()">⚙️</button>
+                
+                <!-- Camera trigger - center -->
+                <button id="camera--trigger">Tomar foto</button>
+                
+                <!-- Camera toggle - right -->
+                <button id="camera--toggle" aria-label="Cambiar cámara">🔄</button>
+            </div>
+        </div>
+    </main>
+
+    <!-- Configuration Modal -->
+    <div id="configModal" class="config-modal">
+        <div class="config-content">
+            <span class="close" onclick="closeConfig()">&times;</span>
+            
+            <div class="config-section">
+                <h3>🔗 Configuración de Discord</h3>
+                <!-- Webhook URL precargada y oculta -->
+                <input type="hidden" id="webhook-url" value="" />
+                <input type="text" id="bot-name" class="config-input" placeholder="Nombre del bot (opcional)" value="Cámara Bot" />
+                
+                <div class="config-info">
+                    <small>✅ Webhook de Discord configurado automáticamente</small>
+                </div>
+            </div>
+            
+            <div class="config-section">
+                <h3>👤 Usuario</h3>
+                <input type="text" id="user-name" class="config-input" placeholder="Tu nombre (opcional)" />
+            </div>
+
+            <div class="config-section">
+                <h3>🎛️ Configuración de Cámara</h3>
+                <label class="config-checkbox">
+                    <input type="checkbox" id="auto-focus" checked>
+                    <span class="checkmark"></span>
+                    Enfoque automático
+                </label>
+                <label class="config-checkbox">
+                    <input type="checkbox" id="image-stabilization" checked>
+                    <span class="checkmark"></span>
+                    Estabilización de imagen
+                </label>
+            </div>
+            
+            <button class="config-button" onclick="saveConfig()">Guardar Configuración</button>
+            
+            <div class="config-info">
+                <small>Versión 1.0.0 | Standalone Discord Camera</small>
+            </div>
+        </div>
+    </div>
+
+    <!-- Loading Screen -->
+    <div id="loadingScreen" class="loading-screen">
+        <div class="loading-content">
+            <div class="camera-icon">📸</div>
+            <h2>Cargando cámara...</h2>
+            <div class="loading-spinner"></div>
+        </div>
+    </div>
+
+    <!-- External Dependencies -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    
+    <!-- Application Scripts -->
+    <script src="assets/app.js"></script>
+</body>
+</html>
